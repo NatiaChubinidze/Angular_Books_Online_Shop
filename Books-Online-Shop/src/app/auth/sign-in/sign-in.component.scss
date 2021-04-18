@@ -1,0 +1,34 @@
+.box{
+    width:100%;
+    height:600px;
+    padding:50px 150px;
+    background-color: #f7f7f7;
+}
+
+.cont{
+    height:100%;
+    box-shadow:1px 1px 30px 1px  #bebebc;
+}
+
+.auth, .thumbnail{
+    width:50%;
+    
+}
+
+.thumbnail{
+    img{
+        width:100%;
+        height:100%;
+        object-fit: cover;
+        opacity: 0.9;
+    }
+}
+
+.auth{
+    padding:25px;
+    img{
+        width:20px;
+        height:20px;
+    }
+}
+

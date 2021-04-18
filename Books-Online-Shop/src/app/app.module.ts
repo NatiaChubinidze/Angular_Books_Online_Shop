@@ -11,6 +11,9 @@ import { NavigationRoutingModule } from './navigation/navigation-routing.module'
 import { LandingPageRoutingModule } from './landing-page/landing-page-routing.module';
 import { DetailedPageRoutingModule } from './detailed-page/detailed-page-routing.module';
 import { BooksSearchRoutingModule } from './books-search/books-search-routing.module';
+import { AuthModule } from './auth/auth.module';
+import { AuthRoutingModule } from './auth/auth-routing.module';
+
 
 @NgModule({
   declarations: [
@@ -19,14 +22,16 @@ import { BooksSearchRoutingModule } from './books-search/books-search-routing.mo
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NavigationRoutingModule,
-    LandingPageRoutingModule,
-    DetailedPageRoutingModule,
-    BooksSearchRoutingModule,
     NavigationModule,
+    NavigationRoutingModule,
     LandingPageModule,
+    LandingPageRoutingModule,
     DetailedPageModule,
-    BooksSearchModule
+    DetailedPageRoutingModule,
+    BooksSearchModule,
+    BooksSearchRoutingModule,
+    AuthModule,
+    AuthRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
