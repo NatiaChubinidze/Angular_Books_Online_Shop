@@ -13,11 +13,18 @@ import { DetailedPageRoutingModule } from './detailed-page/detailed-page-routing
 import { BooksSearchRoutingModule } from './books-search/books-search-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { AuthRoutingModule } from './auth/auth-routing.module';
+import { WishlistModule } from './wishlist/wishlist.module';
+import { WishlistRoutingModule } from './wishlist/wishlist-routing.module';
+import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
+import { ShoppingCartRoutingModule } from './shopping-cart/shopping-cart-routing.module';
+
+
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -31,7 +38,12 @@ import { AuthRoutingModule } from './auth/auth-routing.module';
     BooksSearchModule,
     BooksSearchRoutingModule,
     AuthModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    WishlistModule,
+    WishlistRoutingModule,
+    ShoppingCartModule,
+    ShoppingCartRoutingModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
