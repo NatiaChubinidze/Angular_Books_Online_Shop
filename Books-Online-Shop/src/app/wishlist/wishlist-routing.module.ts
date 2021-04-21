@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BooksSearchComponent } from './books-search.component';
+import { WishlistComponent } from './wishlist.component';
 
 const routes: Routes = [
-  {path:'book-search',
-component:BooksSearchComponent}
+  {path:'wishlist',
+component:WishlistComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class BooksSearchRoutingModule { }
+export class WishlistRoutingModule { }

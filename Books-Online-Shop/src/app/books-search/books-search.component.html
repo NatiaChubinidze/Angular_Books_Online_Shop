@@ -1,1 +1,64 @@
-<p>books-search works!</p>
+<div class="box">
+    <h1 class="text-center">Books Search</h1>
+    <div class="d-flex search-tags">
+    <div class="col-3 search-div d-flex">
+        <input type="search" class="form-control search" id="title" placeholder="Book Title">
+      </div>
+      <div class="col-3 search-div d-flex">
+        <input type="search" class="form-control search" id="author" placeholder="Author">
+      </div>
+      <div class="col-3 search-div d-flex">
+        <input type="search" class="form-control search" id="publisher" placeholder="Publisher">
+      </div>
+      <div class="col-3 search-div d-flex">
+        <input type="search" class="form-control search" id="isbn" placeholder="ISBN">
+      </div>
+      <div class="col-3 search-div d-flex">
+        <select class="form-select select" id="inputGroupSelect01">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+      </div>
+      <div class="col-3 search-div d-flex">
+        <select class="form-select select" id="inputGroupSelect01">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+      </div>
+      <div class="col-3 search-div d-flex">
+        <select class="form-select select" id="inputGroupSelect01">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+      </div>
+      <div class="col-3 search-div d-flex">
+        <select class="form-select select" id="inputGroupSelect01">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+      </div>
+      
+    <div class="categories-list d-flex col-12">
+      <button class="search-btn">Search</button>
+      <div class="d-flex">
+        <div class="popular-categories"><h6><i>Popular Categories:</i></h6></div>
+        <div class="category-card" *ngFor="let item of categories">
+          <h6 class="card-title">#{{ item }}</h6>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="books-container mt-3">
+          <div class="book-card" *ngFor="let book of books">
+           <app-book-default-card></app-book-default-card>
+          </div>
+      </div>
+</div>
