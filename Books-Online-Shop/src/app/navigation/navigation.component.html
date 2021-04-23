@@ -21,15 +21,15 @@
             <li class="nav-item">
               <a
                 class="nav-link"
-                [routerLink]="['/transport']"
+                [routerLink]="['/admin-panel']"
                 routerLinkActive="active"
-                >Home</a
+                >Admin</a
               >
             </li>
             <li class="nav-item">
               <a
                 class="nav-link"
-                [routerLink]="['/landmarks']"
+                [routerLink]="['/book-search']"
                 routerLinkActive="active"
                 >Books</a
               >
@@ -37,7 +37,7 @@
             <li class="nav-item">
               <a
                 class="nav-link"
-                [routerLink]="['/hotels']"
+                [routerLink]="['/wishlist']"
                 routerLinkActive="active"
                 >Wishlist</a
               >
@@ -48,28 +48,63 @@
             >
               <a
                 class="nav-link"
-                [routerLink]="['/reviews']"
+                [routerLink]="['/shopping-cart']"
                 routerLinkActive="active"
                 >Shopping-Cart</a> 
             </li>
+            <li
+            class="nav-item"
+          >
+            <a
+              class="nav-link"
+              [routerLink]="['/profile']"
+              routerLinkActive="active"
+              >Profile</a> 
+          </li>
+          <li
+            class="nav-item"
+          >
+            <a
+              class="nav-link"
+              [routerLink]="['/details']"
+              routerLinkActive="active"
+              >Details</a> 
+          </li>
           </ul>
         </div>
         <div class="functional-buttons">
           <ul>
-            <li>
+            <!-- <li>
               <a
                 class="logOut"
                 >Log Out</a
               >
-            </li>
-            <li>
+            </li> -->
+            <!-- <li>
               <a
                 [routerLink]="['/signIn']"
                 routerLinkActive="active"
                 >Sign In</a
               >
+            </li> -->
+            <li>
+              <img src="../../assets/images/shopping-cart (2).png"/>
             </li>
-            
+            <li class="profile" [routerLink]="['/shopping-cart']">
+              <span>
+              <img class="ms-3 profile-picture" src="../../assets/images/book_and_flowers.jpg"/> Natia
+              </span>
+              <div class="dropdown-content">
+                <ul class="dropdown-menu">
+                  <li class="mt-1" (click)="navigateToProfile()">
+                    Profile
+                  </li>
+                  <li>
+                    Sign Out
+                  </li>
+                </ul>
+              </div>
+            </li>
           </ul>
         </div>
       </div>

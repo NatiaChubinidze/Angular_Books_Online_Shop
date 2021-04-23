@@ -17,6 +17,11 @@ import { WishlistModule } from './wishlist/wishlist.module';
 import { WishlistRoutingModule } from './wishlist/wishlist-routing.module';
 import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
 import { ShoppingCartRoutingModule } from './shopping-cart/shopping-cart-routing.module';
+import { ProfileModule } from './profile/profile.module';
+import { ProfileRoutingModule } from './profile/profile-routing.module';
+import { AdminPanelModule } from './admin-panel/admin-panel.module';
+import { AdminPanelRoutingModule } from './admin-panel/admin-panel-routing.module';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -24,6 +29,7 @@ import { ShoppingCartRoutingModule } from './shopping-cart/shopping-cart-routing
 @NgModule({
   declarations: [
     AppComponent,
+    FooterComponent
     
   ],
   imports: [
@@ -42,8 +48,11 @@ import { ShoppingCartRoutingModule } from './shopping-cart/shopping-cart-routing
     WishlistModule,
     WishlistRoutingModule,
     ShoppingCartModule,
-    ShoppingCartRoutingModule
-    
+    ShoppingCartRoutingModule,
+    ProfileModule,
+    ProfileRoutingModule,
+    AdminPanelModule,
+    AdminPanelRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
