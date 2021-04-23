@@ -8,13 +8,15 @@
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 5px;
-  width: 95%;
+  // width: 95%;
+  width:100%;
   margin: 0 auto;
 }
 
 .categories {
   min-height: 300px;
-  width: 95%;
+  // width: 95%;
+  width: 100%;
   margin: 0 auto;
   background-color: #eee8f1;
   padding: 40px;
@@ -68,6 +70,7 @@
 }
 
 .recommended-books {
+  width:100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;

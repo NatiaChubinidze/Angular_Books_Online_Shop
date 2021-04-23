@@ -1,9 +1,10 @@
 .box {
-  background-color: #eee8f1;
+  // background-color: #eee8f1;
   min-height: 700px;
-  width: 95%;
+  // width: 95%;
+  width:100%;
   margin: 0 auto;
-  padding: 10px;
+  padding: 80px 0px;
 }
 .search {
   height: 49px;
@@ -44,6 +45,9 @@
 
 .search-tags {
   flex-wrap: wrap;
+  background-color: rgba(172, 163, 184, 0.76);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .select {
@@ -63,13 +67,14 @@
     align-items: center;
 }
 .books-container{
+  position:relative;
     display:flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
     width:100%;
     min-height:400px;
-    background-color: #e8dfec;
+    background-color: transparent;
     padding:20px 10px;
 }
 .book-card{
@@ -87,4 +92,49 @@ padding:0px;
 width:100px;
 height:40px;
 border-radius: 45px;
+}
+
+.background-circle{
+  width:200px;
+  height:200px;
+  border-bottom-left-radius: 50% 50%;
+    border-bottom-right-radius: 50% 50%;
+    border-top-left-radius: 50% 50%;
+    border-top-right-radius: 50% 50%;
+    z-index:-1;
+    position:absolute;
+    
+}
+
+.purple{
+  background-color:#50424f;
+  top:100px;
+    left:50px;
+}
+
+.blue{
+  background-color:#151a6a;
+  top:120px;
+    right:50px;
+
+}
+
+.rosa{
+  background-color:rgb(179, 28, 103);
+  top:120px;
+  left:120px;
+}
+
+.background-big-circle{
+  width:400px;
+  height:400px;
+  border-bottom-left-radius: 50% 50%;
+    border-bottom-right-radius: 50% 50%;
+    border-top-left-radius: 50% 50%;
+    border-top-right-radius: 50% 50%;
+    z-index: 1;
+    position:absolute;
+    bottom:100px;
+    right:400px;
+    color:blue;
 }
