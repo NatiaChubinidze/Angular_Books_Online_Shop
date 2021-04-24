@@ -44,14 +44,14 @@ border-radius: 10%;
   width:400px;
   height:400px;
   background-color: #9078b679;
-  border-bottom-left-radius: 50% 40%;
-    border-bottom-right-radius: 50% 40%;
-    border-top-left-radius: 50% 40%;
-    border-top-right-radius: 50% 40%;
+  border-bottom-left-radius: 50% 50%;
+    border-bottom-right-radius: 50% 50%;
+    border-top-left-radius: 50% 50%;
+    border-top-right-radius: 50% 50%;
     z-index:-1;
     position:absolute;
-    top:100px;
-    left:50px;
+    bottom:-100px;
+    left:-30px;
 }
 .background-rectangle{
   width:100px;
@@ -77,4 +77,12 @@ border-radius: 10%;
   bottom:30px;
     right:30px;
     transform: rotate(20deg);
+}
+.violet{
+  background-color:#97c7dd94;
+  top:100px;
+  left: 150px;
+  width:200px;
+  height:200px;
+  transform: rotate(-20deg);
 }
