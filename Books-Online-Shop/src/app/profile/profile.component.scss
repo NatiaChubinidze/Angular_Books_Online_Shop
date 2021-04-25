@@ -115,3 +115,34 @@
       bottom:-300px;
       left:-200px;
 }
+
+@media only screen and (max-width: 575px) {
+ .container{
+     font-size: 13px;
+ }
+ input{
+     width:80%;
+     
+     }
+     ::placeholder{
+        font-size:12px;
+}
+label{
+    width:60px;
+}
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    .container{
+        font-size: 15px;
+    }
+ input{
+     width:150px;
+ }
+ ::placeholder{
+    font-size:14px;
+}
+}
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+ 
+}

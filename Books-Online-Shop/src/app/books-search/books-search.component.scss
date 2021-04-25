@@ -3,7 +3,7 @@
   min-height: 700px;
   // width: 95%;
   width: 100%;
-  margin: 0 auto;
+  // margin: 0 auto;
   padding: 80px 0px;
 }
 .search {
@@ -150,4 +150,34 @@
     position:absolute;
     bottom:-900px;
     right:0px;
+}
+.popular-categories{
+  padding-left:10px;
+}
+@media only screen and (max-width: 575px) {
+ 
+ .tags{
+   flex-wrap:wrap;
+ }
+  .book-card{
+    width:45%;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .tags{
+    flex-wrap:wrap;
+  }
+  .book-card{
+    width:33%;
+  }
+  
+}
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  .tags{
+    flex-wrap:wrap;
+  }
+  .book-card{
+    width:26%;
+  }
 }

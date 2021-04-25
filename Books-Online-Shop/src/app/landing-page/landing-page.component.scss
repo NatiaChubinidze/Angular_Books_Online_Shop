@@ -44,7 +44,8 @@
   background-color: rgb(196, 189, 189);
 }
 .categories-img {
-  width: 25%;
+  width: 317px;
+  height:317px;
   border-radius: 10px;
 }
 
@@ -82,4 +83,66 @@
 .book-card{
   width:21%;
   height:300px;
+}
+
+@media only screen and (max-width: 575px) { 
+ .categories-list{
+   width:100%;
+ }
+ .categories-img{
+   display:none;
+ }
+ .shop-online{
+   height:120px;
+ }
+ .shop-now-btn{
+   padding:0px;
+ }
+ .picture{
+   width:35%;
+   height:150px;
+ }
+ .book-card{
+   width:45%;
+   margin-bottom: 40px;
+ }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) { 
+ .categories-img{
+   width:200px;
+   height:200px;
+ }
+ .book-card{
+   width:40%;
+   margin-bottom: 40px;
+ }
+ .shop-online{
+  height:120px;
+}
+.shop-now-btn{
+  padding:0px;
+}
+.picture{
+  width:180px;
+}
+}
+@media only screen and (min-width: 768px) and (max-width: 1199px) { 
+  .book-card{
+    width:30%;
+    margin-bottom: 40px;
+  }
+  .categories-img{
+    width:30%;
+    height:250px;
+  }
+  .shop-online{
+    height:120px;
+  }
+  .shop-now-btn{
+    padding:0px;
+  }
+  .picture{
+    width:230px;
+  }
 }
