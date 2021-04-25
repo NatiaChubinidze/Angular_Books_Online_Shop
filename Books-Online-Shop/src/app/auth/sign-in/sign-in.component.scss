@@ -1,113 +1,173 @@
-.box{
-    width:100%;
-    height:650px;
-    padding:50px 150px;
-    background-color: #f7f7f7;
+.box {
+  width: 100%;
+  height: 650px;
+  padding: 50px 150px;
+  background-color: #f7f7f7;
 }
 
-.cont{
-    height:100%;
-    box-shadow:1px 1px 30px 1px  #bebebc;
+.cont {
+  height: 100%;
+  box-shadow: 1px 1px 30px 1px #bebebc;
 }
 
-.auth, .thumbnail{
-    width:50%;
-    
+.auth,
+.thumbnail {
+  width: 50%;
 }
 
-.thumbnail{
-    img{
-        width:100%;
-        height:100%;
-        object-fit: cover;
-        opacity: 0.9;
-    }
+.thumbnail {
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+  }
 }
 
-.auth{
-    padding:25px;
-    img{
-        width:20px;
-        height:20px;
-    }
+.auth {
+  padding: 25px;
+  img {
+    width: 20px;
+    height: 20px;
+  }
 }
 
-.auth-info{
-    margin-top:30px;
-    margin-left:30px;
-   
+.auth-info {
+  margin-top: 30px;
+  margin-left: 30px;
 }
-.controls{
-    align-items: flex-end;
-    align-content: flex-end;
+.controls {
+  align-items: flex-end;
+  align-content: flex-end;
 }
 
 // .form-check{
 //     margin-left:75px;
 // }
 
-hr{
-    width:41%;
+hr {
+  width: 41%;
 }
-.sign-in-options{
-    width:100%;
-    justify-content: flex-end;
-    flex-wrap: wrap;
+.sign-in-options {
+  width: 100%;
+  justify-content: flex-end;
+  flex-wrap: wrap;
 }
-.sign-in-buttons{
-    align-content: flex-end;
-    flex-direction: column;
-    flex-wrap:wrap;
-    
+.sign-in-buttons {
+  align-content: flex-end;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
-.btn-facebook, .btn-twitter, .btn-google {
-    color: #fff;
-    border-color: rgba(0,0,0,0.2);
-    margin-bottom:15px;
-    img{
-        width:100%;
-        height:100%;
-        z-index: 1;
-        padding:0px;
-    }
-    i{
-        background-color: white;
-        padding:0px;
-    }
+.btn-facebook,
+.btn-twitter,
+.btn-google {
+  color: #fff;
+  border-color: rgba(0, 0, 0, 0.2);
+  margin-bottom: 15px;
+  img {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    padding: 0px;
+  }
+  i {
+    background-color: white;
+    padding: 0px;
+  }
 }
-.btn-facebook{
-    background-color: #3b5998;
+.btn-facebook {
+  background-color: #3b5998;
 }
-.btn-twitter{
-    background-color:#04abf0;
+.btn-twitter {
+  background-color: #04abf0;
 }
-.btn-google{
-    background-color: #f54234;
-    i{
-        background-color: #ce4339 ;
-    }
+.btn-google {
+  background-color: #f54234;
+  i {
+    background-color: #ce4339;
+  }
 }
 
 .btn-social {
-    position: relative;
-    padding-left: 44px;
-    text-align: left;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  position: relative;
+  padding-left: 44px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .btn-social:hover {
-    color: #eee;
+  color: #eee;
 }
 
 .btn-social :first-child {
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 45px;
-    font-size: 1.6em;
-    text-align: center;
-    border-right: 1px solid rgba(10, 10, 43, 0.651);
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 45px;
+  font-size: 1.6em;
+  text-align: center;
+  border-right: 1px solid rgba(10, 10, 43, 0.651);
+}
+
+@media only screen and (max-width: 575px) {
+  .box {
+    padding: 20px;
+    height: 100%;
+  }
+  .auth {
+    width: 100%;
+  }
+  .thumbnail {
+    display: none;
+  }
+  .cont {
+    height: 100%;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .box {
+    padding: 50px;
+  }
+  .auth {
+    padding: 50px;
+    width: 100%;
+    height: 90%;
+  }
+  .thumbnail {
+    display: none;
+  }
+  .cont {
+    height: 100%;
+  }
+  .auth-info {
+    margin-top: 10px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  .box {
+    padding: 30px;
+  }
+  .auth {
+    padding: 20px;
+    width: 50%;
+    height: 100%;
+  }
+  .cont {
+    height: 580px;
+  }
+  label {
+    width: 120px;
+  }
+  .btn {
+    font-size: 15px;
+    padding-left: 30px;
+  }
+  .btn-primary {
+    width: 100px;
+    padding-right: 20px;
+  }
 }

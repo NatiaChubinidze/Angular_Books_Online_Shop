@@ -86,3 +86,21 @@ border-radius: 10%;
   height:200px;
   transform: rotate(-20deg);
 }
+
+@media only screen and (max-width: 575px) {
+  .book-card{
+    width:48%;
+  }
+ 
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .book-card{
+    width:43%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  .book-card{
+    width:31%;
+  }
+}

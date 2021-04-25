@@ -40,13 +40,70 @@
 }
 
 .sign-up-btn {
-  
-  margin-right:12px;
+  margin-right: 12px;
 }
-.error-text{
-  min-height:30px;
+.error-text {
+  min-height: 30px;
 }
 
-.text-required{
-  min-height:30px;
+.text-required {
+  min-height: 30px;
+}
+
+@media only screen and (max-width: 575px) {
+  .box {
+    padding: 20px;
+    height: 100%;
+  }
+  .auth {
+    width: 100%;
+  }
+  .thumbnail {
+    display: none;
+  }
+  .cont {
+    height: 100%;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .box {
+    padding: 50px;
+  }
+  .auth {
+    padding: 20px;
+    width: 100%;
+    height: 90%;
+  }
+  .thumbnail {
+    display: none;
+  }
+  .cont {
+    height: 100%;
+  }
+  .auth-info {
+    margin-top: 10px;
+    margin-left: 15px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  .box {
+    padding: 30px;
+  }
+  .auth {
+    padding: 10px;
+    width: 50%;
+    height: 100%;
+  }
+  .cont {
+    height: 580px;
+  }
+
+  .auth-info {
+    margin-left: 10px;
+  }
+  label {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 }
