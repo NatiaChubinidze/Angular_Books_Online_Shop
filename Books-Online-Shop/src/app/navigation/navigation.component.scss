@@ -185,25 +185,44 @@ li > span {
   display: none;
 }
 .profile:hover .dropdown-content {
-  z-index:100;
-  position:absolute;
+  z-index: 100;
+  position: absolute;
   display: block;
 }
-.profile:hover ul.dropdown-menu{
+.profile:hover ul.dropdown-menu {
   display: flex;
   flex-direction: column;
   background-color: transparent;
-  border:0px;
+  border: 0px;
 }
 
-.dropdown-menu:hover{
-  cursor:pointer;
-  
+.dropdown-menu:hover {
+  cursor: pointer;
 }
-.dropdown-menu li{
-  padding:7px;
-  color:gray;
+.dropdown-menu li {
+  padding: 7px;
+  color: gray;
 }
-.dropdown-menu li:hover{
+.dropdown-menu li:hover {
   background-color: whitesmoke;
+}
+
+.functional-buttons ul li.toggleVisible {
+  display: none;
+}
+@media only screen and (max-width: 575px) {
+  ul li.shopping-cart-icon img {
+    display: none;
+  }
+  .functional-buttons ul li.toggleVisible {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .functional-buttons ul li.toggleVisible {
+    display: block;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
 }
