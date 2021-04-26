@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AngularFireModule } from '@angular/fire';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,7 +23,7 @@ import { ProfileRoutingModule } from './profile/profile-routing.module';
 import { AdminPanelModule } from './admin-panel/admin-panel.module';
 import { AdminPanelRoutingModule } from './admin-panel/admin-panel-routing.module';
 import { FooterComponent } from './footer/footer.component';
-
+import {firebaseConfig} from '../../firebaseConfig';
 
 
 
@@ -52,7 +53,8 @@ import { FooterComponent } from './footer/footer.component';
     ProfileModule,
     ProfileRoutingModule,
     AdminPanelModule,
-    AdminPanelRoutingModule
+    AdminPanelRoutingModule,
+    AngularFireModule.initializeApp(firebaseConfig),
   ],
   providers: [],
   bootstrap: [AppComponent]
