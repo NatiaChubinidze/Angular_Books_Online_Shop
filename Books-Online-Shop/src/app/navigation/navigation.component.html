@@ -11,9 +11,9 @@
             <li class="nav-item">
               <a
                 class="nav-link"
-                [routerLink]="['/admin-panel']"
+                [routerLink]="['/home']"
                 routerLinkActive="active"
-                >Admin</a
+                >Home</a
               >
             </li>
             <li class="nav-item">
@@ -38,28 +38,12 @@
             >
               <a
                 class="nav-link"
-                [routerLink]="['/shopping-cart']"
+                [routerLink]="['/books-read']"
                 routerLinkActive="active"
-                >Shopping-Cart</a> 
+                >Books Read</a> 
             </li>
-            <li
-            class="nav-item"
-          >
-            <a
-              class="nav-link"
-              [routerLink]="['/profile']"
-              routerLinkActive="active"
-              >Profile</a> 
-          </li>
-          <li
-            class="nav-item"
-          >
-            <a
-              class="nav-link"
-              [routerLink]="['/details']"
-              routerLinkActive="active"
-              >Details</a> 
-          </li>
+            
+         
           </ul>
         </div>
         <div class="functional-buttons">
@@ -77,29 +61,35 @@
                 >Sign In</a
               >
             </li> -->
-            <li class="shopping-cart-icon">
+            <li class="shopping-cart-icon" [routerLink]="['/shopping-cart']">
               <img src="../../assets/images/shopping-cart (2).png"/>
             </li>
-            <li class="profile" [routerLink]="['/shopping-cart']">
+            <li class="profile">
               <span>
               <img class="ms-3 profile-picture" src="../../assets/images/book_and_flowers.jpg"/> Natia
               </span>
               <div class="dropdown-content">
                 <ul class="dropdown-menu">
+                  <li [routerLink]="['/profile']">
+                    Profile
+                  </li>
                   <li class="toggleVisible">
                     Home
                   </li>
                   <li class="toggleVisible">
                     Books
                   </li>
-                  <li class="toggleVisible">
+                  <li class="toggleVisible shopping">
                     Shopping-Cart
                   </li>
                   <li class="toggleVisible">
                     Wishlist
                   </li>
-                  <li class="mt-1" (click)="navigateToProfile()">
-                    Profile
+                  <li [routerLink]="['/details']">
+                    Book-Details
+                  </li>
+                  <li [routerLink]="['/admin-panel']">
+                    Admin
                   </li>
                   <li>
                     Sign Out

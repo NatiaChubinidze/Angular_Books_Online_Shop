@@ -11,11 +11,15 @@
   background-color: transparent;
   border: 2px solid #fff;
   padding: 0px 15px;
-  color: rgba(0, 0, 0, 0.6);
+  color: white;
   outline: none;
   font-size: 14px;
   letter-spacing: 0.5px;
   margin: 10px;
+  
+}
+::placeholder{
+  color:white;
 }
 
 .categories-list {
@@ -44,9 +48,12 @@
 
 .search-tags {
   flex-wrap: wrap;
-  background-color: rgba(155, 175, 185, 0.158);
+  // background-color: rgba(155, 175, 185, 0.473);
+  background-color: rgba(172, 163, 184, 0.76);
+
   background-repeat: no-repeat;
   background-size: cover;
+  padding:10px 20px 20px 20px;
 }
 
 .select {
@@ -55,12 +62,20 @@
   background-color: transparent;
   border: 2px solid #fff;
   padding: 0px 15px;
-  color: rgba(0, 0, 0, 0.6);
+  color: white;
   outline: none;
   font-size: 14px;
   letter-spacing: 0.5px;
   margin-bottom: 30px;
+  option{
+    color:black;
+    height:50px;
+    
+  }
+  
 }
+
+
 .popular-categories {
   display: flex;
   align-items: center;

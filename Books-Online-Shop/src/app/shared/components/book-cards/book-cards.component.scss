@@ -70,13 +70,12 @@
             
         }
     }
-    @media only screen and (max-width: 575px) {
- 
-    }
-       @media only screen and (min-width: 576px) and (max-width: 767px) {
-       
-         
+    i{
+        margin-bottom:16px;
+         color:black;
+         margin-right:10px;
+         color:gray;
        }
-       @media only screen and (min-width: 768px) and (max-width: 1199px) {
-        
+       .icons{
+       align-items: center;
        }

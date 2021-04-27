@@ -11,8 +11,6 @@ export class NavigationComponent implements OnInit {
 
   ngOnInit(): void {
   }
-navigateToProfile(){
-  console.log("click");
-  this.router.navigate(['profile']);
-}
+
+
 }

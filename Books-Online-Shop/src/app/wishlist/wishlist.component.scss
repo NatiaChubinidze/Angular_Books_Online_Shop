@@ -25,7 +25,47 @@
     margin-bottom:30px;
   
 }
-
+.search {
+  height: 49px;
+  background-color: transparent;
+  border: 2px solid #c9c3c7;
+  padding: 0px 15px;
+  color: rgb(104, 86, 86);
+  outline: none;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  margin: 10px;
+  
+}
+::placeholder{
+  color:rgba(104, 86, 86, 0.582);
+}
+.filters{
+  // background-color: rgba(172, 163, 184, 0.925);
+  margin-bottom:20px;
+  width:100%;
+}
+.search-icon-book{
+  position:relative;
+  right:15%;
+  width:32px;
+  height:32px;
+}
+.search-icon-author{
+  position:relative;
+  right:15%;
+  width:32px;
+  height:32px;
+}
+.search-div{
+  align-items:center;
+}
+.max-items{
+  align-self:center;
+  justify-self:flex-end;
+  justify-content: flex-end;
+  color:rgb(104, 86, 86);
+}
 .background-line{
   left: 0px;
     position: absolute;
