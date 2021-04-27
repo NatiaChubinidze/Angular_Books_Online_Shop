@@ -1,9 +1,7 @@
 .box {
   // background-color: #eee8f1;
   min-height: 700px;
-  // width: 95%;
   width: 100%;
-  // margin: 0 auto;
   padding: 80px 0px;
 }
 .search {
@@ -50,7 +48,6 @@
   flex-wrap: wrap;
   // background-color: rgba(155, 175, 185, 0.473);
   background-color: rgba(172, 163, 184, 0.76);
-
   background-repeat: no-repeat;
   background-size: cover;
   padding:10px 20px 20px 20px;
@@ -70,9 +67,7 @@
   option{
     color:black;
     height:50px;
-    
   }
-  
 }
 
 
@@ -110,7 +105,6 @@
 .background-circle {
   width: 100px;
   height: 100px;
-
   z-index: -1;
   position: absolute;
 }
@@ -127,7 +121,7 @@
   right: 50px;
 }
 
-.rosa {
+.pink {
   background-color: rgb(179, 28, 103);
   top: 220px;
   left: 180px;
@@ -140,7 +134,7 @@
   border-radius: 10%;
   z-index: -1;
 }
-.upper-right-rosa{
+.upper-right-pink{
   background-color: rgba(139, 38, 114, 0.466);
   right: 0px;
   top: 540px;
@@ -169,6 +163,9 @@
 .popular-categories{
   padding-left:10px;
 }
+
+
+
 @media only screen and (max-width: 575px) {
  
  .tags{

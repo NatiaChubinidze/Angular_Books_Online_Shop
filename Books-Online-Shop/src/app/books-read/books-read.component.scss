@@ -67,7 +67,7 @@
   width: 100%;
   transform: skewY(-40deg);
   border-radius: 10%;
- background-color: rgb(164, 146, 180);;
+  background-color: rgb(164, 146, 180);
   z-index: -1;
 }
 .background-circle {
@@ -89,29 +89,26 @@
   z-index: -1;
   position: absolute;
 }
-.yellow {
-    background-color: rgba(139, 38, 114, 0.466);
+.pink {
+  background-color: rgba(139, 38, 114, 0.466);
   bottom: 180px;
   right: 50px;
 }
-.pink {
-    // background-color: #9078b679;
-  background-color:#26272b86;
+.gray {
+  background-color: #26272b86;
   bottom: 100px;
   right: 170px;
   transform: rotate(-12deg);
 }
 
-.red {
-    background-color: #97c7dd94;
-
+.blue {
+  background-color: #97c7dd94;
   bottom: 30px;
   right: 30px;
   transform: rotate(20deg);
 }
-.violet {
-
-background-color: rgba(255, 192, 203, 0.699);
+.light-pink {
+  background-color: rgba(255, 192, 203, 0.699);
   top: 100px;
   left: 150px;
   width: 200px;
