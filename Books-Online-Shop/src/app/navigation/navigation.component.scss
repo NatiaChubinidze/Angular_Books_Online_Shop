@@ -55,7 +55,8 @@ header {
   outline: none;
 }
 .navbar .navbar-brand h2 {
-  color: #fff;
+  // color: #fff;
+  color: #805279;
   text-transform: uppercase;
   font-size: 24px;
   font-weight: 800;
@@ -199,8 +200,11 @@ li > span {
   display: none;
 }
 .dropdown-content ul li:first-child{
-  
   padding-top:15px;
+}
+.dropdown-content ul li:last-child{
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .profile:hover .dropdown-content {
   z-index: 100;
