@@ -24,13 +24,17 @@ import { AdminPanelModule } from './admin-panel/admin-panel.module';
 import { AdminPanelRoutingModule } from './admin-panel/admin-panel-routing.module';
 import { FooterComponent } from './footer/footer.component';
 import {firebaseConfig} from '../../firebaseConfig';
+import { BooksReadComponent } from './books-read/books-read.component';
+import { BooksReadModule } from './books-read/books-read.module';
+import { BooksReadRoutingModule } from './books-read/books-read-routing.module';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent
+    FooterComponent,
+    
     
   ],
   imports: [
@@ -54,6 +58,8 @@ import {firebaseConfig} from '../../firebaseConfig';
     ProfileRoutingModule,
     AdminPanelModule,
     AdminPanelRoutingModule,
+    BooksReadModule,
+    BooksReadRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
   ],
   providers: [],

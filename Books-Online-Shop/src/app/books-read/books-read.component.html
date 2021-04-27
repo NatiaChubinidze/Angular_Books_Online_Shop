@@ -5,8 +5,8 @@
   <div class="background-rectangle yellow"></div>
   <div class="background-rectangle pink"></div>
   <div class="background-rectangle red"></div>
-    <h3 class="text-center mb-3">Wishlist</h3>
-    <div class="d-flex filters">
+  <h3 class="text-center mb-3">Books I've Already Read</h3>
+  <div class="d-flex filters">
     <div class="col-3 search-div d-flex">
       <input
         type="search"
@@ -14,7 +14,10 @@
         id="book-name"
         placeholder="Search By Book"
       />
-      <img class="search-icon-book" src="../../assets/images/research-and-development (1).png">
+      <img
+        class="search-icon-book"
+        src="../../assets/images/research-and-development (1).png"
+      />
     </div>
     <div class="col-3 search-div d-flex">
       <input
@@ -23,16 +26,16 @@
         id="author"
         placeholder="Search By Author"
       />
-      <img class="search-icon-author" src="../../assets/images/research-and-development (1).png">
+      <img
+        class="search-icon-author"
+        src="../../assets/images/research-and-development (1).png"
+      />
     </div>
-    <div class="col-6 max-items d-flex">
-    <h6 class="me-3">(Max 10 items)</h6>
+    
+  </div>
+  <div class="flex-container">
+    <div class="book-card" *ngFor="let book of books">
+      <app-books-read-card></app-books-read-card>
     </div>
   </div>
-    <div class="flex-container">
-      <div class="book-card" *ngFor="let book of books">
-        <app-wishlist-card></app-wishlist-card>
-      </div>
-    </div>
-  
 </div>
