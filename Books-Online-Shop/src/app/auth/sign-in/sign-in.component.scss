@@ -33,7 +33,6 @@
 }
 
 .auth-info {
-  margin-top: 30px;
   margin-left: 30px;
 }
 .controls {
@@ -55,7 +54,7 @@ hr {
   flex-wrap: wrap;
 }
 .btn-facebook,
-.btn-twitter,
+.btn-github,
 .btn-google {
   color: #fff;
   border-color: rgba(0, 0, 0, 0.2);
@@ -71,11 +70,12 @@ hr {
   }
   background-color: #2d52a1;
 }
-.btn-twitter {
+.btn-github {
   i {
-    background-color: #0299da;
+    background-color: black;
+    border-right:1px solid rgb(110, 103, 103) !important;
   }
-  background-color: #04abf0;
+  background-color: black;
 }
 .btn-google {
   i {
@@ -107,7 +107,28 @@ hr {
   text-align: center;
   border-right: 1px solid rgba(10, 10, 43, 0.651);
 }
-
+.patternText, .errorText{
+  font-size: 12px;
+}
+.errorText{
+  height:30px;
+  margin:0px 0px 0px 40px;
+}
+.errorText p{
+  text-overflow: ellipsis;
+  overflow:hidden !important;
+  white-space: nowrap;
+}
+.patternText{
+  height: 18px;
+  color:red;
+}
+.errorTextWrapper{
+  height:30px;
+}
+.form-check-label, .form-check-input, .wrapper{
+  cursor:pointer;
+}
 @media only screen and (max-width: 575px) {
   .box {
     padding: 20px;

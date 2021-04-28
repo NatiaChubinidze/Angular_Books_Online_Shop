@@ -1,47 +1,122 @@
 <div class="box">
-    <div class="cont d-flex">
-        <div class="auth">
-            <img src="https://image.flaticon.com/icons/png/128/748/748122.png">
-            <div class="mb-3 row auth-info">
-                <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-                <div class="col-sm-10 mb-4">
-                  <input type="email" class="form-control" id="staticEmail">
-                </div>
-                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-                <div class="col-sm-10">
-                  <input type="password" class="form-control" id="inputPassword">
-                </div>
-                <div class="controls d-flex justify-content-between mt-4">
-                    <div class="form-check mb-0">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                          Remember Me
-                        </label>
-                      </div>
-                <button type="button" class="btn btn-primary col-3">LOGIN</button>
-                </div>
-                <div class="options d-flex justify-content-between mt-4">
-                    <button type="button" class="btn btn-link p-0" [routerLink]="['/sign-up']">Register Now</button>
-                    <button type="button" class="btn btn-light p-0" [routerLink]="['/forgot-password']">Forgot Password?</button>
-                </div>
-              </div>
-              <div class="d-flex sign-in-options">
-                  <hr class="me-3"> or <hr class="ms-3"> <br>
-                  <div class="col-12 d-flex sign-in-buttons">
-                    <a class="btn btn-lg btn-social btn-facebook col-11 text-center">
-                      <i class="fab fa-facebook-f"></i> Sign in with Facebook
-                    </a>
-                    <a class="btn btn-lg btn-social btn-twitter col-11 text-center">
-                      <i class="fab fa-twitter"></i> Sign in with Twitter
-                        </a>
-                        <a class="btn btn-lg btn-social btn-google col-11 text-center">
-                          <i class="fab fa-google"></i> Sign in with Google
-                            </a>
-                </div>
-              </div>
+  <div class="cont d-flex">
+    <div class="auth">
+      <div class="errorTextWrapper">
+        <div
+          class="alert alert-danger text-center errorText p-1"
+          *ngIf="fireBaseAuthService.errorMessage"
+        >
+          <p class="m-0">{{ fireBaseAuthService.errorMessage }}</p>
         </div>
-        <div class="thumbnail">
-            <img src="../../../assets/images/vector.jpg">
+      </div>
+      <div class="row auth-info">
+        <form [formGroup]="signInForm" (ngSubmit)="emailSignIn()">
+          <div class="d-flex justify-content-between align-items-center">
+            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <div class="patternText">
+              <em class="required" *ngIf="emailIsInvalid()"
+                >Required Pattern: Must contain @ and a dot</em
+              >
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              formControlName="email"
+              [ngClass]="{ 'is-invalid': emailIsInvalid() }"
+              autocomplete="off"
+            />
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <label for="inputPassword" class="col-sm-2 col-form-label"
+              >Password</label
+            >
+            <div class="patternText">
+              <em class="required" *ngIf="passwordIsInvalid()"
+                >Required Pattern: min(6), max(20); Use all kind of characters
+              </em>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <input
+              type="password"
+              class="form-control"
+              id="inputPassword"
+              formControlName="password"
+              [ngClass]="{ 'is-invalid': passwordIsInvalid() }"
+              autocomplete="off"
+            />
+          </div>
+          <div class="controls d-flex justify-content-between mt-4">
+            <div class="form-check mb-0">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="rememberMe"
+                formControlName="rememberMe"
+              />
+              <label class="form-check-label" for="rememberMe">
+                Remember Me
+              </label>
+            </div>
+
+            <div
+              class="wrapper"
+              (mouseenter)="buttonHover = true"
+              (mouseleave)="buttonHover = false"
+            >
+              <button type="submit" class="btn btn-primary" [disabled]="signInForm.invalid">LOGIN</button>
+            </div>
+          </div>
+        </form>
+        <div class="options d-flex justify-content-between mt-4">
+          <button
+            type="button"
+            class="btn btn-link p-0"
+            [routerLink]="['/sign-up']"
+          >
+            Register Now
+          </button>
+          <button
+            type="button"
+            class="btn btn-light p-0"
+            [routerLink]="['/forgot-password']"
+          >
+            Forgot Password?
+          </button>
         </div>
+      </div>
+      <div class="d-flex sign-in-options">
+        <hr class="me-3" />
+        or
+        <hr class="ms-3" />
+        <br />
+        <div class="col-12 d-flex sign-in-buttons">
+          <a
+            class="btn btn-lg btn-social btn-facebook col-11 text-center"
+            (click)="facebookSignIn()"
+          >
+            <i class="fab fa-facebook-f"></i> Sign in with Facebook
+          </a>
+          <a
+            class="btn btn-lg btn-social btn-github col-11 text-center"
+            (click)="githubSignIn()"
+          >
+            <i class="fab fa-github"></i> Sign in with Github
+          </a>
+          <a
+            class="btn btn-lg btn-social btn-google col-11 text-center"
+            (click)="googleSignIn()"
+          >
+            <i class="fab fa-google"></i> Sign in with Google
+          </a>
+        </div>
+      </div>
     </div>
+    <div class="thumbnail">
+      <img src="../../../assets/images/vector.jpg" />
+    </div>
+  </div>
 </div>
