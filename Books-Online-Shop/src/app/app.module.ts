@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireModule } from '@angular/fire';
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,7 +25,6 @@ import { AdminPanelModule } from './admin-panel/admin-panel.module';
 import { AdminPanelRoutingModule } from './admin-panel/admin-panel-routing.module';
 import { FooterComponent } from './footer/footer.component';
 import {firebaseConfig} from '../../firebaseConfig';
-import { BooksReadComponent } from './books-read/books-read.component';
 import { BooksReadModule } from './books-read/books-read.module';
 import { BooksReadRoutingModule } from './books-read/books-read-routing.module';
 
@@ -34,8 +34,6 @@ import { BooksReadRoutingModule } from './books-read/books-read-routing.module';
   declarations: [
     AppComponent,
     FooterComponent,
-    
-    
   ],
   imports: [
     BrowserModule,
@@ -61,6 +59,15 @@ import { BooksReadRoutingModule } from './books-read/books-read-routing.module';
     BooksReadModule,
     BooksReadRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    NgxAuthFirebaseUIModule.forRoot({
+      apiKey: 'AIzaSyBQ5gtL70XQ48con8rRedbKzX2b13fWCuI',
+      authDomain: 'books-app-project-307817.firebaseapp.com',
+      databaseURL:
+        'https://books-app-project-307817-default-rtdb.europe-west1.firebasedatabase.app',
+      projectId: 'books-app-project-307817',
+      storageBucket: 'books-app-project-307817.appspot.com',
+      messagingSenderId: '828802712642',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

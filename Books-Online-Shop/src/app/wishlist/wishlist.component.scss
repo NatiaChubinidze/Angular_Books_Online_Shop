@@ -57,6 +57,9 @@
 .search-div {
   align-items: center;
 }
+.search-div input:first-child{
+  margin-left:2px;
+}
 .max-items {
   align-self: center;
   justify-self: flex-end;
