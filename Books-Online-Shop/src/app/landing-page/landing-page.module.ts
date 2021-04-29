@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {RouterModule} from '@angular/router';
 import { LandingPageComponent } from './landing-page.component';
-import { BookCardsComponent } from '../shared/components/book-cards/book-cards.component';
 import { BookCardsModule } from '../shared/components/book-cards.module';
 
 
@@ -9,7 +9,7 @@ import { BookCardsModule } from '../shared/components/book-cards.module';
 @NgModule({
   declarations: [LandingPageComponent],
   imports: [
-    CommonModule,BookCardsModule
+    CommonModule,BookCardsModule,RouterModule
   ],
   exports:[LandingPageComponent]
 })
