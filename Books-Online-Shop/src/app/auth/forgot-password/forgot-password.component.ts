@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { FirebaseAuthService } from '../auth.service';
+import { FirebaseAuthService } from '../../shared/services/firebase-auth/firebase-auth.service';
 
 @Component({
   selector: 'app-forgot-password',
