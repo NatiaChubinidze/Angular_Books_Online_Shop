@@ -4,7 +4,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import firebase from 'firebase/app';
-import { IUserAuthInfo } from './shared/interfaces/auth.interface';
+import { IUserAuthInfo } from '../../../auth/shared/interfaces/auth.interface';
+import { TOKEN_KEY } from '../../constants';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,10 +15,15 @@ export class FirebaseAuthService {
   currentUser$ = new Observable<firebase.User | null>();
   isAdmin: boolean = false;
   errorMessage: string | null;
-  infoMessage:string;
-  constructor(private _router: Router, private auth: AngularFireAuth) {
+  infoMessage: string;
+  constructor(
+    private _router: Router,
+    private auth: AngularFireAuth,
+    private _authService: AuthService
+  ) {
     this.currentUser$ = this.auth.authState;
   }
+  rememberMe: boolean;
 
   facebookSignIn() {
     this.errorMessage = null;
@@ -63,9 +70,14 @@ export class FirebaseAuthService {
     this.auth
       .signInWithEmailAndPassword(userData.email, userData.password)
       .then((data: any) => {
+        console.log(data);
         if (data.user) {
           if (data.user.email === 'admin@email.com') {
             this.isAdmin = true;
+          }
+          if (this.rememberMe === true) {
+            localStorage.setItem(TOKEN_KEY, data.user.refreshToken);
+            this._authService.setTokenValidTime();
           }
           this._router.navigate(['/home']);
         }
@@ -75,7 +87,7 @@ export class FirebaseAuthService {
       });
   }
   register(userData: IUserAuthInfo) {
-    console.log("registering");
+    console.log('registering');
     this.errorMessage = null;
     this.auth
       .createUserWithEmailAndPassword(userData.email, userData.password)
@@ -106,13 +118,13 @@ export class FirebaseAuthService {
   }
   forgotPassword(emailAddress: string): void {
     this.errorMessage = null;
-    this.infoMessage='';
+    this.infoMessage = '';
     //მითითებულ მეილზე გავუგზავნოთ პაროლის შეცვლის მეილი
     firebase
       .auth()
       .sendPasswordResetEmail(emailAddress)
       .then(() => {
-        this.infoMessage=`reset email has been sent to ${emailAddress}`;
+        this.infoMessage = `reset email has been sent to ${emailAddress}`;
       })
       .catch((error) => {
         this.errorMessage = error.message;
