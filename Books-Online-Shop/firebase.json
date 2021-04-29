@@ -11,19 +11,6 @@
         "source": "**",
         "destination": "/index.html"
       }
-    ],
-    "redirects": [
-      { "source": "/", "destination": "/home", "type": 301 },
-      { "source": "/admin-panel", "destination": "/admin-panel", "type": 301 },
-      { "source": "/wishlist", "destination": "/wishlist", "type": 301 },
-      { "source": "/book-search", "destination": "/book-search", "type": 301 },
-      {
-        "source": "/shopping-cart",
-        "destination": "/shopping-cart",
-        "type": 301
-      },
-      { "source": "/profile", "destination": "/profile", "type": 301 },
-      { "source": "/details", "destination": "/details", "type": 301 }
     ]
   }
 }
