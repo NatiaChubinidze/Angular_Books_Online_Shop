@@ -9,12 +9,13 @@ import { IBookSearchParams } from '../../interfaces/book-search.interface';
   providedIn: 'root',
 })
 export class BooksSearchService {
+  activeBook:IBooks|null;
   private _BASE_URL: string = 'https://www.googleapis.com/books/v1';
   constructor(private http: HttpClient) {}
   getArticles(): Observable<IBooks[]> {
     return this.http
       .get<IBooks[]>(
-        `${this._BASE_URL}/volumes?q=subject:fiction&maxResults=10`
+        `${this._BASE_URL}/volumes?q=subject:fiction&filter=free-ebooks&maxResults=10`
       )
       .pipe(tap((data) => {}, catchError(this.handleError)));
   }
