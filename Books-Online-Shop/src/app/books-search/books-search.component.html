@@ -12,30 +12,30 @@
       <input
         type="text"
         class="form-control search"
-        id="bookTitle"
+        id="intitle"
         placeholder="Book Title"
-        name="bookTitle"
-        [(ngModel)]="searchParams.bookTitle"
+        name="intitle"
+        [(ngModel)]="searchParams.intitle"
       />
     </div>
     <div class="col-3 search-div d-flex">
       <input
         type="text"
         class="form-control search"
-        id="author"
-        name="author"
+        id="inauthor"
+        name="inauthor"
         placeholder="Author"
-        [(ngModel)]="searchParams.author"
+        [(ngModel)]="searchParams.inauthor"
       />
     </div>
     <div class="col-3 search-div d-flex">
       <input
         type="search"
         class="form-control search"
-        id="publisher"
-        name="publisher"
+        id="inpublisher"
+        name="inpublisher"
         placeholder="Publisher"
-        [(ngModel)]="searchParams.publisher"
+        [(ngModel)]="searchParams.inpublisher"
       />
     </div>
     <div class="col-3 search-div d-flex">
@@ -49,8 +49,8 @@
       />
     </div>
     <div class="col-3 search-div d-flex">
-      <select class="form-select select" id="category" name="category" 
-      placeholder="Choose Category" [(ngModel)]="searchParams.category">
+      <select class="form-select select" id="subject" name="subject" 
+      placeholder="Choose Category" [(ngModel)]="searchParams.subject">
         <option selected>Choose Category</option>
         <option value="action">Action</option>
         <option value="adventure">Adventure</option>
@@ -69,7 +69,7 @@
       </select>
     </div>
     <div class="col-3 search-div d-flex">
-      <select class="form-select select" id="language" name="language" [(ngModel)]="searchParams.language">
+      <select class="form-select select" id="langRestrict" name="langRestrict" [(ngModel)]="searchParams.langRestrict">
         <option selected>Choose Language</option>
         <option value="en">English</option>
         <option value="ka">Georgian</option>
@@ -84,7 +84,7 @@
       </select>
     </div>
     <div class="col-3 search-div d-flex">
-      <select class="form-select select" id="filterBy" name="filterBy" [(ngModel)]="searchParams.filterBy">
+      <select class="form-select select" id="filter" name="filter" [(ngModel)]="searchParams.filter">
         <option selected>Filter by</option>
         <option value="ebooks">E-Books</option>
         <option value="free-ebooks">Free E-Books</option>
@@ -102,12 +102,12 @@
     </div>
 
     <div class="categories-list d-flex col-12">
-      <button class="search-btn">Search</button>
+      <button class="search-btn" (click)="getFilteredBooks()">Search</button>
       <div class="d-flex tags">
         <div class="popular-categories">
           <h6><i>Popular Categories:</i></h6>
         </div>
-        <div class="category-card" *ngFor="let item of categories">
+        <div class="category-card" *ngFor="let item of categories" (click)="getBooksByCategories(item)">
           <h6 class="card-title">#{{ item }}</h6>
         </div>
       </div>
