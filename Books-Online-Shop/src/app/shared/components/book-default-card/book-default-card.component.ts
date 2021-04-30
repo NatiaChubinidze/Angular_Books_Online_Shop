@@ -9,9 +9,11 @@ import { ICardBook } from '../../interfaces/book.interface';
 })
 export class BookDefaultCardComponent implements OnInit {
 @Input() book:IBooks;
+imgUrl:string;
   constructor() { }
 
   ngOnInit(): void {
+    this.imgUrl=this.book?.volumeInfo.imageLinks?.thumbnail;
   }
 
 }

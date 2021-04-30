@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 import { BooksSearchService } from './shared/services/books-search/books-search.service';
 import { IBookSearchParams } from './shared/interfaces/book-search.interface';
 import { IBooks } from './shared/interfaces/books-response.interface';
@@ -24,12 +25,16 @@ export class BooksSearchComponent implements OnInit {
     orderBy: 'Order by',
   };
   booksArray:IBooks[];
-  constructor(private _bookService:BooksSearchService) {}
+  constructor(private _bookService:BooksSearchService, private _router:Router) {}
 
   ngOnInit(): void {
     this._bookService.getArticles().subscribe((data:any)=>{
       console.log(data);
       this.booksArray=data.items;
     })
+  }
+  showBookDetails(book:IBooks){
+    this._bookService.activeBook=book;
+    this._router.navigate(['/details']);
   }
 }
