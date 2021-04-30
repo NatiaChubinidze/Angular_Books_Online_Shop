@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./landing-page.component.scss']
 })
 export class LandingPageComponent implements OnInit {
-categories:string[]=['fantasy',"science-fiction",'romance',"detective","advanture","feminist",'documentary',"nature"];
+categories:string[]=['fantasy',"science-fiction",'romance',"detective","advanture",'documentary',"fiction", "mystery"];
   constructor() { }
 
   ngOnInit(): void {

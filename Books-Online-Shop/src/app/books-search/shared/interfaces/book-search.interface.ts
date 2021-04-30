@@ -1,10 +1,10 @@
 export interface IBookSearchParams{
-    bookTitle?:string;
-    author?:string;
-    publisher?:string;
+    intitle?:string;
+    inauthor?:string;
+    inpublisher?:string;
     isbn?:string;
-    category?:string;
-    language?:string;
-    filterBy?:string;
+    subject?:string;
+    langRestrict?:string;
+    filter?:string;
     orderBy?:string;
 }
