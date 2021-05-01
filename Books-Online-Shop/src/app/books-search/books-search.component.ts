@@ -4,7 +4,9 @@ import {
   ɵCodegenComponentFactoryResolver,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { IFirebaseBook } from '../shared/interfaces/firebase-book.interface';
 import { BooksSearchService } from '../shared/services/books-search/books-search.service';
+import { FireBaseCrudService } from '../shared/services/firebase-crud/firebase-crud.service';
 import { IBookSearchParams } from './shared/interfaces/book-search.interface';
 import {
   IBooks,
@@ -34,7 +36,8 @@ export class BooksSearchComponent implements OnInit {
   booksArray: IBooks[];
   constructor(
     private _bookService: BooksSearchService,
-    private _router: Router
+    private _router: Router,
+    private _firebaseCrudService:FireBaseCrudService
   ) {}
 
   ngOnInit(): void {
@@ -66,5 +69,27 @@ export class BooksSearchComponent implements OnInit {
     this._bookService.getBooksByCategories().subscribe((books: any) => {
       this.booksArray = books.items;
     });
+  }
+  addToCart(book:IBooks){
+    const bookToAdd:IFirebaseBook={
+      title:book.volumeInfo.title,
+      author:book.volumeInfo.authors[0],
+      price:book.saleInfo.saleability,
+      subject:book.volumeInfo.categories[0],
+      thumbnail:book.volumeInfo.imageLinks.thumbnail,
+      quantity:1,
+    }
+    this._firebaseCrudService.saveItem("shopping-cart",bookToAdd);
+  }
+  addToWishlist(book:IBooks){
+    const bookToAdd:IFirebaseBook={
+      title:book.volumeInfo.title,
+      author:book.volumeInfo.authors[0],
+      price:book.saleInfo.saleability,
+      subject:book.volumeInfo.categories[0],
+      thumbnail:book.volumeInfo.imageLinks.thumbnail,
+      quantity:1,
+    }
+    this._firebaseCrudService.saveItem("wishlist",bookToAdd);
   }
 }
