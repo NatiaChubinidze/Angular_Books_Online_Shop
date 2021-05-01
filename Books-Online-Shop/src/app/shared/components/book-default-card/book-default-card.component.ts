@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IBooks } from 'src/app/books-search/shared/interfaces/books-response.interface';
 import { ICardBook } from '../../interfaces/book.interface';
 
@@ -9,11 +9,20 @@ import { ICardBook } from '../../interfaces/book.interface';
 })
 export class BookDefaultCardComponent implements OnInit {
 @Input() book:IBooks;
+@Output() wishlistEvent = new EventEmitter();
+@Output() shoppingEvent = new EventEmitter();
 imgUrl:string;
   constructor() { }
 
   ngOnInit(): void {
     this.imgUrl=this.book?.volumeInfo.imageLinks?.thumbnail;
+  }
+  addToWishlist(){
+    this.wishlistEvent.emit(this.book);
+  }
+
+  addToCart(){
+    this.shoppingEvent.emit(this.book);
   }
 
 }

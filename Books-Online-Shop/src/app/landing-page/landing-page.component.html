@@ -37,6 +37,6 @@
 </div>
 <div class="recommended-books">
   <div class="book-card" *ngFor="let book of popularBooks">
-    <app-book-cards [book]="book"></app-book-cards>
+    <app-book-cards [book]="book" (wishlistEvent)="addToWishlist($event)" (shoppingEvent)="addToCart($event)"></app-book-cards>
   </div>
 </div>

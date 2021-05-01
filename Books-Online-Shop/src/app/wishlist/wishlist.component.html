@@ -31,7 +31,8 @@
   </div>
     <div class="flex-container">
       <div class="book-card" *ngFor="let book of books">
-        <app-wishlist-card [book]="book"></app-wishlist-card>
+        <app-wishlist-card [book]="book" (readEvent)="addToRead($event)" 
+        (deleteEvent)="removeFromWishlist($event)" (shoppingEvent)="addToShoppingCart($event)"></app-wishlist-card>
       </div>
     </div>
   

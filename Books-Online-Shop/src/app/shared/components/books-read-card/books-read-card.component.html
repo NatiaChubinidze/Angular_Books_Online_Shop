@@ -1,45 +1,47 @@
-<div class="card-light">
+<div class="card-light" *ngIf="book">
   <img
     class="close-icon"
     src="https://image.flaticon.com/icons/png/128/2938/2938782.png"
+    (click)="deleteFromReadBooks()"
   />
   <div class="img text-center">
-    <img [src]="book.volumeInfo.imageLinks?.smallThumbnail" />
+    <img [src]="imgUrl" />
   </div>
   <div class="book-info">
     <div class="info">
-      <h6>{{ book.volumeInfo?.title }}</h6>
-      <p class="author" *ngIf="book.volumeInfo?.authors">
-        by {{ book.volumeInfo?.authors[0] }}
+      <h6>{{ book?.title }}</h6>
+      <p class="author" *ngIf="book.author">
+        by {{ book?.author}}
       </p>
     </div>
     <div class="d-flex justify-content-between icons">
       <i
         class="far fa-times-circle fa-lg"
-        *ngIf="book.saleInfo?.saleability.toLowerCase() === 'not_for_sale'"
+        *ngIf="book.price.toLowerCase() === 'not_for_sale'"
       ></i>
       <p
         class="pricing"
         *ngIf="
-          book.saleInfo?.saleability.toLowerCase() !== 'not_for_sale' &&
-          book.saleInfo?.saleability.toLowerCase() !== 'free'
+          book.price.toLowerCase() !== 'not_for_sale' &&
+          book.price.toLowerCase() !== 'free'
         "
       >
-        {{ book.saleInfo?.saleability }}$
+        {{ book?.price }}$
       </p>
 
       <div
         class="div-free"
-        *ngIf="book.saleInfo?.saleability.toLowerCase() === 'free'"
+        *ngIf="book?.price.toLowerCase() === 'free'"
       >
         <p class="free">Free</p>
       </div>
       <div class="d-flex align-items-center">
         <i class="fas fa-check-double fa-lg read">read</i>
-        <i
+        <!-- <i
           class="fas fa-shopping-cart fa-lg"
-          *ngIf="book.saleInfo?.saleability.toLowerCase() !== 'not_for_sale'"
-        ></i>
+          *ngIf="book?.price.toLowerCase() !== 'not_for_sale'"
+          (click)="addToCart()"
+        ></i> -->
       </div>
     </div>
   </div>
