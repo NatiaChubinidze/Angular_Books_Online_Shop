@@ -83,15 +83,15 @@
 .book-card{
   width:21%;
   height:300px;
-  transition: transform .8s;
-  cursor:pointer;
+  // transition: transform .8s;
+  // cursor:pointer;
 }
-.book-card:hover{
-  -ms-transform:scale(1.1);
-  -webkit-transform:scale(1.1);
-  transform:scale(1.1);
-  opacity:0.9;
-}
+// .book-card:hover{
+//   -ms-transform:scale(1.1);
+//   -webkit-transform:scale(1.1);
+//   transform:scale(1.1);
+//   opacity:0.9;
+// }
 
 @media only screen and (max-width: 575px) { 
  .categories-list{

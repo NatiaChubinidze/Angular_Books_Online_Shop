@@ -114,8 +114,8 @@
     </div>
   </div>
   <div class="books-container mt-3">
-    <div class="book-card" *ngFor="let book of booksArray" (click)="showBookDetails(book)">
-      <app-book-default-card [book]="book" (wishlistEvent)="addToWishlist($event)" (shoppingEvent)="addToCart($event)"></app-book-default-card>
+    <div class="book-card" *ngFor="let book of booksArray">
+      <app-book-default-card [book]="book" (bookDetailsEvent)="showBookDetails($event)" (wishlistEvent)="addToWishlist($event)" (shoppingEvent)="addToCart($event)"></app-book-default-card>
     </div>
   </div>
 </div>
