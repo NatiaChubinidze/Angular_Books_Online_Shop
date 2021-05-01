@@ -1,8 +1,15 @@
-import { Component, OnInit, ɵCodegenComponentFactoryResolver } from '@angular/core';
-import {Router} from '@angular/router';
-import { BooksSearchService } from './shared/services/books-search/books-search.service';
+import {
+  Component,
+  OnInit,
+  ɵCodegenComponentFactoryResolver,
+} from '@angular/core';
+import { Router } from '@angular/router';
+import { BooksSearchService } from '../shared/services/books-search/books-search.service';
 import { IBookSearchParams } from './shared/interfaces/book-search.interface';
-import { IBooks, IBooksResponse } from './shared/interfaces/books-response.interface';
+import {
+  IBooks,
+  IBooksResponse,
+} from './shared/interfaces/books-response.interface';
 
 @Component({
   selector: 'app-books-search',
@@ -24,32 +31,40 @@ export class BooksSearchComponent implements OnInit {
     filter: 'Filter by',
     orderBy: 'Order by',
   };
-  booksArray:IBooks[];
-  constructor(private _bookService:BooksSearchService, private _router:Router) {}
+  booksArray: IBooks[];
+  constructor(
+    private _bookService: BooksSearchService,
+    private _router: Router
+  ) {}
 
   ngOnInit(): void {
-    this._bookService.getBooks().subscribe((data:any)=>{
-      console.log(data);
-      this.booksArray=data.items;
-    })
+    if (this._bookService.activeCategory === '') {
+      this._bookService.getBooks().subscribe((data: any) => {
+        console.log(data);
+        this.booksArray = data.items;
+      });
+    } else {
+      this._bookService.getBooksByCategories().subscribe((data: any) => {
+        this.booksArray = data.items;
+      });
+    }
   }
-  showBookDetails(book:IBooks){
-    this._bookService.activeBook=book;
+  showBookDetails(book: IBooks) {
+    this._bookService.activeBook = book;
     this._router.navigate(['/details']);
   }
-  getFilteredBooks(){
-    this._bookService.searchParam={...this.searchParams};
-  console.log(this.searchParams);
-    this._bookService.getFilteredBooks().subscribe((books:any)=>{
-      this.booksArray=books.items;
+  getFilteredBooks() {
+    this._bookService.searchParam = { ...this.searchParams };
+    console.log(this.searchParams);
+    this._bookService.getFilteredBooks().subscribe((books: any) => {
+      this.booksArray = books.items;
       console.log(this.booksArray);
-      
-    })
+    });
   }
-  getBooksByCategories(category:string){
-    this._bookService.activeCategory=category;
-    this._bookService.getBooksByCategories().subscribe((books:any)=>{
-      this.booksArray=books.items;
-    })
+  getBooksByCategories(category: string) {
+    this._bookService.activeCategory = category;
+    this._bookService.getBooksByCategories().subscribe((books: any) => {
+      this.booksArray = books.items;
+    });
   }
 }

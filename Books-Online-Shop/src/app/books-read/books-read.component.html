@@ -35,7 +35,7 @@
   </div>
   <div class="flex-container">
     <div class="book-card" *ngFor="let book of books">
-      <app-books-read-card></app-books-read-card>
+      <app-books-read-card [book]="book"></app-books-read-card>
     </div>
   </div>
 </div>

@@ -4,7 +4,11 @@
   <div class="d-flex justify-content-between">
     <div class="categories-list">
       <!-- card -->
-      <div class="category-card mb-3" *ngFor="let item of categories">
+      <div
+        class="category-card mb-3"
+        *ngFor="let item of categories"
+        (click)="getBooksByCategory(item)"
+      >
         <h5 class="card-title">{{ item }}</h5>
       </div>
     </div>
@@ -20,23 +24,19 @@
     </div>
     <div class="shop-now-btn">
       <p>Are you interested? Click here and start shopping now <br /></p>
-      <button type="button" class="btn btn-outline-warning" [routerLink]="['/book-search']">Shop Now</button>
+      <button
+        type="button"
+        class="btn btn-outline-warning"
+        [routerLink]="['/book-search']"
+      >
+        Shop Now
+      </button>
     </div>
   </div>
   <h3 class="text-center mt-5">Best-selling Books</h3>
 </div>
-  <div class="recommended-books">
-    <div class="book-card">
-      <app-book-cards></app-book-cards>
-    </div>
-    <div class="book-card">
-      <app-book-cards></app-book-cards>
-    </div>
-    <div class="book-card">
-      <app-book-cards></app-book-cards>
-    </div>
-    <div class="book-card">
-      <app-book-cards></app-book-cards>
-    </div>
+<div class="recommended-books">
+  <div class="book-card" *ngFor="let book of popularBooks">
+    <app-book-cards [book]="book"></app-book-cards>
   </div>
-
+</div>
