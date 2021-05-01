@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IBooks } from '../books-search/shared/interfaces/books-response.interface';
 
 import { IFirebaseBook } from '../shared/interfaces/firebase-book.interface';
 import { FireBaseCrudService } from '../shared/services/firebase-crud/firebase-crud.service';
@@ -13,6 +14,7 @@ export class WishlistComponent implements OnInit {
   private _searchAuthor: string;
   books: IFirebaseBook[]=[];
   filteredBooks: IFirebaseBook[]=[];
+  shoppingCart:IFirebaseBook[];
 
   constructor(private _firebaseCrudService: FireBaseCrudService) {}
 
@@ -94,5 +96,22 @@ export class WishlistComponent implements OnInit {
           this.searchAuthor = '';
         }
       },1000);
+
+      this._firebaseCrudService
+      .getCollection('shopping-cart')
+      .subscribe((books: any) => {
+        if (books) {
+          this.shoppingCart = books;
+        }
+      });
+  }
+  isInShoppingCart(book:IFirebaseBook){
+    let isInShoppingCart:boolean=false;
+    this.shoppingCart.forEach(item=>{
+      if(item.title.toLowerCase().includes(book.title.toLocaleLowerCase())){
+        isInShoppingCart=true;
+      }
+    })
+    return isInShoppingCart;
   }
 }

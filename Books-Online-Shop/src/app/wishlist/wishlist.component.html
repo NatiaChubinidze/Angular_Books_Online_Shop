@@ -6,8 +6,6 @@
   <div class="background-rectangle pink"></div>
   <div class="background-rectangle red"></div>
     <h3 class="text-center mb-3">Wishlist</h3>
-    search title- {{searchTitle}}
-    search author - {{searchAuthor}}
     <div class="d-flex filters">
     <div class="col-3 search-div d-flex">
       <input
@@ -38,7 +36,7 @@
     <div class="flex-container">
       <div class="book-card" *ngFor="let book of filteredBooks">
         <app-wishlist-card [book]="book" (readEvent)="addToRead($event)" 
-        (deleteEvent)="deleteFromWishlist($event)" (shoppingEvent)="addToShoppingCart($event)"></app-wishlist-card>
+        (deleteEvent)="deleteFromWishlist($event)" [isInShoppingCart]="isInShoppingCart(book)" (shoppingEvent)="addToShoppingCart($event)"></app-wishlist-card>
       </div>
     </div>
   

@@ -41,6 +41,7 @@
           class="fas fa-shopping-cart fa-lg"
           *ngIf="book?.price.toLowerCase() !== 'not_for_sale'"
           (click)="addToShoppingCart()"
+          [class.shopped]="isInShoppingCart"
         ></i>
       </div>
     </div>

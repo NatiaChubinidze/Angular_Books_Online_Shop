@@ -9,6 +9,8 @@ import { ICardBook } from '../../interfaces/book.interface';
 })
 export class BookDefaultCardComponent implements OnInit {
 @Input() book:IBooks;
+@Input() isInWishlist:boolean;
+@Input() isInShoppingCart:boolean;
 @Output() wishlistEvent = new EventEmitter();
 @Output() shoppingEvent = new EventEmitter();
 @Output() bookDetailsEvent = new EventEmitter();
