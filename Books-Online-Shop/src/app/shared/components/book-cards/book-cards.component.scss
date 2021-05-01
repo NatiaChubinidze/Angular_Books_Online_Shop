@@ -13,11 +13,15 @@
         transform: rotate(-3deg);
         border-radius: 5px;
         position:relative;
-        img{
-            width:100%;
-            height:160px;
-            object-fit:cover;
+        .img{
+            position:relative;
+            width: 100%;
+            height: 160px;
+            
             border-radius: 5px;
+            overflow:hidden;
+         
+          background-color:rgb(219, 211, 211);
         }
         .book-info{
             z-index: 1;
@@ -87,3 +91,20 @@
            color:rgb(221, 147, 9);
            cursor:pointer;
        }
+
+       
+.free{
+    // color:rgb(165, 42, 138);
+    background: -webkit-linear-gradient(rgb(192, 164, 199), rgb(180, 11, 110));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+   font-weight:500;
+   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  .div-free{
+   padding:2px 5px;
+    height:30px;
+    background-image: linear-gradient(to right,rgb(245, 197, 197),rgb(193, 132, 206));
+    border-radius: 10%;
+  }

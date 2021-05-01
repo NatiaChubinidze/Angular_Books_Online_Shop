@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
-import { IBooks } from '../../interfaces/books-response.interface';
-import { IBookSearchParams } from '../../interfaces/book-search.interface';
+import { IBooks } from '../../../books-search/shared/interfaces/books-response.interface';
+import { IBookSearchParams } from '../../../books-search/shared/interfaces/book-search.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +11,7 @@ import { IBookSearchParams } from '../../interfaces/book-search.interface';
 export class BooksSearchService {
   activeBook:IBooks|null;
   searchParam:IBookSearchParams;
-  activeCategory:string;
+  activeCategory:string="";
   private _BASE_URL: string = 'https://www.googleapis.com/books/v1';
   constructor(private http: HttpClient) {}
   getBooks(): Observable<IBooks[]> {
@@ -72,6 +72,13 @@ export class BooksSearchService {
       return this.http
     .get<IBooks[]>(
       `${this._BASE_URL}/volumes?q=subject:${this.activeCategory}`
+    )
+    .pipe(tap((data) => {}, catchError(this.handleError)));
+    }
+    getPopularBooks(category:string){
+      return this.http
+    .get<IBooks[]>(
+      `${this._BASE_URL}/volumes?q=subject:${category}&sortBy=relevance&maxResults=4`
     )
     .pipe(tap((data) => {}, catchError(this.handleError)));
     }

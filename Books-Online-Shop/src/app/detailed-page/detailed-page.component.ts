@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BooksSearchService } from '../books-search/shared/services/books-search/books-search.service';
+import { BooksSearchService } from '../shared/services/books-search/books-search.service';
 
 @Component({
   selector: 'app-detailed-page',
