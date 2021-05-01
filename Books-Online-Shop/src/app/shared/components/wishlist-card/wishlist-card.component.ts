@@ -9,6 +9,7 @@ import { IFirebaseBook } from '../../interfaces/firebase-book.interface';
 })
 export class WishlistCardComponent implements OnInit {
   @Input() book:IFirebaseBook;
+  @Input() isInShoppingCart:boolean;
   @Output() readEvent = new EventEmitter();
   @Output() deleteEvent = new EventEmitter();
   @Output() shoppingEvent = new EventEmitter();

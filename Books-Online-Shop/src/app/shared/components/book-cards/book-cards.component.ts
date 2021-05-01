@@ -8,11 +8,13 @@ import { IBooks } from 'src/app/books-search/shared/interfaces/books-response.in
 })
 export class BookCardsComponent implements OnInit {
   @Input() book:IBooks;
+  @Input() isInWishlist:boolean;
+  @Input() isInShoppingCart:boolean;
   @Output() wishlistEvent = new EventEmitter();
   @Output() shoppingEvent = new EventEmitter();
   @Output() bookDetailsEvent = new EventEmitter();
   imgUrl:string;
- 
+
   constructor() { }
 
   ngOnInit(): void {

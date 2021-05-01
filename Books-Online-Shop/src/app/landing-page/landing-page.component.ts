@@ -22,6 +22,9 @@ export class LandingPageComponent implements OnInit {
     'Mystery',
   ];
   popularBooks: IBooks[];
+  wishlist:IFirebaseBook[];
+  shoppingCart:IFirebaseBook[];
+
   constructor(
     private _bookService: BooksSearchService,
     private _router: Router,
@@ -29,11 +32,43 @@ export class LandingPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this._bookService.getPopularBooks('fiction').subscribe((data: any) => {
+    this._bookService.getPopularBooks('fantasy').subscribe((data: any) => {
       this.popularBooks = data.items;
     });
+    this._firebaseCrudService
+      .getCollection('wishlist')
+      .subscribe((books: any) => {
+        if (books) {
+          this.wishlist = books;
+        }
+      });
+      this._firebaseCrudService
+      .getCollection('shopping-cart')
+      .subscribe((books: any) => {
+        if (books) {
+          this.shoppingCart = books;
+        }
+      });
   }
 
+  isInWishlist(book:IBooks){
+    let isInWishlist:boolean=false;
+    this.wishlist.forEach(item=>{
+      if(item.title.toLowerCase().includes(book.volumeInfo.title.toLocaleLowerCase())){
+        isInWishlist=true;
+      }
+    })
+    return isInWishlist;
+  }
+  isInShoppingCart(book:IBooks){
+    let isInShoppingCart:boolean=false;
+    this.shoppingCart.forEach(item=>{
+      if(item.title.toLowerCase().includes(book.volumeInfo.title.toLocaleLowerCase())){
+        isInShoppingCart=true;
+      }
+    })
+    return isInShoppingCart;
+  }
   getBooksByCategory(category: string) {
     this._bookService.activeCategory = category;
     this._router.navigate(['/book-search']);

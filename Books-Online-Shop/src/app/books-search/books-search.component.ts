@@ -27,6 +27,9 @@ export class BooksSearchComponent implements OnInit {
     'Documentary',
   ];
   books: string[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  wishlist:IFirebaseBook[];
+  shoppingCart:IFirebaseBook[];
+
   searchParams: IBookSearchParams = {
     subject: 'Choose Category',
     langRestrict: 'Choose Language',
@@ -51,6 +54,38 @@ export class BooksSearchComponent implements OnInit {
         this.booksArray = data.items;
       });
     }
+    this._firebaseCrudService
+    .getCollection('wishlist')
+    .subscribe((books: any) => {
+      if (books) {
+        this.wishlist = books;
+      }
+    });
+    this._firebaseCrudService
+    .getCollection('shopping-cart')
+    .subscribe((books: any) => {
+      if (books) {
+        this.shoppingCart = books;
+      }
+    });
+  }
+  isInWishlist(book:IBooks){
+    let isInWishlist:boolean=false;
+    this.wishlist.forEach(item=>{
+      if(item.title.toLowerCase().includes(book.volumeInfo.title.toLocaleLowerCase())){
+        isInWishlist=true;
+      }
+    })
+    return isInWishlist;
+  }
+  isInShoppingCart(book:IBooks){
+    let isInShoppingCart:boolean=false;
+    this.shoppingCart.forEach(item=>{
+      if(item.title.toLowerCase().includes(book.volumeInfo.title.toLocaleLowerCase())){
+        isInShoppingCart=true;
+      }
+    })
+    return isInShoppingCart;
   }
   showBookDetails(book: IBooks) {
     this._bookService.activeBook = book;
