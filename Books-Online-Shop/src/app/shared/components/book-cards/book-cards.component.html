@@ -1,6 +1,6 @@
 <div class="card-dark mb-5">
   <div class="card-light">
-    <div class="img text-center">
+    <div class="img text-center" (click)="showBookDetails()">
       <img [src]="book.volumeInfo.imageLinks?.smallThumbnail" />
     </div>
     <div class="book-info">

@@ -10,6 +10,7 @@ export class BookCardsComponent implements OnInit {
   @Input() book:IBooks;
   @Output() wishlistEvent = new EventEmitter();
   @Output() shoppingEvent = new EventEmitter();
+  @Output() bookDetailsEvent = new EventEmitter();
   imgUrl:string;
  
   constructor() { }
@@ -25,5 +26,8 @@ export class BookCardsComponent implements OnInit {
     this.shoppingEvent.emit(this.book);
   }
   
+  showBookDetails(){
+    this.bookDetailsEvent.emit(this.book);
+  }
 
 }

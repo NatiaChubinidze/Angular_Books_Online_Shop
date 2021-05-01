@@ -11,8 +11,10 @@
       <input
         type="search"
         class="form-control search"
-        id="book-name"
+        id="searchTitle"
+        name="searchTitle"
         placeholder="Search By Book"
+        [(ngModel)]="searchTitle"
       />
       <img
         class="search-icon-book"
@@ -23,8 +25,10 @@
       <input
         type="search"
         class="form-control search"
-        id="author"
+        id="searchAuthor"
+        name="searchAuthor"
         placeholder="Search By Author"
+        [(ngModel)]="searchAuthor"
       />
       <img
         class="search-icon-author"
@@ -34,7 +38,7 @@
     
   </div>
   <div class="flex-container">
-    <div class="book-card" *ngFor="let book of books">
+    <div class="book-card" *ngFor="let book of filteredBooks">
       <app-books-read-card [book]="book" (deleteBook)="deleteFromReadBooks($event)"></app-books-read-card>
     </div>
   </div>

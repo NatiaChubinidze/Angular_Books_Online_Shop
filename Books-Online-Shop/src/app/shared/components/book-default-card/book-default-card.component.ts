@@ -11,7 +11,10 @@ export class BookDefaultCardComponent implements OnInit {
 @Input() book:IBooks;
 @Output() wishlistEvent = new EventEmitter();
 @Output() shoppingEvent = new EventEmitter();
+@Output() bookDetailsEvent = new EventEmitter();
+
 imgUrl:string;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -23,6 +26,9 @@ imgUrl:string;
 
   addToCart(){
     this.shoppingEvent.emit(this.book);
+  }
+  showBookDetails(){
+    this.bookDetailsEvent.emit(this.book);
   }
 
 }

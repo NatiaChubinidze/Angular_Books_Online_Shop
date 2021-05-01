@@ -38,6 +38,12 @@ export class LandingPageComponent implements OnInit {
     this._bookService.activeCategory = category;
     this._router.navigate(['/book-search']);
   }
+
+  showBookDetails(book: IBooks) {
+    this._bookService.activeBook = book;
+    this._router.navigate(['/details']);
+  }
+  
   addToCart(book:IBooks){
     const bookToAdd:IFirebaseBook={
       title:book.volumeInfo.title,
