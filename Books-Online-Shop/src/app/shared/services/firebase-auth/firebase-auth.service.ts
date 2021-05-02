@@ -14,6 +14,7 @@ import { AuthService } from '../auth/auth.service';
 export class FirebaseAuthService {
   currentUser$ = new Observable<firebase.User | null>();
   isAdmin: boolean = false;
+  userUID:string;
   errorMessage: string | null;
   infoMessage: string;
   constructor(

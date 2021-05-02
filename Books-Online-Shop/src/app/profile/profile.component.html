@@ -5,10 +5,10 @@
   <div class="background-circle"></div>
   <div class="container user mt-3">
     <div class="profile-img">
-      <img src="../../assets/images/book_and_flowers.jpg" alt="" />
+      <img [src]="profilePictureURL" alt="" />
       <div class="file btn btn-lg btn-primary">
         Change Photo
-        <input type="file" name="file" />
+        <input type="file" name="file" accept="image/*" (change)="showPreviewImage($event)"/>
       </div>
       <div class="info-text-div">
         <div class="errorText">
@@ -34,16 +34,18 @@
         </div>
       </div>
     </div>
-    <div class="col-7 ps-5">
+    <div class="col-7 ps-5"> {{profileInfo | json}}
       <h5>Natia Chubinidze</h5>
-      <form [formGroup]="resetForm">
+      <form>
         <div class="col-11 d-flex input">
           <label for="name">Name</label>
           <input
             type="text"
             class="form-control info"
             id="name"
+            name="name"
             placeholder="Name"
+            [(ngModel)]="profileInfo.name"
           />
         </div>
         <div class="col-11 d-flex input">
@@ -52,7 +54,9 @@
             type="text"
             class="form-control info"
             id="surname"
+            name="surname"
             placeholder="Surname"
+            [(ngModel)]="profileInfo.surname"
           />
         </div>
         <div class="col-11 d-flex input">
@@ -61,10 +65,14 @@
             type="text"
             class="form-control info"
             id="address"
+            name="address"
             placeholder="Address"
+            [(ngModel)]="profileInfo.address"
           />
         </div>
+      </form>
         <hr />
+        <form [formGroup]="resetForm">
         <h6>Change Password</h6>
         <div class="col-11 d-flex input">
           <label for="password">Password</label>
@@ -106,8 +114,8 @@
     </div>
     <div class="buttons col-1">
       <div>
-        <button class="mb-3 clear">Clear All</button>
-        <button class="save">Save</button>
+        <button class="mb-3 clear" (click)="clearProfileInfo()">Clear All</button>
+        <button class="save" (click)="saveProfileInfo()"> Save</button>
       </div>
       <div
         class="col-12 mx-auto"

@@ -4,7 +4,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { throwError } from 'rxjs';
 
 import { catchError, map } from 'rxjs/operators';
-import { IBooks } from 'src/app/books-search/shared/interfaces/books-response.interface';
 import { IFirebaseBook } from '../../interfaces/firebase-book.interface';
 
 
@@ -60,6 +59,18 @@ export class FireBaseCrudService {
       error=>{this.errorMessage=error;}
     }
   }
+  editItem(collection: string, id: string, data: any) {
+    this.errorMessage = '';
+    try {
+      return this._firebaseStore.collection(collection).doc(id).update({profilePicture:data.profilePicture});
+    } catch {
+      (error) => {
+        this.errorMessage = error;
+        console.log(error);
+      };
+    }
+  }
+  
   private handleError(error: HttpErrorResponse) {
     
     if (error.error instanceof ErrorEvent) {
