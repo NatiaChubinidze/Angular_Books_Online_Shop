@@ -119,12 +119,33 @@ export class FirebaseAuthService {
   forgotPassword(emailAddress: string): void {
     this.errorMessage = null;
     this.infoMessage = '';
-    //მითითებულ მეილზე გავუგზავნოთ პაროლის შეცვლის მეილი
     firebase
       .auth()
       .sendPasswordResetEmail(emailAddress)
       .then(() => {
         this.infoMessage = `reset email has been sent to ${emailAddress}`;
+      })
+      .catch((error) => {
+        this.errorMessage = error.message;
+      });
+  }
+  resetPassword(oldPassword: string, newPassword: string): void {
+    this.errorMessage = '';
+    this.infoMessage='';
+    let user = firebase.auth().currentUser;
+   
+    this.auth.signInWithEmailAndPassword(user.email, oldPassword)
+      .then((userInfo) => {
+        if (userInfo.user) {
+          user
+            .updatePassword(newPassword)
+            .then(() => {
+              this.infoMessage='Password has been successfully updated!';
+            })
+            .catch((error) => {
+              this.errorMessage = error.message;
+            });
+        }
       })
       .catch((error) => {
         this.errorMessage = error.message;

@@ -7,8 +7,8 @@ import {
 } from '@angular/forms';
 
 import { FirebaseAuthService } from '../../shared/services/firebase-auth/firebase-auth.service';
-import { MustMatch } from '../shared/validators/passwords-match.validator';
-import { forbiddenNameValidator } from '../shared/validators/forbidden-email.validator';
+import { MustMatch } from '../../shared/validators/passwords-match.validator';
+import { forbiddenNameValidator } from '../../shared/validators/forbidden-email.validator';
 import { IUserAuthInfo } from '../shared/interfaces/auth.interface';
 
 @Component({
