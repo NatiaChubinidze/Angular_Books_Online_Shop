@@ -62,7 +62,7 @@ export class FireBaseCrudService {
   editItem(collection: string, id: string, data: any) {
     this.errorMessage = '';
     try {
-      return this._firebaseStore.collection(collection).doc(id).update({profilePicture:data.profilePicture});
+      return this._firebaseStore.collection(collection).doc(id).update(data);
     } catch {
       (error) => {
         this.errorMessage = error;
