@@ -187,7 +187,7 @@ export class ProfileComponent implements OnInit {
               this._firebaseCrudService.editItem(
                 'profile',
                 this.profileInfo.id,
-                this.profileInfo
+                {profilePicture:this.profilePictureURL}
               );
             });
           }),

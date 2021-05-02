@@ -6,4 +6,6 @@ export interface IFirebaseBook{
     subject:string;
     quantity:number;
     id?:string;
+    userUID?:string;
+    ordered?:string;
 }
