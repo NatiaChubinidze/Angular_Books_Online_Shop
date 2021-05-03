@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
     userUID: '',
   };
   profileIsEmpty: boolean;
-  profilePictureURL = '';
+  profilePictureURL:string = '';
   selectedImage: any;
   constructor(
     public firebaseAuthService: FirebaseAuthService,
@@ -61,14 +61,16 @@ export class ProfileComponent implements OnInit {
       },
       { validators: MustMatch('password', 'confirmPassword') }
     );
+   
+  }
+
+  ngOnInit(): void {
+    console.log(this.firebaseAuthService.isSignedInWithEmail);
     this.firebaseAuthService.currentUser$.subscribe((data: any) => {
       console.log(data);
       this.profileInfo.userUID = this.firebaseAuthService.userUID = data.uid;
     });
     console.log(this.profileInfo);
-  }
-
-  ngOnInit(): void {
     this._firebaseCrudService
       .getCollection('profile')
       .subscribe((data: IProfile[]) => {

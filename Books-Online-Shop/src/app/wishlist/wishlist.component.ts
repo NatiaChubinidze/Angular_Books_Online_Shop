@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IBooks } from '../books-search/shared/interfaces/books-response.interface';
 
 import { IFirebaseBook } from '../shared/interfaces/firebase-book.interface';
+import { FirebaseAuthService } from '../shared/services/firebase-auth/firebase-auth.service';
 import { FireBaseCrudService } from '../shared/services/firebase-crud/firebase-crud.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class WishlistComponent implements OnInit {
   filteredBooks: IFirebaseBook[]=[];
   shoppingCart:IFirebaseBook[];
 
-  constructor(private _firebaseCrudService: FireBaseCrudService) {}
+  constructor(private _firebaseCrudService: FireBaseCrudService,private _firebaseAuthService:FirebaseAuthService) {}
 
 
   get searchTitle(): string {
@@ -58,6 +58,7 @@ export class WishlistComponent implements OnInit {
       thumbnail: book.thumbnail,
       subject: book.subject,
       quantity: book.quantity,
+      userUID:this._firebaseAuthService.userUID
     };
     this._firebaseCrudService.saveItem('books-read', bookToAdd);
     this._firebaseCrudService.deleteItem('wishlist', book.id);
@@ -71,6 +72,7 @@ export class WishlistComponent implements OnInit {
       thumbnail: book.thumbnail,
       subject: book.subject,
       quantity: book.quantity,
+      userUID:this._firebaseAuthService.userUID
     };
     this._firebaseCrudService.saveItem('shopping-cart', bookToAdd);
   }
@@ -81,12 +83,25 @@ export class WishlistComponent implements OnInit {
 
   }
 
+  
+  isInShoppingCart(book:IFirebaseBook){
+    let isInShoppingCart:boolean=false;
+    this.shoppingCart.forEach(item=>{
+      if(item.title.toLowerCase().includes(book.title.toLocaleLowerCase())){
+        isInShoppingCart=true;
+      }
+    })
+    return isInShoppingCart;
+  }
   ngOnInit(): void {
+    this._firebaseAuthService.currentUser$.subscribe(data=>{
+      this._firebaseAuthService.userUID=data.uid;
+    })
     this._firebaseCrudService
       .getCollection('wishlist')
-      .subscribe((books: any) => {
+      .subscribe((books: IFirebaseBook[]) => {
         if (books) {
-          this.books = this._firebaseCrudService.wishlist= books;
+          this.books = this._firebaseCrudService.wishlist= books.filter(item=>item.userUID===this._firebaseAuthService.userUID);
           console.log(this.books);
         }
       });
@@ -99,19 +114,10 @@ export class WishlistComponent implements OnInit {
 
       this._firebaseCrudService
       .getCollection('shopping-cart')
-      .subscribe((books: any) => {
+      .subscribe((books: IFirebaseBook[]) => {
         if (books) {
-          this.shoppingCart = books;
+          this.shoppingCart = books.filter(item=>item.userUID===this._firebaseAuthService.userUID);
         }
       });
-  }
-  isInShoppingCart(book:IFirebaseBook){
-    let isInShoppingCart:boolean=false;
-    this.shoppingCart.forEach(item=>{
-      if(item.title.toLowerCase().includes(book.title.toLocaleLowerCase())){
-        isInShoppingCart=true;
-      }
-    })
-    return isInShoppingCart;
   }
 }

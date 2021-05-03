@@ -6,6 +6,9 @@
   // background-color:rgba(227, 222, 228, 0.274);
 }
 
+input[disabled]{
+  background-color: rgb(230, 225, 225);
+}
 .user {
   display: flex;
   justify-content: space-between;
@@ -79,6 +82,9 @@ label {
     
     padding: 5px;
     font-weight: 600;
+  }
+  button:hover{
+    cursor:pointer;
   }
   button.clear {
     margin-top: 40px;

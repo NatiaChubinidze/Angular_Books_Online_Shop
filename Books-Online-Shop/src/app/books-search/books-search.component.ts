@@ -6,6 +6,7 @@ import {
 import { Router } from '@angular/router';
 import { IFirebaseBook } from '../shared/interfaces/firebase-book.interface';
 import { BooksSearchService } from '../shared/services/books-search/books-search.service';
+import { FirebaseAuthService } from '../shared/services/firebase-auth/firebase-auth.service';
 import { FireBaseCrudService } from '../shared/services/firebase-crud/firebase-crud.service';
 import { IBookSearchParams } from './shared/interfaces/book-search.interface';
 import {
@@ -40,10 +41,15 @@ export class BooksSearchComponent implements OnInit {
   constructor(
     private _bookService: BooksSearchService,
     private _router: Router,
-    private _firebaseCrudService:FireBaseCrudService
+    private _firebaseCrudService:FireBaseCrudService,
+    private _firebaseAuthService:FirebaseAuthService
+
   ) {}
 
   ngOnInit(): void {
+    this._firebaseAuthService.currentUser$.subscribe(data=>{
+      this._firebaseAuthService.userUID=data.uid;
+    })
     if (this._bookService.activeCategory === '') {
       this._bookService.getBooks().subscribe((data: any) => {
         console.log(data);
@@ -56,19 +62,21 @@ export class BooksSearchComponent implements OnInit {
     }
     this._firebaseCrudService
     .getCollection('wishlist')
-    .subscribe((books: any) => {
+    .subscribe((books: IFirebaseBook[]) => {
       if (books) {
-        this.wishlist = books;
+        this.wishlist = books.filter(item=>item.userUID===this._firebaseAuthService.userUID);
       }
     });
     this._firebaseCrudService
     .getCollection('shopping-cart')
-    .subscribe((books: any) => {
+    .subscribe((books:IFirebaseBook[]) => {
       if (books) {
-        this.shoppingCart = books;
+        this.shoppingCart = books.filter(item=>item.userUID===this._firebaseAuthService.userUID);
       }
     });
   }
+
+
   isInWishlist(book:IBooks){
     let isInWishlist:boolean=false;
     this.wishlist.forEach(item=>{
@@ -113,6 +121,7 @@ export class BooksSearchComponent implements OnInit {
       subject:book.volumeInfo.categories[0],
       thumbnail:book.volumeInfo.imageLinks.thumbnail,
       quantity:1,
+      userUID:this._firebaseAuthService.userUID
     }
     this._firebaseCrudService.saveItem("shopping-cart",bookToAdd);
   }
@@ -124,6 +133,7 @@ export class BooksSearchComponent implements OnInit {
       subject:book.volumeInfo.categories[0],
       thumbnail:book.volumeInfo.imageLinks.thumbnail,
       quantity:1,
+      userUID:this._firebaseAuthService.userUID
     }
     this._firebaseCrudService.saveItem("wishlist",bookToAdd);
   }
