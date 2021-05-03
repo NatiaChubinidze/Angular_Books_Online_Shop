@@ -79,20 +79,24 @@ export class BooksSearchComponent implements OnInit {
 
   isInWishlist(book:IBooks){
     let isInWishlist:boolean=false;
+    if(this.wishlist){
     this.wishlist.forEach(item=>{
       if(item.title.toLowerCase().includes(book.volumeInfo.title.toLocaleLowerCase())){
         isInWishlist=true;
       }
     })
+  }
     return isInWishlist;
   }
   isInShoppingCart(book:IBooks){
     let isInShoppingCart:boolean=false;
+    if(this.shoppingCart){
     this.shoppingCart.forEach(item=>{
       if(item.title.toLowerCase().includes(book.volumeInfo.title.toLocaleLowerCase())){
         isInShoppingCart=true;
       }
     })
+  }
     return isInShoppingCart;
   }
   showBookDetails(book: IBooks) {

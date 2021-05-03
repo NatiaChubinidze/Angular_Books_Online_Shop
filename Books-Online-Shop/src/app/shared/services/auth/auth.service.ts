@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TOKEN_EXP_KEY, TOKEN_TTL } from '../../constants';
+import { TOKEN_EXP_KEY, TOKEN_TTL } from '../../constants/constants';
 
 @Injectable({
   providedIn: 'root',

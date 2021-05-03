@@ -29,8 +29,11 @@
       />
       <img class="search-icon-author" src="../../assets/images/research-and-development (1).png">
     </div>
-    <div class="col-6 max-items d-flex">
-    <h6 class="me-3">(Max 10 items)</h6>
+    <div class="alert alert-danger p-2 mt-3" *ngIf="books?.length>wishist_items_max_number || books?.length===wishist_items_max_number">
+      <p class="m-0">Wishlist items limit ({{wishist_items_max_number}}) has been reached. You will not be able to add more books until you remove some of the existing items from the list</p>
+    </div>
+    <div class="col-6 max-items d-flex" *ngIf="wishist_items_max_number>books?.length">
+    <h6 class="me-3">(Max {{wishist_items_max_number}} items)</h6>
     </div>
   </div>
     <div class="flex-container">

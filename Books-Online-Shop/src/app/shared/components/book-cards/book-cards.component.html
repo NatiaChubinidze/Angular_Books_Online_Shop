@@ -32,9 +32,17 @@
         </div>
 
         <div class="d-flex">
-          <i class="far fa-heart fa-lg" 
+          <i [class.limitReached]="isWishlistLimitReached"
+          [attr.disabled]="
+            isWishlistLimitReached && !isInWishlist ? true : null
+          "
+          class="far fa-heart fa-lg" 
           (click)="addToWishlist()"
-          [class.hearted]="isInWishlist"></i>
+          [class.hearted]="isInWishlist">
+          <span class="tooltipContainer" *ngIf="!isInWishlist">
+            <span class="tooltipText">Limit has been reached!</span>
+          </span>
+        </i>
           <i
             class="fas fa-shopping-cart fa-lg"
             *ngIf="book.saleInfo?.saleability.toLowerCase() !== 'not_for_sale'"

@@ -86,7 +86,6 @@
 
 i{
   margin-bottom:16px;
-   color:black;
    margin-right:10px;
    color:gray;
  }
@@ -112,6 +111,35 @@ i{
   color:#bd5ba4;
 }
 
+//////////////////////////////tooltip
+i[disabled]:hover{
+color:gray;
+cursor:default;
+}
+i.limitReached:hover{
+  cursor:default;
+}
+i[disabled]:hover .tooltipText{
+visibility: visible;
+}
+.tooltipContainer{
+  position: relative;
+}
+.tooltipText{
+  visibility: hidden;
+  width: 150px;
+  background-color: rgb(189, 144, 219);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 7px 5px;
+  font-size:13px;
+  position: absolute;
+  z-index: 1;
+  top: 15px;
+  right: 105%;
+}
+///////////////////////////////////////
 .free{
   // color:rgb(165, 42, 138);
   background: -webkit-linear-gradient(rgb(192, 164, 199), rgb(180, 11, 110));
