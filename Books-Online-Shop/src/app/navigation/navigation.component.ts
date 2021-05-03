@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireStorage } from '@angular/fire/storage';
-import { Router } from '@angular/router';
 import firebase from 'firebase/app';
-import { IProfile } from '../profile/shared/interfaces/profile.interface';
 
+import { IProfile } from '../profile/shared/interfaces/profile.interface';
 import { EXP_TIME, TOKEN_EXP_KEY, TOKEN_KEY } from '../shared/constants/constants';
 import { AuthService } from '../shared/services/auth/auth.service';
 import { FirebaseAuthService } from '../shared/services/firebase-auth/firebase-auth.service';

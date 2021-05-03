@@ -1,0 +1,17 @@
+.pie-chart {
+  position: relative;
+  height: 500px;
+}
+.list {
+  height: 450px;
+}
+table:hover {
+  cursor: default;
+}
+.main {
+  height: 850px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 40px;
+}

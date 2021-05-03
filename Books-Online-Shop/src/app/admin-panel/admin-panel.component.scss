@@ -20,6 +20,9 @@
    border:0px;
    color:white;
  }
+ button:hover{
+   color:rgb(240, 211, 253);
+ }
 
 }
 
@@ -62,18 +65,13 @@
   }
   
 }
-.main{
-  height:850px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  padding:40px;
+
+
+.appName:hover{
+cursor:default;
 }
 
-.pie-chart{
-  position:relative;
-  height:500px;
-}
-.list{
-  height:350px;
+.dashboard:hover, .wishlists:hover, .users:hover{
+  cursor:pointer;
+  color:rgb(208, 196, 216);
 }
