@@ -14,6 +14,7 @@ import { AuthService } from '../auth/auth.service';
 export class FirebaseAuthService {
   currentUser$ = new Observable<firebase.User | null>();
   isAdmin: boolean = false;
+  isSignedInWithEmail:boolean=false;
   userUID:string;
   errorMessage: string | null;
   infoMessage: string;
@@ -71,8 +72,8 @@ export class FirebaseAuthService {
     this.auth
       .signInWithEmailAndPassword(userData.email, userData.password)
       .then((data: any) => {
-        console.log(data);
         if (data.user) {
+          this.isSignedInWithEmail=true;
           if (data.user.email === 'admin@email.com') {
             this.isAdmin = true;
           }
@@ -94,6 +95,7 @@ export class FirebaseAuthService {
       .createUserWithEmailAndPassword(userData.email, userData.password)
       .then((data) => {
         if (data.user) {
+          this.isSignedInWithEmail=true;
           this._router.navigate(['/home']);
         }
       })

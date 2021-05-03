@@ -84,6 +84,7 @@
             formControlName="oldPassword"
             placeholder="Password"
             [ngClass]="{ 'is-invalid': oldPasswordIsInvalid() }"
+            [attr.disabled]="!firebaseAuthService.isSignedInWithEmail ? true : null"
           />
         </div>
         <div class="col-11 d-flex input">
@@ -96,6 +97,7 @@
             [ngClass]="{ 'is-invalid': passwordIsInvalid() }"
             id="new-password"
             placeholder="New Password"
+            [attr.disabled]="!firebaseAuthService.isSignedInWithEmail ? true : null"
           />
         </div>
         <div class="col-11 d-flex input">
@@ -108,6 +110,7 @@
             formControlName="confirmPassword"
             [ngClass]="{ 'is-invalid': confirmPasswordIsInvalid() }"
             placeholder="Confirm Password"
+            [attr.disabled]="!firebaseAuthService.isSignedInWithEmail ? true : null"
           />
         </div>
       </form>
