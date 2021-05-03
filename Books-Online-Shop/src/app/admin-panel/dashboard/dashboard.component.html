@@ -1,0 +1,30 @@
+<div class="main col-12">
+  <div class="pie-chart col-10">
+    <highcharts-chart
+      [Highcharts]="Highcharts"
+      [options]="chartOptions"
+      style="width: 800px; height: 450px; display: block; margin: 50px auto"
+    ></highcharts-chart>
+  </div>
+  <div class="list col-10 mt-5 p-5">
+    <h2 class="mb-3">Top 5 Users</h2>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Surname</th>
+          <th scope="col">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <th scope="row">{{ users.indexOf(user) + 1 }}</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

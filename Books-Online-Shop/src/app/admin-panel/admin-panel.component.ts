@@ -1,80 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
+import { TOKEN_EXP_KEY, TOKEN_KEY } from '../shared/constants/constants';
+import { FirebaseAuthService } from '../shared/services/firebase-auth/firebase-auth.service';
 
 @Component({
   selector: 'app-admin-panel',
   templateUrl: './admin-panel.component.html',
-  styleUrls: ['./admin-panel.component.scss']
+  styleUrls: ['./admin-panel.component.scss'],
 })
 export class AdminPanelComponent implements OnInit {
-chartOptions={};
-Highcharts=Highcharts;
-  constructor() { }
+  
+  constructor(private _firebaseAuth: FirebaseAuthService) {}
 
-  ngOnInit(): void {
-    this.chartOptions={
-      chart: {
-          plotBackgroundColor: null,
-          plotBorderWidth: null,
-          plotShadow: false,
-          type: 'pie'
-      },
-      title: {
-          text: 'Browser market shares in January, 2018'
-      },
-      tooltip: {
-          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-      },
-      accessibility: {
-          point: {
-              valueSuffix: '%'
-          }
-      },
-      plotOptions: {
-          pie: {
-              allowPointSelect: true,
-              cursor: 'pointer',
-              dataLabels: {
-                  enabled: true,
-                  format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-              }
-          }
-      },
-      series: [{
-          name: 'Brands',
-          colorByPoint: true,
-          data: [{
-              name: 'Chrome',
-              y: 61.41,
-              sliced: true,
-              selected: true
-          }, {
-              name: 'Internet Explorer',
-              y: 11.84
-          }, {
-              name: 'Firefox',
-              y: 10.85
-          }, {
-              name: 'Edge',
-              y: 4.67
-          }, {
-              name: 'Safari',
-              y: 4.18
-          }, {
-              name: 'Sogou Explorer',
-              y: 1.64
-          }, {
-              name: 'Opera',
-              y: 1.6
-          }, {
-              name: 'QQ',
-              y: 1.2
-          }, {
-              name: 'Other',
-              y: 2.61
-          }]
-      }]
-  };
+ ngOnInit():void{}
+
+  signOut() {
+    this._firebaseAuth.signOut();
+    if (localStorage.getItem(TOKEN_KEY)) {
+      localStorage.removeItem(TOKEN_KEY);
+    }
+    if (localStorage.getItem(TOKEN_EXP_KEY)) {
+      localStorage.removeItem(TOKEN_EXP_KEY);
+    }
   }
-
 }

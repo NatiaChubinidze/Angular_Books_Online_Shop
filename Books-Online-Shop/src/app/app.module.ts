@@ -68,6 +68,7 @@ import { BooksReadRoutingModule } from './books-read/books-read-routing.module';
       storageBucket: 'books-app-project-307817.appspot.com',
       messagingSenderId: '828802712642',
     }),
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
