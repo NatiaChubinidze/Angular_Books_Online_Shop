@@ -1,10 +1,13 @@
 <div class="box">
   <div class="container box-container">
-    <button class="back-to-shopping col-3 mb-3">BACK TO SHOPPING</button>
-    <div class="alert alert-success" *ngIf="newOrder">
+    <button class="back-to-shopping col-3 mb-3" [routerLink]="['/book-search']">BACK TO SHOPPING</button>
+    <div class="text-center empty-list-text" *ngIf="!(shoppingList?.length > 0) && !newOrder">
+      <h2 class="text-secondary">Your Shopping-cart Is Empty. Nothing to Show Here :(</h2>
+    </div>
+    <div class="alert alert-success text-center mt-5 col-6 mx-auto" *ngIf="newOrder">
       <p>You successfully ordered your chosen books. We are processing the order. Thank you!</p>
     </div>
-    <h3 class="items-added mb-3 mt-3 text-center" *ngIf="shoppingList?.length >0 && !newOrder">Items Added to your shopping Bag ({{shoppingList.length}})</h3>
+    <h3 class="items-added mb-3 mt-3" *ngIf="shoppingList?.length >0 && !newOrder">Items Added to your shopping Bag ({{shoppingList.length}})</h3>
     <table class="table" *ngIf="shoppingList?.length >0 && !newOrder">
       <thead>
         <tr>
@@ -17,7 +20,7 @@
       </thead>
       <tbody>
         <tr class="t-row" *ngFor="let item of shoppingList">
-          <th scope="row" class="item-number"></th>
+          <th scope="row" class="item-number">{{shoppingList.indexOf(item) + 1}}</th>
           <td class="book-info col-4">
             <div class="flex-cont">
               <img [src]="item.thumbnail"/>

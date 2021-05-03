@@ -15,13 +15,11 @@ import { FireBaseCrudService } from '../shared/services/firebase-crud/firebase-c
 })
 export class NavigationComponent implements OnInit {
   profilePictureURL:string = '';
-  displayName:string='';
+  displayName:string = '';
   constructor(
-    private _router: Router,
     private _auth: AuthService,
     private _firebaseAuth: FirebaseAuthService,
     private _firebaseCrudService: FireBaseCrudService,
-    private _fireBaseStorage: AngularFireStorage
   ) {}
 
   ngOnInit(): void {
@@ -64,31 +62,32 @@ export class NavigationComponent implements OnInit {
           (profile) => profile.userUID === this._firebaseAuth.userUID
         )[0];
         if (myProfile) {
+          console.log("profile exists");
           if(myProfile.profilePicture){
             this.profilePictureURL=myProfile.profilePicture;
           }
           if(myProfile.name){
+            console.log("profile name exists");
             this.displayName=myProfile.name;
           }
-        } else if(firebase.auth().currentUser){
+        } 
+         if(firebase.auth().currentUser && (this.displayName==='' || this.profilePictureURL==='')){
+          console.log("firebase user exists");
           if(firebase.auth().currentUser.displayName){
+            console.log("firebase displayname exists");
             this.displayName=firebase.auth().currentUser.displayName.split(' ')[0];
           }
           if(firebase.auth().currentUser.photoURL){
             this.profilePictureURL=firebase.auth().currentUser.photoURL;
           }
-        } else{
-          this.displayName='';
+        } 
+        if(this.profilePictureURL===''){
+          console.log("default values");
           this.profilePictureURL="../../assets/images/user.png";
         }
+        if(this.displayName===''){this.displayName='User';}
+        console.log(this.displayName);
         })
-
-
-    // if(firebase.auth().currentUser){
-    //   if(firebase.auth().currentUser.displayName){
-    //     this.displayName=firebase.auth().currentUser.displayName;
-    //   }
-    // }
     
   }
 

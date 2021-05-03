@@ -13,7 +13,6 @@ export class ShoppingCartComponent implements OnInit {
   shoppingList: IFirebaseBook[];
   shoppingItemsWithPrice: IFirebaseBook[];
   totalPrice: number;
-  counter: number;
   newOrder:boolean=false;
 
   constructor(
@@ -24,7 +23,6 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.counter = 0;
     this._firebaseCrudService
       .getCollection('shopping-cart')
       .subscribe((books: IFirebaseBook[]) => {
