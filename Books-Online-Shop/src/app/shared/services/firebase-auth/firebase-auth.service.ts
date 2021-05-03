@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import firebase from 'firebase/app';
 import { IUserAuthInfo } from '../../../auth/shared/interfaces/auth.interface';
-import { TOKEN_KEY } from '../../constants';
+import { TOKEN_KEY } from '../../constants/constants';
 import { AuthService } from '../auth/auth.service';
 
 @Injectable({

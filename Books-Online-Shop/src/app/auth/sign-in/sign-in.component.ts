@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TOKEN_EXP_KEY, TOKEN_KEY } from 'src/app/shared/constants';
+import { TOKEN_EXP_KEY, TOKEN_KEY } from 'src/app/shared/constants/constants';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { FirebaseAuthService } from '../../shared/services/firebase-auth/firebase-auth.service';
 import { IUserAuthInfo } from '../shared/interfaces/auth.interface';
