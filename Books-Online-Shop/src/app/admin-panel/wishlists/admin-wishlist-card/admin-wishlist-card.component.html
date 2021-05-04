@@ -1,0 +1,29 @@
+<div class="card-light" *ngIf="book">
+  <div class="img text-center">
+    <img [src]="imgUrl" />
+  </div>
+  <div class="book-info">
+    <div class="info">
+      <h6>{{ book?.title }}</h6>
+      <p class="author" *ngIf="book?.author">by {{ book?.author }}</p>
+    </div>
+    <div class="d-flex justify-content-between icons">
+      <i
+        class="far fa-times-circle fa-lg"
+        *ngIf="book?.price.toLowerCase() === 'not_for_sale'"
+      ></i>
+      <p
+        class="pricing"
+        *ngIf="
+          book?.price.toLowerCase() !== 'not_for_sale' &&
+          book?.price.toLowerCase() !== 'free'
+        "
+      >
+        {{ book?.price }}$
+      </p>
+      <div class="div-free" *ngIf="book?.price.toLowerCase() === 'free'">
+        <p class="free">Free</p>
+      </div>
+    </div>
+  </div>
+</div>

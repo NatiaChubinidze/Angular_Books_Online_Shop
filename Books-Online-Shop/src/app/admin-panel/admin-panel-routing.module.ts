@@ -4,8 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminPanelComponent } from './admin-panel.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsersComponent } from './users/users.component';
-import { WishlistBooksComponent } from './wishlist-books/wishlist-books.component';
-import { WishlistsComponent } from './wishlists/wishlists.component';
+import { WishlistBooksComponent } from './wishlists/wishlist-books/wishlist-books.component';
+import { WishlistsComponent } from './wishlists/admin-wishlist/wishlists.component';
 
 const routes: Routes = [
   {
@@ -17,11 +17,11 @@ const routes: Routes = [
     component: UsersComponent,
   },
   {
-    path: 'admin-panel/wishlists',
+    path: 'admin-panel/users/:userUID',
     component: WishlistsComponent,
   },
   {
-    path: 'wishlist-books',
+    path: 'admin-panel/wishlist-books',
     component: WishlistBooksComponent,
   },
   {
