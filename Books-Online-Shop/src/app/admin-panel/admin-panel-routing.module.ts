@@ -12,47 +12,53 @@ import { UserBooksReadComponent } from './books-read/user-books/user-books-read/
 import { UserBooksBoughtComponent } from './books-sold/user-books/user-books-bought/user-books-bought.component';
 import { AllBooksReadComponent } from './books-read/books-read/books-read.component';
 
-const routes: Routes = [
+const routes: Routes = [{
+  path: 'admin-panel',
+  component: AdminPanelComponent,
+  children:[
+    {
+      path: '',
+      component: DashboardComponent,
+    },
+    {
+      path: 'dashboard',
+      component: DashboardComponent,
+    },
+    {
+      path: 'users',
+      component: UsersComponent,
+    },
+    {
+      path: 'users/options',
+      component:OptionsComponent,
+    },
   {
-    path: 'admin-panel/dashboard',
-    component: DashboardComponent,
-  },
-  {
-    path: 'admin-panel/users',
-    component: UsersComponent,
-  },
-  {
-    path: 'admin-panel/users/options',
-    component:OptionsComponent,
-  },
-  {
-    path: 'admin-panel/users/wishlist',
+    path: 'users/options/wishlist',
     component: WishlistsComponent,
   },
   {
-    path: 'admin-panel/users/books-read',
+    path: 'users/options/books-read',
     component: UserBooksReadComponent,
   },
   {
-    path: 'admin-panel/users/shopping-cart',
+    path: 'users/options/shopping-cart',
     component: UserBooksBoughtComponent,
   },
   {
-    path: 'admin-panel/wishlist-books',
+    path: 'wishlist-books',
     component: WishlistBooksComponent,
   },
   {
-    path: 'admin-panel/books-sold',
+    path: 'books-sold',
     component: BooksSoldComponent,
   },
   {
-    path: 'admin-panel/books-read',
+    path: 'books-read',
     component: AllBooksReadComponent,
   },
-  {
-    path: 'admin-panel',
-    component: AdminPanelComponent,
-  },
+  
+  ]
+},
 ];
 
 @NgModule({

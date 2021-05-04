@@ -1,16 +1,14 @@
 .main {
     height: 850px;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    padding: 40px;
+    justify-content: flex-end;
   }
   .box {
     // background-color: rgba(207, 200, 209, 0.575);
     // background-color: rgba(230, 215, 215, 0.342);
     padding: 10px;
     min-height: 700px;
-    width: 100%;
+    width: 80%;
     padding: 100px 30px 30px 30px;
     position: relative;
     background-repeat: no-repeat;
