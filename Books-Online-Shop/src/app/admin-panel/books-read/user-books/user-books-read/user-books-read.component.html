@@ -1,0 +1,43 @@
+<div class="main col-12">
+    <div class="box">
+        <div class="background-circle"></div>
+        <div class="background-line"></div>
+        <div class="background-rectangle blue"></div>
+        <div class="background-rectangle purple"></div>
+        <div class="background-rectangle pink"></div>
+        <div class="background-rectangle red"></div>
+          <h3 class="text-center mb-3">Books Read</h3>
+          <div class="d-flex filters">
+          <div class="col-3 search-div d-flex">
+            <input
+              type="text"
+              class="form-control search"
+              id="searchTitle"
+              name="searchTitle"
+              placeholder="Search By Book"
+              [(ngModel)]="searchTitle"
+            />
+            <img class="search-icon-book" src="../../assets/images/research-and-development (1).png">
+          </div>
+          <div class="col-3 search-div d-flex">
+            <input
+              type="text"
+              class="form-control search"
+              id="searchAuthor"
+              name="searchAuthor"
+              placeholder="Search By Author"
+              [(ngModel)]="searchAuthor"
+            />
+            <img class="search-icon-author" src="../../assets/images/research-and-development (1).png">
+          </div>
+        </div>
+          <div class="flex-container">
+            <div class="book-card" *ngFor="let book of filteredBooks">
+              <app-admin-wishlist-card [book]="book"></app-admin-wishlist-card>
+            </div>
+          </div>
+        
+      </div>
+      
+</div>
+

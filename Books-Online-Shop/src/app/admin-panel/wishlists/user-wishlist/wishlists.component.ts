@@ -5,11 +5,11 @@ import { FireBaseCrudService } from 'src/app/shared/services/firebase-crud/fireb
 import { AdminService } from '../../shared/services/admin.service';
 
 @Component({
-  selector: 'app-wishlist-books',
-  templateUrl: './wishlist-books.component.html',
-  styleUrls: ['./wishlist-books.component.scss']
+  selector: 'app-wishlists',
+  templateUrl: './wishlists.component.html',
+  styleUrls: ['./wishlists.component.scss']
 })
-export class WishlistBooksComponent implements OnInit {
+export class WishlistsComponent implements OnInit {
 
   private _searchTitle: string;
   private _searchAuthor: string;
@@ -18,7 +18,7 @@ export class WishlistBooksComponent implements OnInit {
 
 
   constructor(
-   private _adminService:AdminService
+    private _adminService:AdminService
   ) {
     
   }
@@ -57,26 +57,7 @@ export class WishlistBooksComponent implements OnInit {
 
   
   ngOnInit(): void {
-    let dublicatesRemovedArray:IFirebaseBook[]=[];
-    if(this._adminService.wishlist){
-    this._adminService.wishlist.forEach(item=>{
-      if(this._adminService.wishlist.indexOf(item)===0){
-        dublicatesRemovedArray.push(item);
-      } else {
-        let isInArray:boolean=false;
-        dublicatesRemovedArray.forEach(book=>{
-          if(book.title===item.title){
-            isInArray=true;
-          }
-        })
-        if(!isInArray){
-          dublicatesRemovedArray.push(item);
-        }
-      }
-    });
-  }
-    this.books=this.filteredBooks=dublicatesRemovedArray.slice();
-
+    this.books=this.filteredBooks=this._adminService.wishlist.filter(item=>item.userUID===this._adminService.activeUser.userUID);
     setTimeout(() => {
       if (this.books) {
         this.searchTitle = '';
@@ -86,4 +67,5 @@ export class WishlistBooksComponent implements OnInit {
 
     
   }
+
 }
