@@ -4,19 +4,22 @@ import { RouterModule } from '@angular/router';
 import { HighchartsChartModule } from 'highcharts-angular';
 
 import { AdminPanelComponent } from './admin-panel.component';
-import { WishlistsComponent } from './wishlists/wishlists.component';
+import { WishlistsComponent } from './wishlists/admin-wishlist/wishlists.component';
 import { UsersComponent } from './users/users.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { WishlistBooksComponent } from './wishlist-books/wishlist-books.component';
-
-
+import { WishlistBooksComponent } from './wishlists/wishlist-books/wishlist-books.component';
+import { AdminWishlistCardComponent } from './wishlists/admin-wishlist-card/admin-wishlist-card.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AdminPanelComponent,WishlistsComponent,UsersComponent,DashboardComponent, WishlistBooksComponent],
-  imports: [
-    CommonModule,
-    HighchartsChartModule,
-    RouterModule
-  ]
+  declarations: [
+    AdminPanelComponent,
+    WishlistsComponent,
+    UsersComponent,
+    DashboardComponent,
+    WishlistBooksComponent,
+    AdminWishlistCardComponent,
+  ],
+  imports: [CommonModule, HighchartsChartModule, RouterModule,FormsModule],
 })
-export class AdminPanelModule { }
+export class AdminPanelModule {}

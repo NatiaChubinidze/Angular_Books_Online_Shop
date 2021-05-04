@@ -11,7 +11,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let user of users" [routerLink]="['/admin-panel/wishlists']">
+            <tr *ngFor="let user of users" [routerLink]="['/admin-panel/users',user.userUID]">
               <th scope="row">{{ users.indexOf(user) + 1 }}</th>
               <td>Mark</td>
               <td>Otto</td>
