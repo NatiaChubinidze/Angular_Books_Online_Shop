@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { IFirebaseBook } from 'src/app/shared/interfaces/firebase-book.interface';
-import { FirebaseAuthService } from 'src/app/shared/services/firebase-auth/firebase-auth.service';
-import { FireBaseCrudService } from 'src/app/shared/services/firebase-crud/firebase-crud.service';
 import { AdminService } from '../../shared/services/admin.service';
 
 @Component({
-  selector: 'app-wishlist-books',
-  templateUrl: './wishlist-books.component.html',
-  styleUrls: ['./wishlist-books.component.scss']
+  selector: 'app-books-read',
+  templateUrl: './books-read.component.html',
+  styleUrls: ['./books-read.component.scss']
 })
-export class WishlistBooksComponent implements OnInit {
+export class AllBooksReadComponent implements OnInit {
 
   private _searchTitle: string;
   private _searchAuthor: string;
@@ -58,7 +56,7 @@ export class WishlistBooksComponent implements OnInit {
   
   ngOnInit(): void {
     let dublicatesRemovedArray:IFirebaseBook[]=[];
-    if(this._adminService.wishlist){
+    if(this._adminService.readBooksList){
     this._adminService.wishlist.forEach(item=>{
       if(this._adminService.wishlist.indexOf(item)===0){
         dublicatesRemovedArray.push(item);

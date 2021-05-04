@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { IUser } from 'src/app/shared/interfaces/user.interface';
+import { AdminService } from '../shared/services/admin.service';
 
 @Component({
   selector: 'app-users',
@@ -6,10 +10,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  users: string[] = ['1', '2', '3', '4', '5'];
-  constructor() { }
+  users: IUser[];
+  constructor(private _adminService:AdminService, private _router:Router) { }
 
   ngOnInit(): void {
+    this.users=this._adminService.usersList;
+  }
+  navigateToOptions(user:IUser){
+    this._adminService.activeUser=user;
+    this._router.navigate(['/admin-panel/users/options']);
+
   }
 
 }

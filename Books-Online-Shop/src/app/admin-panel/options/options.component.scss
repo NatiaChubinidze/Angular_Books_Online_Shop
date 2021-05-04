@@ -1,0 +1,26 @@
+.main {
+    height: 850px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 40px;
+  }
+
+
+ .box{
+   height:200px;
+   align-items: flex-end;
+   display:flex;
+   justify-content: space-between;
+ }
+
+ .option{
+   padding:10px 20px;
+   background-color:rgba(131, 58, 131, 0.699);
+   color:white;
+   border-radius: 10px;
+ }
+ .option:hover{
+   background-color: rgb(131, 58, 131);
+   cursor:pointer;
+ }
+  

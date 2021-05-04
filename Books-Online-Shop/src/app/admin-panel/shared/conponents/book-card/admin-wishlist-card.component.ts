@@ -8,9 +8,11 @@ import { IFirebaseBook } from 'src/app/shared/interfaces/firebase-book.interface
 })
 export class AdminWishlistCardComponent implements OnInit {
 @Input() book:IFirebaseBook;
+imgUrl:string;
   constructor() { }
 
   ngOnInit(): void {
+    this.imgUrl=this.book?.thumbnail;
   }
 
 }

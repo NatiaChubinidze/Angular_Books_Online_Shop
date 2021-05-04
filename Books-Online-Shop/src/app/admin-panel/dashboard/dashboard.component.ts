@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
+import { IUser } from 'src/app/shared/interfaces/user.interface';
+import { AdminService } from '../shared/services/admin.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,13 +9,21 @@ import * as Highcharts from 'highcharts';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  users: string[] = ['1', '2', '3', '4', '5'];
+  users: IUser[];
+  wishlistTopUsers:IUser[];
+  shoppingCartTopUsers:IUser[];
+  booksReadTopUsers:IUser[];
   chartOptions = {};
   Highcharts = Highcharts;
   
-  constructor() { }
+  constructor(public adminService:AdminService) { }
 
   ngOnInit(): void {
+    this.adminService.getWishlists();
+    this.adminService.getUsers();
+    this.adminService.getShoppingLists();
+    this.adminService.getBooksRead();
+    this.users=this.adminService.usersList.slice();
     this.chartOptions = {
       chart: {
         plotBackgroundColor: null,

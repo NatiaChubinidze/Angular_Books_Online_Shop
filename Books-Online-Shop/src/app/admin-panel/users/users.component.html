@@ -11,11 +11,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let user of users" [routerLink]="['/admin-panel/users',user.userUID]">
+            <tr *ngFor="let user of users" (click)="navigateToOptions(user)">
               <th scope="row">{{ users.indexOf(user) + 1 }}</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
+              <td>{{user.name}}</td>
+              <td>{{user.surname}}</td>
+              <td>{{user.email}}</td>
             </tr>
           </tbody>
         </table>

@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from 'src/app/admin-panel/shared/services/admin.service';
 import { IFirebaseBook } from 'src/app/shared/interfaces/firebase-book.interface';
-import { FirebaseAuthService } from 'src/app/shared/services/firebase-auth/firebase-auth.service';
-import { FireBaseCrudService } from 'src/app/shared/services/firebase-crud/firebase-crud.service';
 
 @Component({
-  selector: 'app-wishlists',
-  templateUrl: './wishlists.component.html',
-  styleUrls: ['./wishlists.component.scss']
+  selector: 'app-user-books-bought',
+  templateUrl: './user-books-bought.component.html',
+  styleUrls: ['./user-books-bought.component.scss']
 })
-export class WishlistsComponent implements OnInit {
+export class UserBooksBoughtComponent implements OnInit {
 
   private _searchTitle: string;
   private _searchAuthor: string;
@@ -17,8 +16,7 @@ export class WishlistsComponent implements OnInit {
 
 
   constructor(
-    private _firebaseCrudService: FireBaseCrudService,
-    private _firebaseAuthService: FirebaseAuthService
+    private _adminService:AdminService
   ) {
     
   }
@@ -57,19 +55,7 @@ export class WishlistsComponent implements OnInit {
 
   
   ngOnInit(): void {
-    this._firebaseAuthService.currentUser$.subscribe((data) => {
-      this._firebaseAuthService.userUID = data.uid;
-    });
-    this._firebaseCrudService
-      .getCollection('wishlist')
-      .subscribe((books: IFirebaseBook[]) => {
-        if (books) {
-          this.books = this.filteredBooks = this._firebaseCrudService.wishlist = books.filter(
-            (item) => item.userUID === this._firebaseAuthService.userUID
-          );
-          console.log(this.books);
-        }
-      });
+    this.books=this.filteredBooks=this._adminService.shoppingList.filter(item=>item.userUID===this._adminService.activeUser.userUID);
     setTimeout(() => {
       if (this.books) {
         this.searchTitle = '';
