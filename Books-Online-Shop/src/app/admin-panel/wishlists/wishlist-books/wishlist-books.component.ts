@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
 import { IFirebaseBook } from 'src/app/shared/interfaces/firebase-book.interface';
-import { FirebaseAuthService } from 'src/app/shared/services/firebase-auth/firebase-auth.service';
-import { FireBaseCrudService } from 'src/app/shared/services/firebase-crud/firebase-crud.service';
 import { AdminService } from '../../shared/services/admin.service';
 
 @Component({
@@ -10,7 +9,7 @@ import { AdminService } from '../../shared/services/admin.service';
   styleUrls: ['./wishlist-books.component.scss']
 })
 export class WishlistBooksComponent implements OnInit {
-
+  p: number = 1;
   private _searchTitle: string;
   private _searchAuthor: string;
   books: IFirebaseBook[] = [];

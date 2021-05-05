@@ -37,10 +37,12 @@
     </div>
   </div>
     <div class="flex-container">
-      <div class="book-card" *ngFor="let book of filteredBooks">
+      <div class="book-card" *ngFor="let book of filteredBooks | paginate: { itemsPerPage: 10, currentPage: p }">
         <app-wishlist-card [book]="book" (readEvent)="addToRead($event)" 
         (deleteEvent)="deleteFromWishlist($event)" [isInShoppingCart]="isInShoppingCart(book)" (shoppingEvent)="addToShoppingCart($event)"></app-wishlist-card>
       </div>
     </div>
-  
+    <div class="mt-5 pagination-container" *ngIf="filteredBooks.length>10">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
 </div>

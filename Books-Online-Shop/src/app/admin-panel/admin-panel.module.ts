@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
 import { HighchartsChartModule } from 'highcharts-angular';
 
 import { AdminPanelComponent } from './outline/admin-panel.component';
@@ -30,6 +31,6 @@ import { BooksSoldComponent } from './books-sold/books-sold/books-sold.component
     UserBooksReadComponent,
     UserBooksBoughtComponent,
   ],
-  imports: [CommonModule, HighchartsChartModule, RouterModule,FormsModule],
+  imports: [CommonModule, HighchartsChartModule, RouterModule,FormsModule, NgxPaginationModule],
 })
 export class AdminPanelModule {}

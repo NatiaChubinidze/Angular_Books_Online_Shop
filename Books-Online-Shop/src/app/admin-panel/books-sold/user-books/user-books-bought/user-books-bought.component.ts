@@ -8,7 +8,7 @@ import { IFirebaseBook } from 'src/app/shared/interfaces/firebase-book.interface
   styleUrls: ['./user-books-bought.component.scss']
 })
 export class UserBooksBoughtComponent implements OnInit {
-
+  p: number = 1;
   private _searchTitle: string;
   private _searchAuthor: string;
   books: IFirebaseBook[] = [];
