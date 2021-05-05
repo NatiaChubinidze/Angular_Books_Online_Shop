@@ -28,8 +28,8 @@ export class BooksSearchComponent implements OnInit {
     'Documentary',
   ];
   books: string[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
-  wishlist:IFirebaseBook[];
-  shoppingCart:IFirebaseBook[];
+  wishlist: IFirebaseBook[];
+  shoppingCart: IFirebaseBook[];
 
   searchParams: IBookSearchParams = {
     subject: 'Choose Category',
@@ -41,15 +41,14 @@ export class BooksSearchComponent implements OnInit {
   constructor(
     private _bookService: BooksSearchService,
     private _router: Router,
-    private _firebaseCrudService:FireBaseCrudService,
-    private _firebaseAuthService:FirebaseAuthService
-
+    private _firebaseCrudService: FireBaseCrudService,
+    private _firebaseAuthService: FirebaseAuthService
   ) {}
 
   ngOnInit(): void {
-    this._firebaseAuthService.currentUser$.subscribe(data=>{
-      this._firebaseAuthService.userUID=data.uid;
-    })
+    this._firebaseAuthService.currentUser$.subscribe((data) => {
+      this._firebaseAuthService.userUID = data.uid;
+    });
     if (this._bookService.activeCategory === '') {
       this._bookService.getBooks().subscribe((data: any) => {
         console.log(data);
@@ -61,42 +60,53 @@ export class BooksSearchComponent implements OnInit {
       });
     }
     this._firebaseCrudService
-    .getCollection('wishlist')
-    .subscribe((books: IFirebaseBook[]) => {
-      if (books) {
-        this.wishlist = books.filter(item=>item.userUID===this._firebaseAuthService.userUID);
-      }
-    });
+      .getCollection('wishlist')
+      .subscribe((books: IFirebaseBook[]) => {
+        if (books) {
+          this.wishlist = books.filter(
+            (item) => item.userUID === this._firebaseAuthService.userUID
+          );
+        }
+      });
     this._firebaseCrudService
-    .getCollection('shopping-cart')
-    .subscribe((books:IFirebaseBook[]) => {
-      if (books) {
-        this.shoppingCart = books.filter(item=>item.userUID===this._firebaseAuthService.userUID);
-      }
-    });
+      .getCollection('shopping-cart')
+      .subscribe((books: IFirebaseBook[]) => {
+        if (books) {
+          this.shoppingCart = books.filter(
+            (item) => item.userUID === this._firebaseAuthService.userUID
+          );
+        }
+      });
   }
 
-
-  isInWishlist(book:IBooks){
-    let isInWishlist:boolean=false;
-    if(this.wishlist){
-    this.wishlist.forEach(item=>{
-      if(item.title.toLowerCase().includes(book.volumeInfo.title.toLocaleLowerCase())){
-        isInWishlist=true;
-      }
-    })
-  }
+  isInWishlist(book: IBooks) {
+    let isInWishlist: boolean = false;
+    if (this.wishlist) {
+      this.wishlist.forEach((item) => {
+        if (
+          item.title
+            .toLowerCase()
+            .includes(book.volumeInfo.title.toLocaleLowerCase())
+        ) {
+          isInWishlist = true;
+        }
+      });
+    }
     return isInWishlist;
   }
-  isInShoppingCart(book:IBooks){
-    let isInShoppingCart:boolean=false;
-    if(this.shoppingCart){
-    this.shoppingCart.forEach(item=>{
-      if(item.title.toLowerCase().includes(book.volumeInfo.title.toLocaleLowerCase())){
-        isInShoppingCart=true;
-      }
-    })
-  }
+  isInShoppingCart(book: IBooks) {
+    let isInShoppingCart: boolean = false;
+    if (this.shoppingCart) {
+      this.shoppingCart.forEach((item) => {
+        if (
+          item.title
+            .toLowerCase()
+            .includes(book.volumeInfo.title.toLocaleLowerCase())
+        ) {
+          isInShoppingCart = true;
+        }
+      });
+    }
     return isInShoppingCart;
   }
   showBookDetails(book: IBooks) {
@@ -117,28 +127,67 @@ export class BooksSearchComponent implements OnInit {
       this.booksArray = books.items;
     });
   }
-  addToCart(book:IBooks){
-    const bookToAdd:IFirebaseBook={
-      title:book.volumeInfo.title,
-      author:book.volumeInfo.authors[0],
-      price:book.saleInfo.saleability,
-      subject:book.volumeInfo.categories[0],
-      thumbnail:book.volumeInfo.imageLinks.thumbnail,
-      quantity:1,
-      userUID:this._firebaseAuthService.userUID
+  addToCart(book: IBooks) {
+    let bookToAdd: IFirebaseBook;
+    let category:string='';
+    if(book.volumeInfo.categories){
+      category=book.volumeInfo.categories[0];
     }
-    this._firebaseCrudService.saveItem("shopping-cart",bookToAdd);
+    if (book.saleInfo.retailPrice) {
+      bookToAdd = {
+        title: book.volumeInfo.title,
+        author: book.volumeInfo.authors[0],
+        price: book.saleInfo.saleability,
+        priceAmount: book.saleInfo.retailPrice.amount,
+        subject: category,
+        thumbnail: book.volumeInfo.imageLinks.thumbnail,
+        quantity: 1,
+        userUID: this._firebaseAuthService.userUID,
+      };
+    } else {
+      bookToAdd= {
+        title: book.volumeInfo.title,
+        author: book.volumeInfo.authors[0],
+        price: book.saleInfo.saleability,
+        subject: category,
+        thumbnail: book.volumeInfo.imageLinks.thumbnail,
+        quantity: 1,
+        userUID: this._firebaseAuthService.userUID,
+      };
+    }
+    console.log(bookToAdd);
+    this._firebaseCrudService.saveItem('shopping-cart', bookToAdd);
   }
-  addToWishlist(book:IBooks){
-    const bookToAdd:IFirebaseBook={
-      title:book.volumeInfo.title,
-      author:book.volumeInfo.authors[0],
-      price:book.saleInfo.saleability,
-      subject:book.volumeInfo.categories[0],
-      thumbnail:book.volumeInfo.imageLinks.thumbnail,
-      quantity:1,
-      userUID:this._firebaseAuthService.userUID
+  addToWishlist(book: IBooks) {
+    let bookToAdd: IFirebaseBook;
+    let category:string='';
+    if(book.volumeInfo.categories){
+      category=book.volumeInfo.categories[0];
     }
-    this._firebaseCrudService.saveItem("wishlist",bookToAdd);
+    if (book.saleInfo.retailPrice) {
+      bookToAdd = {
+        title: book.volumeInfo.title,
+        author: book.volumeInfo.authors[0],
+        price: book.saleInfo.saleability,
+        priceAmount: book.saleInfo.retailPrice.amount,
+        subject: category,
+        thumbnail: book.volumeInfo.imageLinks.thumbnail,
+        quantity: 1,
+        userUID: this._firebaseAuthService.userUID,
+      };
+    } else {
+      bookToAdd= {
+        title: book.volumeInfo.title,
+        author: book.volumeInfo.authors[0],
+        price: book.saleInfo.saleability,
+        subject: category,
+        thumbnail: book.volumeInfo.imageLinks.thumbnail,
+        quantity: 1,
+        userUID: this._firebaseAuthService.userUID,
+      };
+    }
+    
+    console.log(bookToAdd);
+    this._firebaseCrudService.saveItem('wishlist', bookToAdd);
   }
 }

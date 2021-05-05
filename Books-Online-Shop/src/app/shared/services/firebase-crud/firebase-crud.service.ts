@@ -5,6 +5,7 @@ import { throwError } from 'rxjs';
 
 import { catchError, map } from 'rxjs/operators';
 import { IFirebaseBook } from '../../interfaces/firebase-book.interface';
+import { IUser } from '../../interfaces/user.interface';
 
 
 @Injectable({
@@ -13,6 +14,7 @@ import { IFirebaseBook } from '../../interfaces/firebase-book.interface';
 export class FireBaseCrudService {
   wishlist:IFirebaseBook[];
   booksRead:IFirebaseBook[];
+  users:IUser[];
   errorMessage:string='';
   constructor(
     private _firebaseStore: AngularFirestore,

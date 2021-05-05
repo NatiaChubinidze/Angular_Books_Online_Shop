@@ -50,14 +50,16 @@ export class BookCardsComponent implements OnInit {
       });
   }
   addToWishlist() {
-    if(!this.isWishlistLimitReached){
+    if(!this.isWishlistLimitReached && !this.isInWishlist){
       console.log("adding to wishlist");
     this.wishlistEvent.emit(this.book);
     }
   }
 
   addToCart() {
+    if(!this.isInShoppingCart){
     this.shoppingEvent.emit(this.book);
+    }
   }
 
   showBookDetails() {

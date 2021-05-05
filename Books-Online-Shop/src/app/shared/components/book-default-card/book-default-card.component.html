@@ -19,12 +19,9 @@
       ></i>
       <p
         class="pricing"
-        *ngIf="
-          book.saleInfo?.saleability.toLowerCase() !== 'not_for_sale' &&
-          book.saleInfo?.saleability.toLowerCase() !== 'free'
-        "
+        *ngIf="book.saleInfo?.retailPrice"
       >
-        {{ book.saleInfo?.saleability }}$
+        {{ book.saleInfo?.retailPrice.amount }}$
       </p>
       <div
         class="div-free"

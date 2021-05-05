@@ -7,6 +7,8 @@ import firebase from 'firebase/app';
 import { IUserAuthInfo } from '../../../auth/shared/interfaces/auth.interface';
 import { TOKEN_KEY } from '../../constants/constants';
 import { AuthService } from '../auth/auth.service';
+import { FireBaseCrudService } from '../firebase-crud/firebase-crud.service';
+import { IUser } from '../../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +23,8 @@ export class FirebaseAuthService {
   constructor(
     private _router: Router,
     private auth: AngularFireAuth,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private _firebaseCrudService:FireBaseCrudService
   ) {
     this.currentUser$ = this.auth.authState;
   }
@@ -33,6 +36,7 @@ export class FirebaseAuthService {
       .signInWithPopup(new firebase.auth.FacebookAuthProvider())
       .then((data: any) => {
         if (data.credential.accessToken) {
+          this.saveUserToFirebase();
           this._router.navigate(['/home']);
         }
       })
@@ -47,6 +51,7 @@ export class FirebaseAuthService {
       .signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then((data: any) => {
         if (data.credential.accessToken) {
+          this.saveUserToFirebase();
           this._router.navigate(['/home']);
         }
       })
@@ -60,6 +65,7 @@ export class FirebaseAuthService {
       .signInWithPopup(new firebase.auth.GithubAuthProvider())
       .then((data: any) => {
         if (data.credential.accessToken) {
+          this.saveUserToFirebase();
           this._router.navigate(['/home']);
         }
       })
@@ -72,16 +78,23 @@ export class FirebaseAuthService {
     this.auth
       .signInWithEmailAndPassword(userData.email, userData.password)
       .then((data: any) => {
-        if (data.user) {
+        if (data.user) { 
+          this.saveUserToFirebase();
           this.isSignedInWithEmail=true;
-          if (data.user.email === 'admin@email.com') {
+          if (data.user.email === 'admin@gmail.com') {
             this.isAdmin = true;
+          } else{
+            this.isAdmin=false;
           }
           if (this.rememberMe === true) {
             localStorage.setItem(TOKEN_KEY, data.user.refreshToken);
             this._authService.setTokenValidTime();
           }
+          if(this.isAdmin){
+            this._router.navigate(['/admin-panel']);
+          } else{
           this._router.navigate(['/home']);
+          }
         }
       })
       .catch((error) => {
@@ -95,6 +108,13 @@ export class FirebaseAuthService {
       .createUserWithEmailAndPassword(userData.email, userData.password)
       .then((data) => {
         if (data.user) {
+          const newUser:IUser={
+            name:'',
+            surname:'',
+            email:userData.email,
+            userUID:data.user.uid
+          };
+          this._firebaseCrudService.saveItem('users',newUser);
           this.isSignedInWithEmail=true;
           this._router.navigate(['/home']);
         }
@@ -152,6 +172,55 @@ export class FirebaseAuthService {
       })
       .catch((error) => {
         this.errorMessage = error.message;
+      });
+  }
+  saveUserToFirebase() {
+    console.log("save user to firebase");
+    let isNewUser: boolean = true;
+    this._firebaseCrudService
+      .getCollection('users')
+      .subscribe((users: IUser[]) => {
+        if (users) {
+          if (users.length > 0) {
+            users.forEach((user) => {
+              if (user.userUID === firebase.auth().currentUser.uid) {
+                console.log(firebase.auth().currentUser);
+                isNewUser = false;
+              }
+            });
+            console.log("is new user?", isNewUser);
+            if (isNewUser) {
+              console.log(firebase.auth().currentUser);
+              let name: string ='';
+              let surname: string='';
+              let email:string='';
+              if (firebase.auth().currentUser.displayName) {
+                if (
+                  firebase.auth().currentUser.displayName.split(' ').length ===
+                  2
+                ) {
+                  name = firebase.auth().currentUser.displayName.split(' ')[0];
+                  surname = firebase
+                    .auth()
+                    .currentUser.displayName.split(' ')[1];
+                } 
+              } 
+              if(firebase.auth().currentUser.email){
+                email=firebase.auth().currentUser.email;
+              }
+              
+              const newUser: IUser = {
+                name: name,
+                surname: surname,
+                email: email,
+                userUID: firebase.auth().currentUser.uid,
+              };
+              console.log('new user', newUser);
+              console.log('saving');
+              this._firebaseCrudService.saveItem('users', newUser);
+            }
+          }
+        }
       });
   }
 }

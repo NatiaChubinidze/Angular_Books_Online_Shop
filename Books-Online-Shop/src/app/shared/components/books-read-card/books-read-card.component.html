@@ -22,11 +22,10 @@
       <p
         class="pricing"
         *ngIf="
-          book.price.toLowerCase() !== 'not_for_sale' &&
-          book.price.toLowerCase() !== 'free'
+          book.price.toLowerCase() === 'for_sale'
         "
       >
-        {{ book?.price }}$
+        {{ book?.priceAmount }}$
       </p>
 
       <div
