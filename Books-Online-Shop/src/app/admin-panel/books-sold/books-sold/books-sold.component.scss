@@ -131,7 +131,9 @@
     width:fit-content;
     margin:0 auto;
   }
-  
+  .pagination ::ng-deep .ngx-pagination .current {
+    background-color: rgb(177, 140, 180) !important;
+  }
   @media only screen and (max-width: 575px) {
     .book-card {
       width: 48%;
