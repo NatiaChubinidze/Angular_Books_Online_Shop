@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { IBooks } from '../books-search/shared/interfaces/books-response.interface';
 import { IFirebaseBook } from '../shared/interfaces/firebase-book.interface';
 import { FireBaseCrudService } from '../shared/services/firebase-crud/firebase-crud.service';
 
@@ -9,6 +8,7 @@ import { FireBaseCrudService } from '../shared/services/firebase-crud/firebase-c
   styleUrls: ['./books-read.component.scss']
 })
 export class BooksReadComponent implements OnInit {
+  p: number = 1;
   private _searchTitle: string;
   private _searchAuthor: string;
   books:IFirebaseBook[];

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import { BooksSearchComponent } from './books-search.component';
 import { BookCardsModule } from '../shared/components/book-cards.module';
@@ -9,7 +10,7 @@ import { AddHeaderInterceptorService } from './shared/services/add-header.interc
 
 @NgModule({
   declarations: [BooksSearchComponent],
-  imports: [CommonModule, BookCardsModule, FormsModule],
+  imports: [CommonModule, BookCardsModule, FormsModule, NgxPaginationModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

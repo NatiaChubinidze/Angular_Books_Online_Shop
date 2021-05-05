@@ -8,7 +8,7 @@ import { AdminService } from '../../shared/services/admin.service';
   styleUrls: ['./books-sold.component.scss']
 })
 export class BooksSoldComponent implements OnInit {
-
+  p: number = 1;
   private _searchTitle: string;
   private _searchAuthor: string;
   books: IFirebaseBook[] = [];

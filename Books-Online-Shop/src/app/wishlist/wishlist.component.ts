@@ -11,6 +11,7 @@ import { WISHLIST_MAX_NUMBER } from '../shared/constants/wishlist-constants';
   styleUrls: ['./wishlist.component.scss'],
 })
 export class WishlistComponent implements OnInit {
+  p: number = 1;
   private _searchTitle: string;
   private _searchAuthor: string;
   books: IFirebaseBook[] = [];

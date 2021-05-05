@@ -10,7 +10,7 @@ import { AdminService } from '../../shared/services/admin.service';
   styleUrls: ['./wishlists.component.scss']
 })
 export class WishlistsComponent implements OnInit {
-
+  p: number = 1;
   private _searchTitle: string;
   private _searchAuthor: string;
   books: IFirebaseBook[] = [];

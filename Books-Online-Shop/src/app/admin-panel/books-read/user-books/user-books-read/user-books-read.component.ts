@@ -9,7 +9,7 @@ import { IFirebaseBook } from 'src/app/shared/interfaces/firebase-book.interface
 })
 export class UserBooksReadComponent implements OnInit {
 
-  
+  p: number = 1;
   private _searchTitle: string;
   private _searchAuthor: string;
   books: IFirebaseBook[] = [];

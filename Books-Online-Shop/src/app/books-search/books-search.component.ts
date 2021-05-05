@@ -20,6 +20,7 @@ import {
   styleUrls: ['./books-search.component.scss'],
 })
 export class BooksSearchComponent implements OnInit {
+  p: number = 1;
   categories: string[] = [
     'Mystery',
     'Science-fiction',

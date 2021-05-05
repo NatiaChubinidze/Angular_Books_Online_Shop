@@ -10,6 +10,7 @@ import { FireBaseCrudService } from '../shared/services/firebase-crud/firebase-c
   styleUrls: ['./shopping-cart.component.scss'],
 })
 export class ShoppingCartComponent implements OnInit {
+  p: number = 1;
   shoppingList: IFirebaseBook[];
   shoppingItemsWithPrice: IFirebaseBook[];
   totalPrice: number=0;
