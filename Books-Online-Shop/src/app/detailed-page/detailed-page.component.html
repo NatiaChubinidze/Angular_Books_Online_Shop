@@ -3,10 +3,10 @@
   <div class="background-cube first"></div>
   <div class="background-cube second"></div>
   <div class="background-cube third"></div>
-  <div class="background-image">
+  <div class="background-image" *ngIf="bookService.activeBook">
     <img src="https://image.flaticon.com/icons/png/128/4531/4531238.png" />
   </div>
-  <div class="flex-cont">
+  <div class="flex-cont" *ngIf="bookService.activeBook">
     <div class="image">
       <img [src]="bookService.activeBook.volumeInfo.imageLinks?.thumbnail" />
     </div>
@@ -21,8 +21,13 @@
     </div>
     <div class="buy">
       <div class="d-flex wishlist">
-        <img src="https://image.flaticon.com/icons/png/128/4207/4207539.png" />
-        <p class="ms-1"><b>Add To Wishlist</b></p>
+        <img src="https://image.flaticon.com/icons/png/128/4207/4207539.png" (click)="addToWishlist()"/>
+        <p class="ms-1" (click)="addToWishlist()"[class.limitReached]="isWishlistLimitReached"
+        [class.disabled]="
+          isWishlistLimitReached && !isInWishlist ? true : null
+        ">Add To Wishlist <span class="tooltipContainer" *ngIf="!isInWishlist">
+          <span class="tooltipText">Limit has been reached!</span>
+        </span></p>
       </div>
       <hr />
       <h5>Buy Now</h5>
@@ -50,10 +55,10 @@
       >
         34.5$ <span class="secondary-text">USD</span>
       </h5>
-      <button type="button" class="btn btn-warning col-12 mt-3">Buy Now</button>
+      <button type="button" class="btn btn-warning col-12 mt-3" (click)="addToCart()">Buy Now</button>
     </div>
   </div>
-  <div class="container">
+  <div class="container" *ngIf="bookService.activeBook">
     <table class="table table-light table-striped table-hover">
       <tbody>
         <tr>
@@ -64,7 +69,7 @@
         </tr>
         <tr>
           <th scope="row">Category</th>
-          <td>{{ bookService.activeBook.volumeInfo?.categories[0] }}</td>
+          <td>{{ bookService.activeBook.volumeInfo?.categories ? bookService.activeBook.volumeInfo?.categories[0] : '' }}</td>
           <th scope="row">Web Reader Link</th>
           <td>
             <a

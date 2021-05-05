@@ -38,8 +38,40 @@
     height:100px;
     margin:0 auto;
     align-items: flex-end;
+    img:hover,p:hover{
+      cursor:pointer;
+    }
+    p{
+      font-weight:bold;
+    }
   }
 }
+///////////////////////////////
+
+  p.limitReached:hover{
+    cursor:default;
+  }
+  p.disabled:hover .tooltipText{
+  visibility: visible;
+  }
+  .tooltipContainer{
+    position: relative;
+  }
+  .tooltipText{
+    visibility: hidden;
+    width: 150px;
+    background-color: rgb(189, 144, 219);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 7px 5px;
+    font-size:13px;
+    position: absolute;
+    z-index: 1;
+    top: 15px;
+    right: 105%;
+  }
+//////////////////////////////
 
 .flex-cont {
   display: flex;

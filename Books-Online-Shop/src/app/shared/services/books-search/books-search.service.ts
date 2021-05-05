@@ -17,7 +17,7 @@ export class BooksSearchService {
   getBooks(): Observable<IBooks[]> {
     return this.http
       .get<IBooks[]>(
-        `${this._BASE_URL}/volumes?q=subject:fiction&filter=free-ebooks&maxResults=10`
+        `${this._BASE_URL}/volumes?q=subject:fiction&maxResults=40&country=US`
       )
       .pipe(tap((data) => {}, catchError(this.handleError)));
   }

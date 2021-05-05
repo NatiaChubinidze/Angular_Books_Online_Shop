@@ -41,7 +41,7 @@
               <button type="button" class="btn btn-link" (click)="deleteItem(item)">REMOVE</button>
             </div></td>
           <td class="col-2">
-            <div class="price text-center" *ngIf="item.price.toLowerCase()!=='free'">$ {{item.price}}</div>
+            <div class="price text-center" *ngIf="item.price.toLowerCase()==='for_sale'">$ {{item.priceAmount}}</div>
             <div class="price text-center" *ngIf="item.price.toLowerCase()==='free'">Free</div>
           </td>
         </tr>
@@ -51,7 +51,7 @@
         <td class="ps-3"><b>Total</b></td>
         <td></td>
         <td></td>
-        <td class="text-center"><b>{{totalPrice}}$</b></td>
+        <td class="text-center"><b>{{totalPrice.toFixed(2)}}$</b></td>
       </tfoot>
     </table>
     <div class="d-flex col-12 justify-content-end mb-3 order">

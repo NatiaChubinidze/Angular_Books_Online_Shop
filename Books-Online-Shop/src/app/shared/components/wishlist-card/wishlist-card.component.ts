@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IBooks } from 'src/app/books-search/shared/interfaces/books-response.interface';
+
 import { IFirebaseBook } from '../../interfaces/firebase-book.interface';
 
 @Component({
@@ -28,7 +28,9 @@ export class WishlistCardComponent implements OnInit {
     this.deleteEvent.emit(this.book);
   }
   addToShoppingCart(){
+    if(!this.isInShoppingCart){
     this.shoppingEvent.emit(this.book);
+    }
   }
 
 }

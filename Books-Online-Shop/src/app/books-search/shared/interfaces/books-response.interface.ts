@@ -37,6 +37,11 @@ export interface IBooks {
   saleInfo: {
     country?: string;
     saleability?: string;
+    retailPrice?: {
+      amount?: 2.99,
+      currencyCode?: "USD"
+    },
+
     isEbook?: boolean;
   };
   accessInfo: {

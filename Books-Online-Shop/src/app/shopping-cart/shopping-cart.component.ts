@@ -12,21 +12,23 @@ import { FireBaseCrudService } from '../shared/services/firebase-crud/firebase-c
 export class ShoppingCartComponent implements OnInit {
   shoppingList: IFirebaseBook[];
   shoppingItemsWithPrice: IFirebaseBook[];
-  totalPrice: number;
+  totalPrice: number=0;
   newOrder:boolean=false;
 
   constructor(
     private _firebaseCrudService: FireBaseCrudService,
     private _firebaseAuthService: FirebaseAuthService
   ) {
-    this.totalPrice = 0;
+    
   }
 
   ngOnInit(): void {
+    console.log("on init");
     this._firebaseCrudService
       .getCollection('shopping-cart')
       .subscribe((books: IFirebaseBook[]) => {
         if (books) {
+          this.totalPrice=0;
           this._firebaseAuthService.currentUser$.subscribe((data) => {
             this._firebaseAuthService.userUID = data.uid;
             this.shoppingList = books.filter((item) => {
@@ -34,11 +36,10 @@ export class ShoppingCartComponent implements OnInit {
             });
             this.shoppingItemsWithPrice = this.shoppingList.filter(
               (item) =>
-                item.price.toLowerCase() !== 'free' &&
-                item.price.toLowerCase() !== ''
+                item.price.toLowerCase() === 'for_sale'
             );
             this.shoppingItemsWithPrice.forEach((item) => {
-              this.totalPrice += item.quantity * parseInt(item.price);
+              this.totalPrice += item.quantity * item.priceAmount;
             });
           });
           console.log(this.shoppingList);

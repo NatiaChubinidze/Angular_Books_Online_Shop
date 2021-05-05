@@ -5,6 +5,7 @@ export interface IFirebaseBook{
     thumbnail:string;
     subject:string;
     quantity:number;
+    priceAmount?:number;
     id?:string;
     userUID?:string;
     ordered?:string;

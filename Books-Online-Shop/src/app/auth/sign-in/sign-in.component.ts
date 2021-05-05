@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import firebase from 'firebase/app';
+
 import { TOKEN_EXP_KEY, TOKEN_KEY } from 'src/app/shared/constants/constants';
-import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { IUser } from 'src/app/shared/interfaces/user.interface';
+import { FireBaseCrudService } from 'src/app/shared/services/firebase-crud/firebase-crud.service';
 import { FirebaseAuthService } from '../../shared/services/firebase-auth/firebase-auth.service';
 import { IUserAuthInfo } from '../shared/interfaces/auth.interface';
 
@@ -61,21 +64,30 @@ export class SignInComponent implements OnInit {
   }
   facebookSignIn() {
     this.fireBaseAuthService.facebookSignIn();
+ 
   }
   githubSignIn() {
     this.fireBaseAuthService.githubSignIn();
+   
   }
   googleSignIn() {
     this.fireBaseAuthService.googleSignIn();
+    
   }
   emailSignIn() {
     this.signInInfo = this.signInForm.value as IUserAuthInfo;
     console.log(this.signInInfo);
     this.fireBaseAuthService.emailSignIn(this.signInInfo);
     this.fireBaseAuthService.rememberMe = this.signInInfo.rememberMe;
+ 
   }
+  
+
   ngOnInit(): void {
-    if(localStorage.getItem(TOKEN_KEY) && localStorage.getItem(TOKEN_EXP_KEY)){
+    if (
+      localStorage.getItem(TOKEN_KEY) &&
+      localStorage.getItem(TOKEN_EXP_KEY)
+    ) {
       this._router.navigate(['/home']);
     }
   }
