@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
-import { IBooks } from '../../../books-search/shared/interfaces/books-response.interface';
+import { IBooks, IBooksResponse } from '../../../books-search/shared/interfaces/books-response.interface';
 import { IBookSearchParams } from '../../../books-search/shared/interfaces/book-search.interface';
 
 @Injectable({
@@ -14,27 +14,9 @@ export class BooksSearchService {
   activeCategory:string="";
   private _BASE_URL: string = 'https://www.googleapis.com/books/v1';
   constructor(private http: HttpClient) {}
-  getBooks(): Observable<IBooks[]> {
-    return this.http
-      .get<IBooks[]>(
-        `${this._BASE_URL}/volumes?q=subject:fiction&maxResults=40&country=US`
-      )
-      .pipe(tap((data) => {}, catchError(this.handleError)));
-  }
+
   getFilteredBooks(){
     let queryString:string="";
-    if(this.searchParam.subject==='Choose Category'){
-      this.searchParam.subject=undefined;
-    }
-    if(this.searchParam.langRestrict==='Choose Language'){
-      this.searchParam.langRestrict=undefined;
-    }
-    if(this.searchParam.filter==='Filter by'){
-      this.searchParam.filter=undefined;
-    }
-    if(this.searchParam.orderBy==='Order by'){
-      this.searchParam.orderBy=undefined;
-    }
     let searchParamsQuery={
       intitle:this.searchParam.intitle,
       inauthor:this.searchParam.inauthor,
@@ -48,7 +30,7 @@ export class BooksSearchService {
       langRestrics:this.searchParam.langRestrict
     }
     for(const key in searchParamsQuery){
-      if (searchParamsQuery[key]!==undefined && searchParamsQuery[key]!==""){
+      if (searchParamsQuery[key]!==undefined && searchParamsQuery[key]!==null && searchParamsQuery[key]!==""){
         if(queryString!==""){
        queryString+=`+${key}:${searchParamsQuery[key]}`
         }
@@ -58,20 +40,20 @@ export class BooksSearchService {
       }
     }
     for(const key in searchParamsFilter){
-      if (searchParamsFilter[key]!==undefined && searchParamsFilter[key]!==""){
+      if (searchParamsFilter[key]!==undefined  && searchParamsFilter[key]!==null && searchParamsFilter[key]!==""){
         queryString+=`&${key}=${searchParamsFilter[key]}`
       }
     }
     return this.http
     .get<IBooks[]>(
-      `${this._BASE_URL}/volumes?q=${queryString}`
+      `${this._BASE_URL}/volumes?q=${queryString}&maxResults=40&country=US`
     )
     .pipe(tap((data) => {}, catchError(this.handleError)));
     }
     getBooksByCategories(){
       return this.http
-    .get<IBooks[]>(
-      `${this._BASE_URL}/volumes?q=subject:${this.activeCategory}`
+    .get<IBooksResponse>(
+      `${this._BASE_URL}/volumes?q=subject:${this.activeCategory}&maxResults=40&country=US`
     )
     .pipe(tap((data) => {}, catchError(this.handleError)));
     }

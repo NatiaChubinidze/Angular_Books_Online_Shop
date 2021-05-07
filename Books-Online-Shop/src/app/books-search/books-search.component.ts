@@ -1,9 +1,8 @@
 import {
   Component,
   OnInit,
-  ɵCodegenComponentFactoryResolver,
 } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IFirebaseBook } from '../shared/interfaces/firebase-book.interface';
 import { BooksSearchService } from '../shared/services/books-search/books-search.service';
 import { FirebaseAuthService } from '../shared/services/firebase-auth/firebase-auth.service';
@@ -21,45 +20,59 @@ import {
 })
 export class BooksSearchComponent implements OnInit {
   p: number = 1;
+  activeCategory:string;
   categories: string[] = [
     'Mystery',
     'Science-fiction',
     'Detective',
-    'Advanture',
-    'Documentary',
+    'Adventure',
+    'Fiction',
   ];
   books: string[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
   wishlist: IFirebaseBook[];
   shoppingCart: IFirebaseBook[];
 
-  searchParams: IBookSearchParams = {
-    subject: 'Choose Category',
-    langRestrict: 'Choose Language',
-    filter: 'Filter by',
-    orderBy: 'Order by',
-  };
+  searchParams: IBookSearchParams= {};
   booksArray: IBooks[];
   constructor(
     private _bookService: BooksSearchService,
     private _router: Router,
+    private _activeRoute: ActivatedRoute,
     private _firebaseCrudService: FireBaseCrudService,
     private _firebaseAuthService: FirebaseAuthService
-  ) {}
+  ) {
+this.activeCategory=this._bookService.activeCategory;
+  }
 
   ngOnInit(): void {
+    const result:IBooksResponse=this._activeRoute.snapshot.data['booksResponse'];
+    this.booksArray=result.items;
+this.searchParams={...this._bookService.searchParam};
+if(!this._bookService.searchParam.subject){
+  this.searchParams.subject='Choose Category';
+} else{this.searchParams.subject=this._bookService.searchParam.subject;}
+if(!this._bookService.searchParam.langRestrict){
+  this.searchParams.langRestrict='Choose Language';
+} else {this.searchParams.langRestrict=this._bookService.searchParam.langRestrict;}
+if(!this._bookService.searchParam.filter){
+  this.searchParams.filter='Filter by';
+} else {this.searchParams.filter=this._bookService.searchParam.filter;}
+if(!this._bookService.searchParam.orderBy){
+  this.searchParams.orderBy='Order by';
+} else {this.searchParams.orderBy=this._bookService.searchParam.orderBy;}
+    // if (this._bookService.activeCategory === '') {
+    //   this._bookService.getBooks().subscribe((data: any) => {
+    //     console.log(data);
+    //     this.booksArray = data.items;
+    //   });
+    // } else {
+    //   this._bookService.getBooksByCategories().subscribe((data: any) => {
+    //     this.booksArray = data.items;
+    //   });
+    //}
     this._firebaseAuthService.currentUser$.subscribe((data) => {
       this._firebaseAuthService.userUID = data.uid;
     });
-    if (this._bookService.activeCategory === '') {
-      this._bookService.getBooks().subscribe((data: any) => {
-        console.log(data);
-        this.booksArray = data.items;
-      });
-    } else {
-      this._bookService.getBooksByCategories().subscribe((data: any) => {
-        this.booksArray = data.items;
-      });
-    }
     this._firebaseCrudService
       .getCollection('wishlist')
       .subscribe((books: IFirebaseBook[]) => {
@@ -115,15 +128,43 @@ export class BooksSearchComponent implements OnInit {
     this._router.navigate(['/details']);
   }
   getFilteredBooks() {
-    this._bookService.searchParam = { ...this.searchParams };
+    this.activeCategory=this._bookService.activeCategory='';
+    let refinedParams:IBookSearchParams={...this.searchParams};
     console.log(this.searchParams);
+    if(refinedParams.subject==='Choose Category'){
+      refinedParams.subject="";
+    }
+    if(refinedParams.langRestrict==='Choose Language'){
+      delete refinedParams.langRestrict;
+    }
+    if(refinedParams.filter==='Filter by'){
+      delete refinedParams.filter;
+    }
+    if(refinedParams.orderBy==='Order by'){
+      delete refinedParams.orderBy;
+    }
+   this._bookService.searchParam={...refinedParams};
+console.log(refinedParams);
+    this._router.navigate([],{
+      queryParamsHandling:'',
+      replaceUrl:true,
+      queryParams:refinedParams
+    })
     this._bookService.getFilteredBooks().subscribe((books: any) => {
       this.booksArray = books.items;
       console.log(this.booksArray);
     });
   }
   getBooksByCategories(category: string) {
-    this._bookService.activeCategory = category;
+    this._bookService.activeCategory=this.activeCategory = category;
+    const categorySearch={
+      subject:category,
+    };
+    this._router.navigate([],{
+      queryParamsHandling:'',
+      replaceUrl:true,
+      queryParams:categorySearch
+    });
     this._bookService.getBooksByCategories().subscribe((books: any) => {
       this.booksArray = books.items;
     });

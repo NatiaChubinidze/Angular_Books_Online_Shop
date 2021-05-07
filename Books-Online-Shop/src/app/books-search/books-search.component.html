@@ -59,12 +59,13 @@
         <option value="detective">Detective</option>
         <option value="essay">Essay</option>
         <option value="fantasy">Fantasy</option>
+        <option value="fiction">Fiction</option>
         <option value="graphic novel">Graphic Novel</option>
         <option value="historical">Historical</option>
         <option value="horror">Horror</option>
         <option value="mystery">Mystery</option>
         <option value="romance">Romance</option>
-        <option value="sci-fi">Science Fiction</option>
+        <option value="science-fiction">Science Fiction</option>
       </select>
     </div>
     <div class="col-3 search-div d-flex">
@@ -106,7 +107,8 @@
         <div class="popular-categories">
           <h6><i>Popular Categories:</i></h6>
         </div>
-        <div class="category-card" *ngFor="let item of categories" (click)="getBooksByCategories(item)">
+        <div class="category-card" *ngFor="let item of categories" (click)="getBooksByCategories(item)"
+        [class.activeCategory]="activeCategory.toLowerCase()===item.toLowerCase()">
           <h6 class="card-title">#{{ item }}</h6>
         </div>
       </div>
@@ -116,8 +118,11 @@
     <div class="book-card" *ngFor="let book of booksArray | paginate: { itemsPerPage: 10, currentPage: p }">
       <app-book-default-card [book]="book" [isInWishlist]="isInWishlist(book)" [isInShoppingCart]="isInShoppingCart(book)" (bookDetailsEvent)="showBookDetails($event)" (wishlistEvent)="addToWishlist($event)" (shoppingEvent)="addToCart($event)"></app-book-default-card>
     </div>
+    <div *ngIf="!booksArray?.length" class="no-results col-10 mx-auto text-center">
+      <h2 class="text-secondary">No Results Found</h2>
+    </div>
   </div>
-  <div class="mt-5 pagination-container" *ngIf="booksArray.length>10">
+  <div class="mt-5 pagination-container" *ngIf="booksArray?.length>10">
     <pagination-controls (pageChange)="p = $event" class="pagination"></pagination-controls>
     </div>
 </div>
