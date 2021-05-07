@@ -43,12 +43,29 @@ header {
   background-size: cover;
   border-bottom: 1px solid rgba(250, 250, 250, 0.3);
   height: 80px;
-  -webkit-transition: all 0.5s ease 0s;
-  -moz-transition: all 0.5s ease 0s;
-  -o-transition: all 0.5s ease 0s;
-  transition: all 0.5s ease 0s;
+  // -webkit-transition: all 0.5s ease 0s;
+  // -moz-transition: all 0.5s ease 0s;
+  // -o-transition: all 0.5s ease 0s;
+  transition: background-color 1s;
 }
-
+header.fadeStepOne {
+  background-color: #e7e2e6f5;
+}
+header.fadeStepTwo {
+  background-color: #e7e2e6e3;
+}
+header.fadeStepThree {
+  background-color: #e7e2e6ce;
+}
+header.fadeStepFour {
+  background-color: #e7e2e6a6;
+}
+header.fadeStepFive {
+  background-color: #e7e2e654;
+}
+header.fadeStepSix{
+    background-color: transparent;
+}
 .navbar .navbar-brand {
   float: left;
   margin-top: 12px;
@@ -96,16 +113,15 @@ header {
 // {
 //   text-decoration: underline;
 // }
-.navbar ul li a:hover{
-  color:rgb(164, 138, 165);
+.navbar ul li a:hover {
+  color: rgb(164, 138, 165);
 }
-.navbar ul li.nav-item:hover{
-  border-bottom:2px solid white;
-//text-decoration: underline;
-
+.navbar ul li.nav-item:hover {
+  border-bottom: 2px solid white;
+  //text-decoration: underline;
 }
-.navbar ul li.nav-item{
-  border-bottom:2px solid transparent;
+.navbar ul li.nav-item {
+  border-bottom: 2px solid transparent;
 }
 .navbar .navbar-toggler-icon {
   background-image: none;
@@ -199,10 +215,10 @@ li > span {
 .dropdown-content {
   display: none;
 }
-.dropdown-content ul li:first-child{
-  padding-top:15px;
+.dropdown-content ul li:first-child {
+  padding-top: 15px;
 }
-.dropdown-content ul li:last-child{
+.dropdown-content ul li:last-child {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
@@ -225,11 +241,10 @@ li > span {
   padding: 7px 7px 7px 14px;
   color: gray;
   background-color: #e7e2e6;
-  
 }
 .dropdown-menu li:hover {
   text-decoration: underline;
-  color:#7e727c;
+  color: #7e727c;
 }
 .functional-buttons ul li.toggleVisible {
   display: none;
@@ -241,11 +256,11 @@ li > span {
   .functional-buttons ul li.toggleVisible {
     display: block;
   }
-  .functional-buttons ul{
-    margin-right:30px;
+  .functional-buttons ul {
+    margin-right: 30px;
   }
-  .functional-buttons ul li{
-    padding:5px;
+  .functional-buttons ul li {
+    padding: 5px;
   }
 }
 
@@ -253,11 +268,11 @@ li > span {
   .functional-buttons ul li.toggleVisible {
     display: block;
   }
-  .functional-buttons ul li.toggleVisible.shopping{
-    display:none;
+  .functional-buttons ul li.toggleVisible.shopping {
+    display: none;
   }
-  .functional-buttons ul li{
-    padding:5px;
+  .functional-buttons ul li {
+    padding: 5px;
   }
 }
 @media only screen and (min-width: 991px) and (max-width: 1199px) {

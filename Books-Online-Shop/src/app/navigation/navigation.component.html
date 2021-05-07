@@ -1,5 +1,6 @@
 <!-- Header -->
-<header class="body">
+<header class="body" [class.fadeStepOne]="fadeSteps===1" [class.fadeStepTwo]="fadeSteps===2" [class.fadeStepThree]="fadeSteps===3"
+[class.fadeStepFour]="fadeSteps===4" [class.fadeStepFive]="fadeSteps===5" [class.fadeStepSix]="fadeSteps===6">
     <nav class="navbar navbar-expand-lg">
       <div class="container">
         <a class="navbar-brand" [routerLink]="['/home']"

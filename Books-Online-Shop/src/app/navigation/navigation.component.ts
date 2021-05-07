@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import firebase from 'firebase/app';
 
 import { IProfile } from '../profile/shared/interfaces/profile.interface';
@@ -12,6 +12,7 @@ import { FireBaseCrudService } from '../shared/services/firebase-crud/firebase-c
   styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent implements OnInit {
+  @Input() fadeSteps:number;
   profilePictureURL:string = '';
   displayName:string = '';
   constructor(
