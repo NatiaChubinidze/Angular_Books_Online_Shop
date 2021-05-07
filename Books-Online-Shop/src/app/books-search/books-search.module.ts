@@ -7,6 +7,7 @@ import { BooksSearchComponent } from './books-search.component';
 import { BookCardsModule } from '../shared/components/book-cards.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AddHeaderInterceptorService } from './shared/services/add-header.interceptor';
+import { HttpCacheInterceptor } from './shared/services/http-cache.interceptor';
 
 @NgModule({
   declarations: [BooksSearchComponent],
@@ -17,6 +18,10 @@ import { AddHeaderInterceptorService } from './shared/services/add-header.interc
       useClass: AddHeaderInterceptorService,
       multi: true,
     },
+    { provide:HTTP_INTERCEPTORS,
+      useClass:HttpCacheInterceptor,
+      multi:true
+    }
   ],
 })
 export class BooksSearchModule {}
