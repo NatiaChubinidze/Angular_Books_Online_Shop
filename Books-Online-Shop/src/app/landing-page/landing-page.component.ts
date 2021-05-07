@@ -17,7 +17,7 @@ export class LandingPageComponent implements OnInit {
     'Science-fiction',
     'Romance',
     'Detective',
-    'Advanture',
+    'Adventure',
     'Documentary',
     'Fiction',
     'Mystery',
@@ -82,7 +82,19 @@ export class LandingPageComponent implements OnInit {
   }
   getBooksByCategory(category: string) {
     this._bookService.activeCategory = category;
-    this._router.navigate(['/book-search']);
+    const categorySearch={
+      subject:category,
+    };
+    // this._router.navigate([],{
+    //   queryParamsHandling:'',
+    //   replaceUrl:true,
+    //   queryParams:categorySearch
+    // })
+    this._router.navigate(['/book-search'],{
+      queryParamsHandling:'',
+      replaceUrl:true,
+      queryParams:categorySearch
+    });
   }
 
   showBookDetails(book: IBooks) {
