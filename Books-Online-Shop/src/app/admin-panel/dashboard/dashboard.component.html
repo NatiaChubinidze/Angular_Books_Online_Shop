@@ -1,89 +1,32 @@
 <div class="main col-12">
-  <div class="pie-chart col-10">
-    <highcharts-chart
-      [Highcharts]="Highcharts"
-      [options]="chartOptions"
-      style="width: 800px; height: 450px; display: block; margin: 50px auto"
-      *ngIf="wishlistTopBooks.length"
-    ></highcharts-chart>
+  <div class="pie-chart col-10" *ngIf="wishlistTopBooks.length">
+    <app-pie-chart
+      [topBooks]="wishlistTopBooks"
+      [chartText]="'Popular Books According to Wishlists'"
+    ></app-pie-chart>
   </div>
-  <div class="pie-chart col-10">
-    <highcharts-chart
-      [Highcharts]="Highcharts"
-      [options]="chartOptionsShopping"
-      style="width: 800px; height: 450px; display: block; margin: 50px auto"
-      *ngIf="shoppingCartTopBooks.length"
-    ></highcharts-chart>
+  <div class="pie-chart col-10" *ngIf="shoppingCartTopBooks.length">
+    <app-pie-chart
+      [topBooks]="shoppingCartTopBooks"
+      [chartText]="'Popular Books According to Shopping-lists'"
+    ></app-pie-chart>
   </div>
-  <div class="pie-chart col-10">
-    <highcharts-chart
-      [Highcharts]="Highcharts"
-      [options]="chartOptionsRead"
-      style="width: 800px; height: 450px; display: block; margin: 50px auto"
-      *ngIf="booksReadTopBooks.length"
-    ></highcharts-chart>
+  <div class="pie-chart col-10" *ngIf="booksReadTopBooks.length">
+    <app-pie-chart
+      [topBooks]="booksReadTopBooks"
+      [chartText]="'Popular Books According to Books Read'"
+    ></app-pie-chart>
   </div>
   <div class="list col-10 mt-5 p-5" *ngIf="wishlistTopUsers">
     <h2 class="mb-3">Top 5 Users (Wishlists)</h2>
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Name</th>
-          <th scope="col">Surname</th>
-          <th scope="col">Email</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of wishlistTopUsers">
-          <th scope="row">{{ wishlistTopUsers.indexOf(user) + 1 }}</th>
-          <td>{{user.name}}</td>
-          <td>{{user.surname}}</td>
-          <td>{{user.email}}</td>
-        </tr>
-      </tbody>
-    </table>
+    <app-table [topUsers]="wishlistTopUsers"></app-table>
   </div>
   <div class="list col-10 mt-5 p-5" *ngIf="shoppingCartTopUsers">
     <h2 class="mb-3">Top 5 Users (Shopping-list)</h2>
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Name</th>
-          <th scope="col">Surname</th>
-          <th scope="col">Email</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of shoppingCartTopUsers">
-          <th scope="row">{{shoppingCartTopUsers.indexOf(user) + 1 }}</th>
-          <td>{{user.name}}</td>
-          <td>{{user.surname}}</td>
-          <td>{{user.email}}</td>
-        </tr>
-      </tbody>
-    </table>
+    <app-table [topUsers]="shoppingCartTopUsers"></app-table>
   </div>
   <div class="list col-10 mt-5 p-5" *ngIf="booksReadTopUsers">
     <h2 class="mb-3">Top 5 Users (Books Read)</h2>
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Name</th>
-          <th scope="col">Surname</th>
-          <th scope="col">Email</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of booksReadTopUsers">
-          <th scope="row">{{ booksReadTopUsers.indexOf(user) + 1 }}</th>
-          <td>{{user.name}}</td>
-          <td>{{user.surname}}</td>
-          <td>{{user.email}}</td>
-        </tr>
-      </tbody>
-    </table>
+    <app-table [topUsers]="booksReadTopUsers"></app-table>
   </div>
 </div>

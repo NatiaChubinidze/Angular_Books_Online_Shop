@@ -60,9 +60,11 @@ export class NavigationComponent implements OnInit {
         const myProfile = data.filter(
           (profile) => profile.userUID === this._firebaseAuth.userUID
         )[0];
+        console.log(myProfile);
         if (myProfile) {
           console.log("profile exists");
           if(myProfile.profilePicture){
+            console.log(myProfile.profilePicture);
             this.profilePictureURL=myProfile.profilePicture;
           }
           if(myProfile.name){
@@ -70,16 +72,18 @@ export class NavigationComponent implements OnInit {
             this.displayName=myProfile.name;
           }
         } 
-         if(firebase.auth().currentUser && (this.displayName==='' || this.profilePictureURL==='')){
+         if(firebase.auth().currentUser && this.displayName===''){
           console.log("firebase user exists");
           if(firebase.auth().currentUser.displayName){
             console.log("firebase displayname exists");
             this.displayName=firebase.auth().currentUser.displayName.split(' ')[0];
           }
+          if(firebase.auth().currentUser && this.profilePictureURL===''){
           if(firebase.auth().currentUser.photoURL){
             this.profilePictureURL=firebase.auth().currentUser.photoURL;
           }
         } 
+      }
         if(this.profilePictureURL===''){
           console.log("default values");
           this.profilePictureURL="../../assets/images/user.png";
