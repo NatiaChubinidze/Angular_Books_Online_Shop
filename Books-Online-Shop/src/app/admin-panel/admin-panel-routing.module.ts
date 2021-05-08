@@ -54,7 +54,7 @@ const routes: Routes = [{
     component: BooksSoldComponent,
   },
   {
-    path: 'books-read',
+    path: 'books-reading-list',
     component: AllBooksReadComponent,
   },
   

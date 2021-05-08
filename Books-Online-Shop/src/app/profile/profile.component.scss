@@ -2,8 +2,6 @@
   padding-top: 100px;
   width: 100%;
   height: 700px;
-  // background-color:rgba(207, 200, 209, 0.575);
-  // background-color:rgba(227, 222, 228, 0.274);
 }
 
 input[disabled]{
@@ -20,7 +18,6 @@ input[disabled]{
 }
 .profile-img img {
   width: 100%;
-  // height: 100%;
   object-fit:cover;
 }
 .profile-img .file {
@@ -67,7 +64,7 @@ label {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height:440px;
+  height:445px;
   .save-password{
     justify-self: center;
     background-color:rgb(200, 196, 202);
@@ -75,6 +72,10 @@ label {
   }
   .save-password:hover{
     background-color: #c4bfc9;
+  }
+  .save-password:disabled:hover{
+    background-color:rgb(200, 196, 202);
+    cursor:default;
   }
   button {
     width: 92px;

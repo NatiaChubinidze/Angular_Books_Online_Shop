@@ -60,7 +60,7 @@ export class BooksSearchService {
     getPopularBooks(category:string){
       return this.http
     .get<IBooks[]>(
-      `${this._BASE_URL}/volumes?q=subject:${category}&sortBy=relevance&maxResults=4`
+      `${this._BASE_URL}/volumes?q=subject:${category}&sortBy=relevance&maxResults=8`
     )
     .pipe(tap((data) => {}, catchError(this.handleError)));
     }
