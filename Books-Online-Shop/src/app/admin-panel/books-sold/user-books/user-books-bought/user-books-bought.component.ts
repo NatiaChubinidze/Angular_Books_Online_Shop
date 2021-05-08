@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/admin-panel/shared/services/admin.service';
 import { IFirebaseBook } from 'src/app/shared/interfaces/firebase-book.interface';
+import { IUser } from 'src/app/shared/interfaces/user.interface';
 
 @Component({
   selector: 'app-user-books-bought',
@@ -13,12 +14,12 @@ export class UserBooksBoughtComponent implements OnInit {
   private _searchAuthor: string;
   books: IFirebaseBook[] = [];
   filteredBooks: IFirebaseBook[] = [];
-
+  activeUser:IUser;
 
   constructor(
     private _adminService:AdminService
   ) {
-    
+    this.activeUser=this._adminService.activeUser;
   }
 
   get searchTitle(): string {

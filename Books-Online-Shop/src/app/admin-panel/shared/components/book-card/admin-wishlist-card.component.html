@@ -5,22 +5,22 @@
   <div class="book-info">
     <div class="info">
       <h6>{{ book?.title }}</h6>
-      <p class="author" *ngIf="book?.author">by {{ book?.author }}</p>
+      <p class="author" *ngIf="book.author">by {{ book?.author }}</p>
     </div>
     <div class="d-flex justify-content-between icons">
       <i
         class="far fa-times-circle fa-lg"
-        *ngIf="book?.price.toLowerCase() === 'not_for_sale'"
+        *ngIf="book.price.toLowerCase() === 'not_for_sale'"
       ></i>
       <p
         class="pricing"
         *ngIf="
-          book?.price.toLowerCase() === 'for_sale'
+          book.price.toLowerCase() === 'for_sale'
         "
       >
-        {{ book?.priceAmount }}$
+        {{ book.priceAmount }} $
       </p>
-      <div class="div-free" *ngIf="book?.price.toLowerCase() === 'free'">
+      <div class="div-free" *ngIf="book.price.toLowerCase() === 'free'">
         <p class="free">Free</p>
       </div>
     </div>

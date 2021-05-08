@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IFirebaseBook } from 'src/app/shared/interfaces/firebase-book.interface';
+import { IUser } from 'src/app/shared/interfaces/user.interface';
 import { FirebaseAuthService } from 'src/app/shared/services/firebase-auth/firebase-auth.service';
 import { FireBaseCrudService } from 'src/app/shared/services/firebase-crud/firebase-crud.service';
 import { AdminService } from '../../shared/services/admin.service';
@@ -15,12 +16,12 @@ export class WishlistsComponent implements OnInit {
   private _searchAuthor: string;
   books: IFirebaseBook[] = [];
   filteredBooks: IFirebaseBook[] = [];
-
+  activeUser:IUser;
 
   constructor(
     private _adminService:AdminService
   ) {
-    
+    this.activeUser=this._adminService.activeUser;
   }
 
   get searchTitle(): string {
