@@ -7,14 +7,12 @@
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 5px;
-  // width: 95%;
   width:100%;
   margin: 0 auto;
 }
 
 .categories {
   min-height: 300px;
-  // width: 95%;
   width: 100%;
   margin: 0 auto;
   background-color: #eee8f1;
@@ -50,14 +48,16 @@
 }
 
 .shop-online {
-  width: 95%;
-  margin: 0 auto;
+  width: 100%;
+  margin-top:7%;
   height: 300px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-
+h3.best-selling-books{
+  font-family:cursive;
+}
 .picture {
   width: 25%;
   img {
@@ -68,6 +68,9 @@
 .shop-now-btn {
   width: 60%;
   padding-top: 50px;
+  p{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
 }
 
 .recommended-books {
@@ -83,15 +86,9 @@
 .book-card{
   width:21%;
   height:300px;
-  // transition: transform .8s;
-  // cursor:pointer;
+  margin-bottom:60px;
 }
-// .book-card:hover{
-//   -ms-transform:scale(1.1);
-//   -webkit-transform:scale(1.1);
-//   transform:scale(1.1);
-//   opacity:0.9;
-// }
+
 
 @media only screen and (max-width: 575px) { 
  .categories-list{

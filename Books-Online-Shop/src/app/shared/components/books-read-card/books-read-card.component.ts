@@ -9,20 +9,17 @@ import { IFirebaseBook } from '../../interfaces/firebase-book.interface';
 export class BooksReadCardComponent implements OnInit {
   @Input() book: IFirebaseBook;
   @Output() deleteBook = new EventEmitter();
-  // @Output() shoppingEvent = new EventEmitter();
+
   imgUrl: string;
   constructor() {}
 
   ngOnInit(): void {
     this.imgUrl = this.book?.thumbnail;
+    console.log(this.book);
   }
 
   deleteFromReadBooks(){
     this.deleteBook.emit(this.book);
   }
-
-  // addToCart(){
-  //   this.shoppingEvent.emit(this.book);
-  // }
 
 }
