@@ -1,24 +1,34 @@
 .main {
+  width:100%;
     height: 450px;
     display: flex;
     justify-content: flex-end;
-    padding: 40px;
   }
 
 
  .box{
-   height:250px;
+   height:320px;
    align-items: flex-end;
    display:flex;
    justify-content: space-between;
-   margin-right:7%;
+   padding:40px;
  }
 
  .option{
-   padding:10px 20px;
+   padding:10px;
    background-color:rgb(180, 167, 167);
    color:white;
    border-radius: 10px;
+   width:30%;
+   overflow: hidden;
+   text-align: center;
+   h4{
+    text-overflow: ellipsis;
+    overflow:hidden !important;
+    white-space: nowrap;
+    margin:0px;
+    line-height: 40px;
+   }
  }
  .option:hover{
    background-color: rgb(131, 58, 131);

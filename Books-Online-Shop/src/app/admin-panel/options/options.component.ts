@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from '../shared/services/admin.service';
 
 @Component({
   selector: 'app-options',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OptionsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public adminService:AdminService) { }
 
   ngOnInit(): void {
   }
