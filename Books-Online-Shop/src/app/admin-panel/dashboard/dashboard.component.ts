@@ -20,10 +20,6 @@ export class DashboardComponent implements OnInit {
   shoppingCartTopBooks: ITopBooks[] = [];
   booksReadTopBooks: ITopBooks[] = [];
 
-  chartOptions = {};
-  chartOptionsShopping={};
-  chartOptionsRead={};
-
   Highcharts = Highcharts;
 
   constructor(private _adminService: AdminService) {}
@@ -33,42 +29,46 @@ export class DashboardComponent implements OnInit {
     this._adminService.getUsers();
     this._adminService.getShoppingLists();
     this._adminService.getBooksRead();
-   
-    let wishlistDistincValues: IFirebaseBook[] = [];
-    let shoppinglistDistincValues: IFirebaseBook[] = [];
-    let booksReadDistincValues: IFirebaseBook[] = [];
+
+    let wishlistDistinctValues: IFirebaseBook[] = [];
+    let shoppinglistDistinctValues: IFirebaseBook[] = [];
+    let booksReadDistinctValues: IFirebaseBook[] = [];
 
     setTimeout(() => {
-      this.getDistinctValues(this._adminService.wishlist, wishlistDistincValues);
-    this.getDistinctValues(
-      this._adminService.shoppingList,
-      shoppinglistDistincValues
-    );
-    this.getDistinctValues(
-      this._adminService.readBooksList,
-      booksReadDistincValues
-    );
+      this.getDistinctValues(
+        this._adminService.wishlist,
+        wishlistDistinctValues
+      );
+      this.getDistinctValues(
+        this._adminService.shoppingList,
+        shoppinglistDistinctValues
+      );
+      this.getDistinctValues(
+        this._adminService.readBooksList,
+        booksReadDistinctValues
+      );
 
-    this.wishlistTopBooks=this.getBooksCount(
-      this._adminService.wishlist,
-      wishlistDistincValues
-    );
-    this.shoppingCartTopBooks=this.getBooksCount(
-      this._adminService.shoppingList,
-      shoppinglistDistincValues
-    );
-    this.booksReadTopBooks=this.getBooksCount(
-      this._adminService.readBooksList,
-      booksReadDistincValues
-    );
+      this.wishlistTopBooks = this.getBooksCount(
+        this._adminService.wishlist,
+        wishlistDistinctValues
+      );
+      this.shoppingCartTopBooks = this.getBooksCount(
+        this._adminService.shoppingList,
+        shoppinglistDistinctValues
+      );
+      this.booksReadTopBooks = this.getBooksCount(
+        this._adminService.readBooksList,
+        booksReadDistinctValues
+      );
 
-    this.wishlistTopUsers= this.getTopUsers(this._adminService.wishlist);
-    this.shoppingCartTopUsers=this.getTopUsers(this._adminService.shoppingList);
-    this.booksReadTopUsers=this.getTopUsers(this._adminService.readBooksList);
+      this.wishlistTopUsers = this.getTopUsers(this._adminService.wishlist);
+      this.shoppingCartTopUsers = this.getTopUsers(
+        this._adminService.shoppingList
+      );
+      this.booksReadTopUsers = this.getTopUsers(
+        this._adminService.readBooksList
+      );
     }, 2000);
-    
-  
-   
   }
 
   getDistinctValues(
@@ -97,15 +97,17 @@ export class DashboardComponent implements OnInit {
     array: Array<IFirebaseBook>,
     distinctArray: Array<IFirebaseBook>
   ) {
-    let counter = 0;
     let numberedArray: ITopBooks[] = [];
-    let arrayToAssign:ITopBooks[]=[];
+    let arrayToAssign: ITopBooks[] = [];
     distinctArray.forEach((item) => {
+      let counter = 0;
       array.forEach((book) => {
         if (item.title === book.title) {
           counter++;
         }
       });
+      console.log("books count", counter);
+      console.log("array length", array.length);
       let chartBook: ITopBooks = {
         name: item.title,
         y: counter / array.length,
@@ -125,32 +127,31 @@ export class DashboardComponent implements OnInit {
     return arrayToAssign;
   }
 
-  getTopUsers(searchArray:Array<IFirebaseBook>){
-    let counter=0;
-    let topUsersArray:ITopUsers[]=[];
-    this._adminService.usersList.forEach(user=>{
-      searchArray.forEach(item=>{
-        if(user.userUID===item.userUID){
+  getTopUsers(searchArray: Array<IFirebaseBook>) {
+    let topUsersArray: ITopUsers[] = [];
+    this._adminService.usersList.forEach((user) => {
+      let counter = 0;
+      searchArray.forEach((item) => {
+        if (user.userUID === item.userUID) {
           counter++;
         }
       });
-      let topUser:ITopUsers={
-        userUID:user.userUID,
-        name:user.name,
-        surname:user.surname,
-        email:user.email,
-        count:counter,
+      let topUser: ITopUsers = {
+        userUID: user.userUID,
+        name: user.name,
+        surname: user.surname,
+        email: user.email,
+        count: counter,
       };
       topUsersArray.push(topUser);
     });
-    topUsersArray.sort((a,b)=>b.count-a.count);
-    let topUsers:ITopUsers[]=[];
-    if(topUsersArray.length>5){
-      topUsers=topUsersArray.slice(0,5);
-    } else{
-      topUsers=topUsersArray.slice();
+    topUsersArray.sort((a, b) => b.count - a.count);
+    let topUsers: ITopUsers[] = [];
+    if (topUsersArray.length > 5) {
+      topUsers = topUsersArray.slice(0, 5);
+    } else {
+      topUsers = topUsersArray.slice();
     }
     return topUsers;
   }
-
 }
