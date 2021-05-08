@@ -13,12 +13,13 @@ import { UserBooksBoughtComponent } from './books-sold/user-books/user-books-bou
 import { AllBooksReadComponent } from './books-read/books-read/books-read.component';
 
 const routes: Routes = [{
-  path: 'admin-panel',
+  path: '',
   component: AdminPanelComponent,
   children:[
     {
       path: '',
-      component: DashboardComponent,
+      redirectTo:'dashboard',
+      pathMatch:'full'
     },
     {
       path: 'dashboard',

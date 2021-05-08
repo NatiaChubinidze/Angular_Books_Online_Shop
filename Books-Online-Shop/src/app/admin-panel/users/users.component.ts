@@ -18,7 +18,7 @@ export class UsersComponent implements OnInit {
   }
   navigateToOptions(user:IUser){
     this._adminService.activeUser=user;
-    this._router.navigate(['/admin-panel/users/options']);
+    this._router.navigate(['/users/options']);
 
   }
 

@@ -22,7 +22,7 @@ import { ShoppingCartRoutingModule } from './shopping-cart/shopping-cart-routing
 import { ProfileModule } from './profile/profile.module';
 import { ProfileRoutingModule } from './profile/profile-routing.module';
 import { AdminPanelModule } from './admin-panel/admin-panel.module';
-import { AdminPanelRoutingModule } from './admin-panel/admin-panel-routing.module';
+
 import { FooterComponent } from './footer/footer.component';
 import {firebaseConfig} from '../../firebaseConfig';
 import { BooksReadModule } from './books-read/books-read.module';
@@ -55,7 +55,6 @@ import { BooksReadRoutingModule } from './books-read/books-read-routing.module';
     ProfileModule,
     ProfileRoutingModule,
     AdminPanelModule,
-    AdminPanelRoutingModule,
     BooksReadModule,
     BooksReadRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),

@@ -16,6 +16,7 @@ import { UserBooksReadComponent } from './books-read/user-books/user-books-read/
 import { UserBooksBoughtComponent } from './books-sold/user-books/user-books-bought/user-books-bought.component';
 import { AllBooksReadComponent } from './books-read/books-read/books-read.component';
 import { BooksSoldComponent } from './books-sold/books-sold/books-sold.component';
+import { AdminPanelRoutingModule } from './admin-panel-routing.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,6 @@ import { BooksSoldComponent } from './books-sold/books-sold/books-sold.component
     UserBooksReadComponent,
     UserBooksBoughtComponent,
   ],
-  imports: [CommonModule, HighchartsChartModule, RouterModule,FormsModule, NgxPaginationModule],
+  imports: [CommonModule, HighchartsChartModule, RouterModule,FormsModule, NgxPaginationModule,AdminPanelRoutingModule],
 })
 export class AdminPanelModule {}
