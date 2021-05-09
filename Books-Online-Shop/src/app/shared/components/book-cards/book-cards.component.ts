@@ -29,7 +29,9 @@ export class BookCardsComponent implements OnInit {
   ngOnInit(): void {
     this.imgUrl = this.book?.volumeInfo.imageLinks?.thumbnail;
     this._firebaseAuthService.currentUser$.subscribe((data) => {
+      if(data){
       this._firebaseAuthService.userUID = data.uid;
+      }
     });
     this._firebaseCrudService
       .getCollection('wishlist')

@@ -31,6 +31,8 @@ export class SignUpComponent implements OnInit {
 
   constructor(public fireBaseAuthService: FirebaseAuthService,
     private formBuilder: FormBuilder) {
+      this.fireBaseAuthService.errorMessage=null;
+    this.fireBaseAuthService.infoMessage=null;
       this.email = new FormControl(
         '',
         Validators.compose([

@@ -19,7 +19,7 @@ export class FirebaseAuthService {
   isSignedInWithEmail:boolean=false;
   userUID:string;
   errorMessage: string | null;
-  infoMessage: string;
+  infoMessage: string | null;
   constructor(
     private _router: Router,
     private auth: AngularFireAuth,
@@ -91,7 +91,7 @@ export class FirebaseAuthService {
             this._authService.setTokenValidTime();
           }
           if(this.isAdmin){
-            this._router.navigate(['/admin-panel']);
+            this._router.navigate(['/admin']);
           } else{
           this._router.navigate(['/home']);
           }
@@ -181,7 +181,7 @@ export class FirebaseAuthService {
       .getCollection('users')
       .subscribe((users: IUser[]) => {
         if (users) {
-          if (users.length > 0) {
+          if (users.length > 0 && firebase.auth().currentUser) {
             users.forEach((user) => {
               if (user.userUID === firebase.auth().currentUser.uid) {
                 console.log(firebase.auth().currentUser);

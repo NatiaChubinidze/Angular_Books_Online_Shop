@@ -30,6 +30,8 @@ export class SignInComponent implements OnInit {
     public fireBaseAuthService: FirebaseAuthService,
     private _router: Router
   ) {
+    this.fireBaseAuthService.errorMessage=null;
+    this.fireBaseAuthService.infoMessage=null;
     this.email = new FormControl(
       '',
       Validators.compose([
@@ -88,7 +90,16 @@ export class SignInComponent implements OnInit {
       localStorage.getItem(TOKEN_KEY) &&
       localStorage.getItem(TOKEN_EXP_KEY)
     ) {
-      this._router.navigate(['/home']);
+      this.fireBaseAuthService.currentUser$.subscribe(data=>{
+        if(data){
+          if(data.email==='admin@gmail.com'){
+            this._router.navigate(['/admin']);
+          } else {
+            this._router.navigate(['/home']);
+          }
+        }
+      })
+    
     }
   }
 }
