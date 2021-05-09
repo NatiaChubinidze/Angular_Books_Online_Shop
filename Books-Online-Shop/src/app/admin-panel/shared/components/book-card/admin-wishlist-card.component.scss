@@ -12,6 +12,10 @@
       border-radius: 5px;
       overflow: hidden;
       background-color: rgb(219, 211, 211);
+      img{
+        width:140px;
+        min-height:190px;
+      }
     }
     
     .book-info {
@@ -40,6 +44,7 @@
         font-weight: 500;
         color: rgb(0, 0, 0);
         font-size: 20px;
+        margin:0px;
       }
       .btn {
         height: fit-content;

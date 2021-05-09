@@ -31,7 +31,9 @@ export class ShoppingCartComponent implements OnInit {
         if (books) {
           this.totalPrice=0;
           this._firebaseAuthService.currentUser$.subscribe((data) => {
+            if(data){
             this._firebaseAuthService.userUID = data.uid;
+            }
             this.shoppingList = books.filter((item) => {
               return item.userUID === this._firebaseAuthService.userUID && item.ordered!=="ordered";
             });
