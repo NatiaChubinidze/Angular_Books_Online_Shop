@@ -12,6 +12,8 @@ export class ForgotPasswordComponent implements OnInit {
   forgotPasswordForm: FormGroup;
   buttonHover: boolean;
   constructor(public firebaseAuthService: FirebaseAuthService) {
+    this.firebaseAuthService.errorMessage=null;
+    this.firebaseAuthService.infoMessage=null;
     this.email = new FormControl(
       '',
       Validators.compose([

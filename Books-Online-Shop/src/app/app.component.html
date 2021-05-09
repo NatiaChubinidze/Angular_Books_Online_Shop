@@ -1,4 +1,4 @@
-<app-navigation *ngIf="(firebaseAuth.currentUser$ | async)?.uid && !firebaseAuth.isAdmin && !scrolled"
+<app-navigation *ngIf="(firebaseAuth.currentUser$ | async)?.uid && (firebaseAuth.currentUser$ | async)?.email!=='admin@gmail.com' && !scrolled"
 [fadeSteps]="fadeSteps"></app-navigation>
 <router-outlet></router-outlet>
-<app-footer *ngIf="(firebaseAuth.currentUser$ | async)?.uid && !firebaseAuth.isAdmin"></app-footer>
+<app-footer *ngIf="(firebaseAuth.currentUser$ | async)?.uid && (firebaseAuth.currentUser$ | async)?.email!=='admin@gmail.com'"></app-footer>
