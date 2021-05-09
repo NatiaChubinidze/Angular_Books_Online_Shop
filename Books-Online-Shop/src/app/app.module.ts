@@ -27,6 +27,8 @@ import { FooterComponent } from './footer/footer.component';
 import {firebaseConfig} from '../../firebaseConfig';
 import { BooksReadModule } from './books-read/books-read.module';
 import { BooksReadRoutingModule } from './books-read/books-read-routing.module';
+import { Page404Module } from './shared/components/page-404/page404.module';
+import { Page404RoutingModule } from './shared/components/page-404/page404-routing.module';
 
 
 
@@ -57,6 +59,8 @@ import { BooksReadRoutingModule } from './books-read/books-read-routing.module';
     AdminPanelModule,
     BooksReadModule,
     BooksReadRoutingModule,
+    Page404Module,
+    Page404RoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     NgxAuthFirebaseUIModule.forRoot({
       apiKey: 'AIzaSyBQ5gtL70XQ48con8rRedbKzX2b13fWCuI',
