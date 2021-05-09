@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IFirebaseBook } from '../shared/interfaces/firebase-book.interface';
+import { FirebaseAuthService } from '../shared/services/firebase-auth/firebase-auth.service';
 import { FireBaseCrudService } from '../shared/services/firebase-crud/firebase-crud.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class BooksReadComponent implements OnInit {
   private _searchAuthor: string;
   books:IFirebaseBook[];
   filteredBooks: IFirebaseBook[]=[];
-  constructor(private _firebaseCrudService:FireBaseCrudService) { }
+  constructor(private _firebaseCrudService:FireBaseCrudService, private _firebaseAuthService: FirebaseAuthService) { }
 
   get searchTitle(): string {
     return this._searchTitle;
@@ -46,8 +47,31 @@ export class BooksReadComponent implements OnInit {
     }
   }
 
-  addToCart(book:IFirebaseBook){
-    this._firebaseCrudService.saveItem("shopping-cart",book);
+  addToCart(book: IFirebaseBook) {
+    let bookToAdd: IFirebaseBook;
+    if(book.priceAmount){
+    bookToAdd= {
+      title: book.title,
+      author: book.author,
+      price: book.price,
+      priceAmount:book.priceAmount,
+      thumbnail: book.thumbnail,
+      subject: book.subject,
+      quantity: book.quantity,
+      userUID: this._firebaseAuthService.userUID,
+    };
+  } else {
+    bookToAdd={
+      title: book.title,
+      author: book.author,
+      price: book.price,
+      thumbnail: book.thumbnail,
+      subject: book.subject,
+      quantity: book.quantity,
+      userUID: this._firebaseAuthService.userUID,
+    }
+  }
+    this._firebaseCrudService.saveItem('shopping-cart', bookToAdd);
   }
   deleteFromReadBooks(book:IFirebaseBook){
     console.log("deleting");
@@ -58,9 +82,14 @@ export class BooksReadComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this._firebaseAuthService.currentUser$.subscribe((data) => {
+      this._firebaseAuthService.userUID = data.uid;
+    });
     this._firebaseCrudService.getCollection("books-read").subscribe((books:any)=>{
       if(books){
-        this.books=this._firebaseCrudService.wishlist=books;
+        this.books=this.filteredBooks=this._firebaseCrudService.booksRead=books.filter(
+          (item) => item.userUID === this._firebaseAuthService.userUID
+        );
         console.log(this.books);
       }
     });

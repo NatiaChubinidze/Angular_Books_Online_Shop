@@ -1,5 +1,4 @@
 .box {
-  // background-color: rgba(207, 200, 209, 0.575);
   padding: 100px 30px 30px 30px;
   min-height: 600px;
   width: 100%;
@@ -59,20 +58,27 @@
   }
   .tooltipText{
     visibility: hidden;
-    width: 150px;
+    width: 140px;
     background-color: rgb(189, 144, 219);
     color: #fff;
     text-align: center;
     border-radius: 6px;
-    padding: 7px 5px;
-    font-size:13px;
+    padding: 5px;
+    font-size:12px;
     position: absolute;
     z-index: 1;
-    top: 15px;
+    top: 10px;
     right: 105%;
   }
 //////////////////////////////
-
+.free{
+  background: -webkit-linear-gradient(rgb(192, 164, 199), rgb(180, 11, 110));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+   font-weight:500;
+   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 .flex-cont {
   display: flex;
   justify-content: space-between;

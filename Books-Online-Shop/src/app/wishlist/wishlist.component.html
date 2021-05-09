@@ -16,7 +16,7 @@
         placeholder="Search By Book"
         [(ngModel)]="searchTitle"
       />
-      <img class="search-icon-book" src="../../assets/images/research-and-development (1).png">
+      <img class="search-icon" src="../../assets/images/research-and-development (1).png">
     </div>
     <div class="col-3 search-div d-flex">
       <input
@@ -27,7 +27,7 @@
         placeholder="Search By Author"
         [(ngModel)]="searchAuthor"
       />
-      <img class="search-icon-author" src="../../assets/images/research-and-development (1).png">
+      <img class="search-icon" src="../../assets/images/research-and-development (1).png">
     </div>
     <div class="alert alert-danger p-2 mt-3" *ngIf="books?.length>wishist_items_max_number || books?.length===wishist_items_max_number">
       <p class="m-0">Wishlist items limit ({{wishist_items_max_number}}) has been reached. You will not be able to add more books until you remove some of the existing items from the list</p>
@@ -39,7 +39,7 @@
     <div class="flex-container">
       <div class="book-card" *ngFor="let book of filteredBooks | paginate: { itemsPerPage: 10, currentPage: p }">
         <app-wishlist-card [book]="book" (readEvent)="addToRead($event)" 
-        (deleteEvent)="deleteFromWishlist($event)" [isInShoppingCart]="isInShoppingCart(book)" (shoppingEvent)="addToShoppingCart($event)"></app-wishlist-card>
+        (deleteEvent)="deleteFromWishlist($event)" [isInShoppingCart]="isInShoppingCart(book)" (shoppingEvent)="addToCart($event)"></app-wishlist-card>
       </div>
     </div>
     <div class="mt-5 pagination-container" *ngIf="filteredBooks.length>10">

@@ -57,7 +57,20 @@ export class WishlistComponent implements OnInit {
   }
 
   addToRead(book: IFirebaseBook) {
-    const bookToAdd: IFirebaseBook = {
+    let bookToAdd: IFirebaseBook;
+    if(book.priceAmount){
+    bookToAdd= {
+      title: book.title,
+      author: book.author,
+      price: book.price,
+      priceAmount:book.priceAmount,
+      thumbnail: book.thumbnail,
+      subject: book.subject,
+      quantity: book.quantity,
+      userUID: this._firebaseAuthService.userUID,
+    };
+  } else {
+    bookToAdd={
       title: book.title,
       author: book.author,
       price: book.price,
@@ -65,7 +78,8 @@ export class WishlistComponent implements OnInit {
       subject: book.subject,
       quantity: book.quantity,
       userUID: this._firebaseAuthService.userUID,
-    };
+    }
+  }
     this._firebaseCrudService.saveItem('books-read', bookToAdd);
     this._firebaseCrudService.deleteItem('wishlist', book.id);
     this.filteredBooks = this.filteredBooks.filter(
@@ -73,7 +87,20 @@ export class WishlistComponent implements OnInit {
     );
   }
   addToCart(book: IFirebaseBook) {
-    const bookToAdd: IFirebaseBook = {
+    let bookToAdd: IFirebaseBook;
+    if(book.priceAmount){
+    bookToAdd= {
+      title: book.title,
+      author: book.author,
+      price: book.price,
+      priceAmount:book.priceAmount,
+      thumbnail: book.thumbnail,
+      subject: book.subject,
+      quantity: book.quantity,
+      userUID: this._firebaseAuthService.userUID,
+    };
+  } else {
+    bookToAdd={
       title: book.title,
       author: book.author,
       price: book.price,
@@ -81,7 +108,8 @@ export class WishlistComponent implements OnInit {
       subject: book.subject,
       quantity: book.quantity,
       userUID: this._firebaseAuthService.userUID,
-    };
+    }
+  }
     this._firebaseCrudService.saveItem('shopping-cart', bookToAdd);
   }
 
