@@ -20,6 +20,10 @@
             border-radius: 5px;
             overflow:hidden;
             background-color:rgb(219, 211, 211);
+            img{
+                width:128px;
+                min-height:190px;
+            }
         }
         .img:hover{
             opacity:0.8;

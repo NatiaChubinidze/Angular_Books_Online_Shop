@@ -30,19 +30,23 @@
         </span></p>
       </div>
       <hr />
-      <h5>Buy Now</h5>
+      <h5 *ngIf="
+      bookService.activeBook.saleInfo?.saleability.toLowerCase() !==
+      'not_for_sale'
+    ">Buy Now</h5>
       <h5
         *ngIf="
           bookService.activeBook.saleInfo?.saleability.toLowerCase() ===
           'not_for_sale'
         "
       >
-        Not for Sale
+        Not For Sale
       </h5>
       <h5
         *ngIf="
           bookService.activeBook.saleInfo?.saleability.toLowerCase() === 'free'
         "
+        class="free"
       >
         Free
       </h5>
@@ -55,7 +59,10 @@
       >
         34.5$ <span class="secondary-text">USD</span>
       </h5>
-      <button type="button" class="btn btn-warning col-12 mt-3" (click)="addToCart()">Buy Now</button>
+      <button type="button" class="btn btn-warning col-12 mt-3" (click)="addToCart()" *ngIf="
+      bookService.activeBook.saleInfo?.saleability.toLowerCase() !==
+      'not_for_sale'
+    ">{{ bookService.activeBook.saleInfo?.saleability.toLowerCase() === 'free' ? 'Add to Cart' : 'Buy Now'}}</button>
     </div>
   </div>
   <div class="container" *ngIf="bookService.activeBook">
