@@ -58,22 +58,32 @@
               </span>
               <div class="dropdown-content">
                 <ul class="dropdown-menu">
-                  <li [routerLink]="['/profile']">
+                  <li [routerLink]="['/profile']" [class.fadeStepOne]="fadeSteps===1" [class.fadeStepTwo]="fadeSteps===2" [class.fadeStepThree]="fadeSteps===3"
+                  [class.fadeStepFour]="fadeSteps===4" [class.fadeStepFive]="fadeSteps===5" [class.fadeStepSix]="fadeSteps===6">
                     Profile
                   </li>
-                  <li class="toggleVisible">
+                  <li class="toggleVisible" [routerLink]="['/home']" [class.fadeStepOne]="fadeSteps===1" [class.fadeStepTwo]="fadeSteps===2" [class.fadeStepThree]="fadeSteps===3"
+                  [class.fadeStepFour]="fadeSteps===4" [class.fadeStepFive]="fadeSteps===5" [class.fadeStepSix]="fadeSteps===6">
                     Home
                   </li>
-                  <li class="toggleVisible">
+                  <li class="toggleVisible" [routerLink]="['/book-search']"[class.fadeStepOne]="fadeSteps===1" [class.fadeStepTwo]="fadeSteps===2" [class.fadeStepThree]="fadeSteps===3"
+                  [class.fadeStepFour]="fadeSteps===4" [class.fadeStepFive]="fadeSteps===5" [class.fadeStepSix]="fadeSteps===6">
                     Books
                   </li>
-                  <li class="toggleVisible shopping">
+                  <li class="toggleVisible shopping" [routerLink]="['/shopping-cart']" [class.fadeStepOne]="fadeSteps===1" [class.fadeStepTwo]="fadeSteps===2" [class.fadeStepThree]="fadeSteps===3"
+                  [class.fadeStepFour]="fadeSteps===4" [class.fadeStepFive]="fadeSteps===5" [class.fadeStepSix]="fadeSteps===6">
                     Shopping-Cart
                   </li>
-                  <li class="toggleVisible">
+                  <li class="toggleVisible" [routerLink]="['/wishlist']" [class.fadeStepOne]="fadeSteps===1" [class.fadeStepTwo]="fadeSteps===2" [class.fadeStepThree]="fadeSteps===3"
+                  [class.fadeStepFour]="fadeSteps===4" [class.fadeStepFive]="fadeSteps===5" [class.fadeStepSix]="fadeSteps===6">
                     Wishlist
                   </li>
-                  <li (click)="signOut()">
+                  <li class="toggleVisible" [routerLink]="['/books-read']" [class.fadeStepOne]="fadeSteps===1" [class.fadeStepTwo]="fadeSteps===2" [class.fadeStepThree]="fadeSteps===3"
+                  [class.fadeStepFour]="fadeSteps===4" [class.fadeStepFive]="fadeSteps===5" [class.fadeStepSix]="fadeSteps===6">
+                    Books Read
+                  </li>
+                  <li (click)="signOut()" [class.fadeStepOne]="fadeSteps===1" [class.fadeStepTwo]="fadeSteps===2" [class.fadeStepThree]="fadeSteps===3"
+                  [class.fadeStepFour]="fadeSteps===4" [class.fadeStepFive]="fadeSteps===5" [class.fadeStepSix]="fadeSteps===6">
                     Sign Out
                   </li>
                 </ul>

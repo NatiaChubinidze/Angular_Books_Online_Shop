@@ -43,19 +43,19 @@ header {
   height: 80px;
   transition: background-color 1s;
 }
-header.fadeStepOne {
+header.fadeStepOne, .dropdown-menu li.fadeStepOne {
   background-color: #e7e2e6f5;
 }
-header.fadeStepTwo {
+header.fadeStepTwo,.dropdown-menu li.fadeStepTwo {
   background-color: #e7e2e6e3;
 }
-header.fadeStepThree {
+header.fadeStepThree, .dropdown-menu li.fadeStepThree {
   background-color: #e7e2e6ce;
 }
-header.fadeStepFour {
+header.fadeStepFour, .dropdown-menu li.fadeStepFour {
   background-color: #e7e2e6a6;
 }
-header.fadeStepFive {
+header.fadeStepFive, .dropdown-menu li.fadeStepFive {
   background-color: #e7e2e654;
 }
 header.fadeStepSix{
