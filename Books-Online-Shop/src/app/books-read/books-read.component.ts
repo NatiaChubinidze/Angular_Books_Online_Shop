@@ -83,7 +83,9 @@ export class BooksReadComponent implements OnInit {
 
   ngOnInit(): void {
     this._firebaseAuthService.currentUser$.subscribe((data) => {
+      if(data){
       this._firebaseAuthService.userUID = data.uid;
+      }
     });
     this._firebaseCrudService.getCollection("books-read").subscribe((books:any)=>{
       if(books){

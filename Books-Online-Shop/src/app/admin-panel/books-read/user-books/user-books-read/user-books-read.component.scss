@@ -2,10 +2,9 @@
   height: 850px;
   display: flex;
   justify-content: flex-end;
+  overflow: hidden;
 }
   .box {
-    // background-color: rgba(207, 200, 209, 0.575);
-    // background-color: rgba(230, 215, 215, 0.342);
     padding: 10px;
     min-height: 700px;
     width: 80%;
@@ -65,11 +64,11 @@
     color: rgb(104, 86, 86);
   }
   .background-line {
-    left: 0px;
-    position: absolute;
-    top: 600px;
-    height: 100px;
-    width: 100%;
+    right: 0px;
+  position: absolute;
+  top: 500px;
+  height: 100px;
+  width: 175vh;
     transform: skewY(-40deg);
     border-radius: 10%;
     background-color: rgba(139, 38, 114, 0.466);
@@ -83,7 +82,7 @@
     border-bottom-right-radius: 50% 50%;
     border-top-left-radius: 50% 50%;
     border-top-right-radius: 50% 50%;
-    z-index: -1;
+    z-index: -2;
     position: absolute;
     bottom: -100px;
     left: -30px;

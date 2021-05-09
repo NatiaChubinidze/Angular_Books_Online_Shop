@@ -175,6 +175,7 @@ export class FirebaseAuthService {
       });
   }
   saveUserToFirebase() {
+    if(firebase.auth().currentUser.email!=='admin@gmail.com'){
     console.log("save user to firebase");
     let isNewUser: boolean = true;
     this._firebaseCrudService
@@ -188,7 +189,12 @@ export class FirebaseAuthService {
                 isNewUser = false;
               }
             });
-            console.log("is new user?", isNewUser);
+            
+          }
+        }
+      });
+      setTimeout(() => {
+        console.log("is new user?", isNewUser);
             if (isNewUser) {
               console.log(firebase.auth().currentUser);
               let name: string ='';
@@ -219,8 +225,7 @@ export class FirebaseAuthService {
               console.log('saving');
               this._firebaseCrudService.saveItem('users', newUser);
             }
-          }
-        }
-      });
+      }, 2000);
   }
+}
 }
