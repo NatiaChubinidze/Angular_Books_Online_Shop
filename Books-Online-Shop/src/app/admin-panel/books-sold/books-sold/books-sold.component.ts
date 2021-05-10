@@ -57,8 +57,8 @@ export class BooksSoldComponent implements OnInit {
   ngOnInit(): void {
     let dublicatesRemovedArray:IFirebaseBook[]=[];
     if(this._adminService.shoppingList){
-    this._adminService.wishlist.forEach(item=>{
-      if(this._adminService.wishlist.indexOf(item)===0){
+    this._adminService.shoppingList.forEach(item=>{
+      if(this._adminService.shoppingList.indexOf(item)===0){
         dublicatesRemovedArray.push(item);
       } else {
         let isInArray:boolean=false;
