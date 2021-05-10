@@ -1,12 +1,12 @@
 <div class="box">
   <div class="top">
-    <div class="col-2">
+    <div class="col-2 app-title">
       <h5 class="ms-3 appName">BOOKSTORE ONLINE</h5>
     </div>
     <div class="search col-9">
       <input type="search" class="form-control" id="exampleInputEmail1" disabled>
     </div>
-    <button class="col-1" (click)="signOut()">Sign Out</button>
+    <button class="col-1 sign-out" (click)="signOut()">Sign Out</button>
   </div>
   <div class="sidebar col-2">
     <div class="dashboard mb-2 d-flex" [routerLink]="['dashboard']">

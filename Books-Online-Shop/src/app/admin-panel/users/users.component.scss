@@ -11,6 +11,21 @@
   }
 
   .users-cont{
-    margin-right:10%;
+    margin-right:7%;
     margin-top:25px;
+  }
+  td{
+    width:30%
+  }
+
+  @media only screen and (max-width: 750px) {
+   
+    h2{
+      font-size:13px;
+      margin-left:40px;
+    }
+    table{
+      font-size:11px;
+      margin-left:40px;
+    }
   }
