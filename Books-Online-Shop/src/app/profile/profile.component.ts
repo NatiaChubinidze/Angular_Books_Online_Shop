@@ -67,8 +67,9 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.firebaseAuthService.isSignedInWithEmail);
     this.firebaseAuthService.currentUser$.subscribe((data: any) => {
-      console.log(data);
+     if(data){
       this.profileInfo.userUID = this.firebaseAuthService.userUID = data.uid;
+     }
     });
     console.log(this.profileInfo);
     this._firebaseCrudService

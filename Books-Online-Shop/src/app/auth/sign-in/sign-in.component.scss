@@ -111,7 +111,8 @@ hr {
   font-size: 12px;
 }
 .errorText{
-  height:45px;
+  min-height:20px;
+  max-height:45px;
   margin:0px 0px 0px 40px;
 }
 // .errorText p{
@@ -125,7 +126,8 @@ hr {
   color:red;
 }
 .errorTextWrapper{
-  height:45px;
+  min-height:20px;
+  max-height:45px;
 }
 .form-check-label, .form-check-input, .wrapper{
   cursor:pointer;
@@ -148,10 +150,11 @@ hr {
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .box {
-    padding: 50px;
+    padding: 20px;
+    height:100%;
   }
   .auth {
-    padding: 50px;
+    padding: 20px;
     width: 100%;
     height: 90%;
   }

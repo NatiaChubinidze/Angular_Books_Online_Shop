@@ -16,7 +16,7 @@
         placeholder="Search By Book"
         [(ngModel)]="searchTitle"
       />
-      <img class="search-icon" src="../../assets/images/research-and-development (1).png">
+      <img class="search-icon-book" src="../../assets/images/research-and-development (1).png">
     </div>
     <div class="col-3 search-div d-flex">
       <input
@@ -27,7 +27,7 @@
         placeholder="Search By Author"
         [(ngModel)]="searchAuthor"
       />
-      <img class="search-icon" src="../../assets/images/research-and-development (1).png">
+      <img class="search-icon-author" src="../../assets/images/research-and-development (1).png">
     </div>
     <div class="alert alert-danger p-2 mt-3" *ngIf="books?.length>wishist_items_max_number || books?.length===wishist_items_max_number">
       <p class="m-0">Wishlist items limit ({{wishist_items_max_number}}) has been reached. You will not be able to add more books until you remove some of the existing items from the list</p>

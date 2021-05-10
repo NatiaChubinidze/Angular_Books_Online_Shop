@@ -1,148 +1,141 @@
-.card-dark{
-    width:100%;
-    height:100%;
-    background-color: #988ea2;
-    transform: rotate(3deg);
-    border-radius: 5px;
-    }
-    
-    .card-light{
-        width:100%;
-        height:100%;
-        background-color: rgb(255, 255, 255);
-        transform: rotate(-3deg);
-        border-radius: 5px;
-        position:relative;
-        .img{
-            position:relative;
-            width: 100%;
-            height: 160px;
-            border-radius: 5px;
-            overflow:hidden;
-            background-color:rgb(219, 211, 211);
-            img{
-                width:128px;
-                min-height:190px;
-            }
-        }
-        .img:hover{
-            opacity:0.8;
-            cursor:pointer;
-        }
-        .book-info{
-            z-index: 1;
-            background-color: rgba(235, 221, 221, 0.432);
-            border-radius:5px;
-            width:100%;
-            height:140px;
-            margin:0 auto;
-            overflow: hidden;
-            color:white;
-            padding:10px;
-            h6, .author{
-                color:black;
-                text-align: center;
-                margin-bottom:0px;
-                height:30px;
-                text-overflow: ellipsis;
-                overflow:hidden !important;
-                white-space: nowrap;
-            }
-            .pricing{
-                font-weight:500;
-                color:rgb(0, 0, 0);
-               
-                font-size:20px;
-            }
-            .btn{
-                height:fit-content;
-            }
-            .golden{
-                
-                font-weight: 400;
-               color:orange;
-                background-color: rgba(255, 255, 255, 0.692);
-            }
-            .golden:hover{
-                background-color: #ffc107;
-                color:black;
-            }
-        }
-        .info{
-            width:100%;
-            height:60px;
-            text-overflow: ellipsis;
-            overflow:hidden;
-            margin-bottom:10px;
-            white-space: nowrap;
-            
-        }
-    }
-    i{
-        margin-bottom:16px;
-         margin-right:10px;
-         color:gray;
-       }
-       .icons{
-       align-items: center;
-       }
-       i.fa-heart:hover{
-        color:#bd5ba4;
-        cursor:pointer;
-       }
-       .hearted{
-           color:#bd5ba4;
-       }
-       i.fa-shopping-cart:hover{
-           color:rgb(221, 147, 9);
-           cursor:pointer;
-       }
-       .shopped{
-        color:rgb(221, 147, 9);
-       }
-       //////////////////////////////tooltip
-i[disabled]:hover{
-    color:gray;
-    cursor:default;
-    }
-    i.limitReached:hover{
-      cursor:default;
-    }
-    i[disabled]:hover .tooltipText{
-    visibility: visible;
-    }
-    .tooltipContainer{
-      position: relative;
-    }
-    .tooltipText{
-      visibility: hidden;
-      width: 150px;
-      background-color: rgb(189, 144, 219);
-      color: #fff;
-      text-align: center;
-      border-radius: 6px;
-      padding: 7px 5px;
-      font-size:13px;
-      position: absolute;
-      z-index: 1;
-      top: 15px;
-      right: 105%;
-    }
-    ///////////////////////////////////////
+.card-dark {
+  width: 100%;
+  height: 100%;
+  background-color: #988ea2;
+  transform: rotate(3deg);
+  border-radius: 5px;
+}
 
-       
-.free{
-    // color:rgb(165, 42, 138);
-    background: -webkit-linear-gradient(rgb(192, 164, 199), rgb(180, 11, 110));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-   font-weight:500;
-   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.card-light {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  transform: rotate(-3deg);
+  border-radius: 5px;
+  position: relative;
+  .img {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: rgb(219, 211, 211);
+    img {
+      width: 128px;
+      min-height: 190px;
+    }
   }
-  .div-free{
-   padding:2px 5px;
-    height:30px;
-    background-image: linear-gradient(to right,rgb(245, 197, 197),rgb(193, 132, 206));
-    border-radius: 10%;
+  .img:hover {
+    opacity: 0.8;
+    cursor: pointer;
   }
+  .book-info {
+    z-index: 1;
+    background-color: rgba(235, 221, 221, 0.432);
+    border-radius: 5px;
+    width: 100%;
+    height: 140px;
+    margin: 0 auto;
+    overflow: hidden;
+    color: white;
+    padding: 10px;
+    h6,
+    .author {
+      color: black;
+      text-align: center;
+      margin-bottom: 0px;
+      height: 30px;
+      text-overflow: ellipsis;
+      overflow: hidden !important;
+      white-space: nowrap;
+    }
+    .pricing {
+      font-weight: 500;
+      color: rgb(0, 0, 0);
+
+      font-size: 20px;
+    }
+    .btn {
+      height: fit-content;
+    }
+  }
+  .info {
+    width: 100%;
+    height: 60px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-bottom: 10px;
+    white-space: nowrap;
+  }
+}
+i {
+  margin-bottom: 16px;
+  margin-right: 10px;
+  color: gray;
+}
+.icons {
+  align-items: center;
+}
+i.fa-heart:hover {
+  color: #bd1894;
+  cursor: pointer;
+}
+.hearted {
+  color: #bd1894;
+}
+i.fa-shopping-cart:hover {
+  color: rgb(221, 147, 9);
+  cursor: pointer;
+}
+.shopped {
+  color: rgb(221, 147, 9);
+}
+//////////////////////////////tooltip
+i[disabled]:hover {
+  color: gray;
+  cursor: default;
+}
+i.limitReached:hover {
+  cursor: default;
+}
+i[disabled]:hover .tooltipText {
+  visibility: visible;
+}
+.tooltipContainer {
+  position: relative;
+}
+.tooltipText {
+  visibility: hidden;
+  width: 150px;
+  background-color: rgb(189, 144, 219);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 7px 5px;
+  font-size: 13px;
+  position: absolute;
+  z-index: 1;
+  top: 15px;
+  right: 105%;
+}
+///////////////////////////////////////
+
+.free {
+  // color:rgb(165, 42, 138);
+  background: -webkit-linear-gradient(rgb(192, 164, 199), rgb(180, 11, 110));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 500;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.div-free {
+  padding: 2px 5px;
+  height: 30px;
+  background-image: linear-gradient(
+    to right,
+    rgb(245, 197, 197),
+    rgb(193, 132, 206)
+  );
+  border-radius: 10%;
+}

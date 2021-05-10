@@ -99,6 +99,8 @@ h3.best-selling-books{
  }
  .shop-online{
    height:120px;
+   margin-top:60px;
+   margin-bottom:40px;
  }
  .shop-now-btn{
    padding:0px;
@@ -142,7 +144,9 @@ h3.best-selling-books{
     height:250px;
   }
   .shop-online{
-    height:120px;
+    height:fit-content;
+    margin-top:70px;
+    margin-bottom: 60px;
   }
   .shop-now-btn{
     padding:0px;

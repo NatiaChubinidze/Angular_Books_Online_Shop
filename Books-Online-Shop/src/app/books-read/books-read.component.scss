@@ -40,9 +40,10 @@
   margin-bottom: 20px;
   width: 100%;
 }
-.search-icon {
+.search-icon-book,
+.search-icon-author {
   position: relative;
-  right: 15%;
+  right: 16%;
   width: 32px;
   height: 32px;
 }
@@ -121,15 +122,53 @@
   .book-card {
     width: 48%;
   }
+  input {
+    font-size: 10px !important;
+    padding: 5px !important;
+    height: 40px !important;
+  }
+  .search-icon-book,
+  .search-icon-author {
+    display: none;
+  }
 }
 
-@media only screen and (min-width: 576px) and (max-width: 767px) {
+@media only screen and (min-width: 576px) and (max-width: 900px) {
   .book-card {
     width: 43%;
+  }
+  .search-icon-book {
+    position: absolute;
+    left: 21%;
+    width: 24px;
+    height: 24px;
+  }
+  .search-icon-author {
+    position: absolute;
+    left: 44%;
+    width: 24px;
+    height: 24px;
+  }
+  input {
+    font-size: 11px !important;
+    padding: 5px !important;
+    height: 50px !important;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1199px) {
   .book-card {
     width: 31%;
+  }
+  input{
+    width:250px;
+  }
+  .search-icon-book {
+    position: absolute;
+    left: 21%;
+    
+  }
+  .search-icon-author {
+    position: absolute;
+    left: 44.5%;
   }
 }

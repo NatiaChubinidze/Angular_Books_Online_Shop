@@ -13,10 +13,9 @@
   font-size: 14px;
   letter-spacing: 0.5px;
   margin: 10px;
-  
 }
-::placeholder{
-  color:white;
+::placeholder {
+  color: white;
 }
 
 .categories-list {
@@ -38,9 +37,9 @@
 .category-card:hover {
   color: black;
   background-color: rgb(196, 189, 189);
-  cursor:pointer;
+  cursor: pointer;
 }
-.activeCategory{
+.activeCategory {
   color: black;
   background-color: rgb(196, 189, 189);
 }
@@ -54,7 +53,7 @@
   background-color: rgba(172, 163, 184, 0.76);
   background-repeat: no-repeat;
   background-size: cover;
-  padding:10px 20px 20px 20px;
+  padding: 10px 20px 20px 20px;
 }
 
 .select {
@@ -68,12 +67,11 @@
   font-size: 14px;
   letter-spacing: 0.5px;
   margin-bottom: 30px;
-  option{
-    color:black;
-    height:50px;
+  option {
+    color: black;
+    height: 50px;
   }
 }
-
 
 .popular-categories {
   display: flex;
@@ -95,7 +93,6 @@
   height: 300px;
   margin-bottom: 30px;
 }
-
 
 .search-btn {
   border: 2px solid white;
@@ -139,7 +136,7 @@
   border-radius: 10%;
   z-index: -1;
 }
-.upper-right-pink{
+.upper-right-pink {
   background-color: rgba(139, 38, 114, 0.466);
   right: 0px;
   top: 540px;
@@ -147,60 +144,67 @@
 }
 .upper-left-blue {
   background-color: #151a6a;
-  left:0px;
-  top:600px;
-  width:350px;
+  left: 0px;
+  top: 600px;
+  width: 350px;
 }
-.bottom-left-circle{
+.bottom-left-circle {
   background-color: #81387e;
-  width:250px;
-  height:250px;
+  width: 250px;
+  height: 250px;
   transform: skewY(-40deg);
   border-bottom-left-radius: 50% 50%;
-    border-bottom-right-radius: 50% 50%;
-    border-top-left-radius: 50% 50%;
-    border-top-right-radius: 50% 50%;
-    z-index:-1;
-    position:absolute;
-    bottom:-900px;
-    right:0px;
+  border-bottom-right-radius: 50% 50%;
+  border-top-left-radius: 50% 50%;
+  border-top-right-radius: 50% 50%;
+  z-index: -1;
+  position: absolute;
+  bottom: -900px;
+  right: 0px;
 }
-.popular-categories{
-  padding-left:10px;
+.popular-categories {
+  padding-left: 10px;
 }
 
-.pagination-container{
-  width:fit-content;
-  margin:0 auto;
+.pagination-container {
+  width: fit-content;
+  margin: 0 auto;
 }
 
 .pagination ::ng-deep .ngx-pagination .current {
   background-color: rgb(177, 140, 180) !important;
 }
 @media only screen and (max-width: 575px) {
- 
- .tags{
-   flex-wrap:wrap;
- }
-  .book-card{
-    width:45%;
+  .tags {
+    flex-wrap: wrap;
+  }
+  .book-card {
+    width: 45%;
+  }
+  ::placeholder{
+    font-size:10px;
+  }
+  input{
+    font-size:10px;
+  }
+  select{
+    font-size:10px !important;
   }
 }
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
-  .tags{
-    flex-wrap:wrap;
+  .tags {
+    flex-wrap: wrap;
   }
-  .book-card{
-    width:33%;
+  .book-card {
+    width: 33%;
   }
-  
 }
 @media only screen and (min-width: 768px) and (max-width: 1199px) {
-  .tags{
-    flex-wrap:wrap;
+  .tags {
+    flex-wrap: wrap;
   }
-  .book-card{
-    width:26%;
+  .book-card {
+    width: 26%;
   }
 }
