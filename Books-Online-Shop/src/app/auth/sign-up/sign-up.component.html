@@ -37,8 +37,7 @@
             >
             <div class="text-required">
               <em class="required" *ngIf="passwordIsInvalid()"
-                >Required Pattern: min(6), max(20) characters; Use all kind of
-                Characters
+                >Required Pattern: All kinds of Characters - min(6), max(20)
               </em>
             </div>
           </div>
@@ -58,7 +57,7 @@
               >Confirm</label
             >
             <div class="text-required" *ngIf="confirmPasswordIsInvalid()">
-              <em class="required">Required. Passwords must match!</em>
+              <em class="required">Required: Passwords must match!</em>
             </div>
           </div>
           <div class="col-sm-12">
