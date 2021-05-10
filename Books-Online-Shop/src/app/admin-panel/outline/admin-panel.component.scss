@@ -1,77 +1,131 @@
-.box{
-  width:100%;
-  height:800px;
+.box {
+  width: 100%;
+  min-height: 100vh;
 }
-.top{
-  z-index:1;
-  color:white;
-  width:100%;
-  position:fixed;
-  top:0;
-  left:0;
-  height:50px;
-  background-color: rebeccapurple;
- display:flex;
- justify-content: space-between;
- align-items: center;
- button{
-   height:40px;
-   background: transparent;
-   border:0px;
-   color:white;
- }
- button:hover{
-   color:rgb(240, 211, 253);
- }
-
-}
-
-.search{
-  
-  height:100%;
-  margin:0 auto;
-  background-color: rgba(141, 118, 165, 0.712);
-  input{
-    height:100%;
-    width:100%;
-    background-color: transparent;
-    color:white;
-  
-    border:0px;
-    font-size:18px;
-    
-  }
-  ::placeholder{
-    color:white;
-  }
-}
-
-.sidebar{
+.top {
   z-index: 1;
-  background-color:rgb(70, 20, 94);
-  padding:20px;
-  height:800px;
-  position:fixed;
-  top:50px;
-  left:0px;
-  display:flex;
+  color: white;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 50px;
+  background-color: rebeccapurple;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  button {
+    height: 40px;
+    background: transparent;
+    border: 0px;
+    color: white;
+  }
+  button:hover {
+    color: rgb(240, 211, 253);
+  }
+}
+
+.search {
+  height: 100%;
+  margin: 0 auto;
+  background-color: rgba(141, 118, 165, 0.712);
+  input {
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    color: white;
+
+    border: 0px;
+    font-size: 18px;
+  }
+  ::placeholder {
+    color: white;
+  }
+}
+
+.sidebar {
+  z-index: 1;
+  background-color: rgb(70, 20, 94);
+  padding: 20px;
+  min-height: 100vh;
+  position: fixed;
+  top: 50px;
+  left: 0px;
+  display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  color:white;
-  img{
-    width:20px;
-    height:20px;
-    margin-right:10px;
+  color: white;
+  img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
   }
-  
 }
 
-
-.appName:hover{
-cursor:default;
+.appName:hover {
+  cursor: default;
 }
 
-.dashboard:hover, .wishlists:hover, .users:hover{
-  cursor:pointer;
-  color:rgb(208, 196, 216);
+.dashboard:hover,
+.wishlists:hover,
+.users:hover {
+  cursor: pointer;
+  color: rgb(208, 196, 216);
+}
+
+@media only screen and (max-width: 575px) {
+  .sidebar,.app-title{
+    width:160px;
+  }
+  .search{
+   display: none;
+  }
+  button.sign-out{
+    font-size:11px;
+    margin-right:10px;
+    height:35px;
+    width:60px;
+  }
+  h5.appName{
+    font-size:13px;
+  }
+  .sidebar{
+    font-size:11px;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .sidebar,.app-title{
+    width:180px;
+  }
+  .search{
+   display: none;
+  }
+  button.sign-out{
+    
+    margin-right:10px;
+    height:45px;
+    width:80px;
+  }
+  h5.appName{
+    font-size:16px;
+  }
+ 
+
+}
+@media only screen and (min-width: 768px) and (max-width: 1275px) {
+  .sidebar,.app-title{
+    width:180px;
+  }
+  .search{
+    display: none;
+  }
+  button.sign-out{
+    margin-right:5px;
+    height:45px;
+    width:80px;
+  }
+  h5.appName{
+    font-size:16px;
+  }
 }

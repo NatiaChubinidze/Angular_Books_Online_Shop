@@ -18,15 +18,15 @@
     ></app-pie-chart>
   </div>
   <div class="list col-10 mt-5 p-5" *ngIf="wishlistTopUsers">
-    <h2 class="mb-3">Top 5 Users (Wishlists)</h2>
+    <h2 class="mb-5">Top 5 Users (Wishlists)</h2>
     <app-table [topUsers]="wishlistTopUsers"></app-table>
   </div>
   <div class="list col-10 mt-5 p-5" *ngIf="shoppingCartTopUsers">
-    <h2 class="mb-3">Top 5 Users (Shopping-list)</h2>
+    <h2 class="mb-5">Top 5 Users (Shopping-list)</h2>
     <app-table [topUsers]="shoppingCartTopUsers"></app-table>
   </div>
   <div class="list col-10 mt-5 p-5" *ngIf="booksReadTopUsers">
-    <h2 class="mb-3">Top 5 Users (Books Read)</h2>
+    <h2 class="mb-5">Top 5 Users (Books Read)</h2>
     <app-table [topUsers]="booksReadTopUsers"></app-table>
   </div>
 </div>

@@ -1,0 +1,24 @@
+highcharts-chart {
+  width: 800px;
+  height: 450px;
+  display: block;
+  margin: 50px auto;
+}
+@media only screen and (max-width: 575px) {
+  highcharts-chart {
+    width: 300px;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  highcharts-chart {
+    width: 400px;
+    margin: 10px auto;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1000px) {
+  highcharts-chart {
+    width: 500px;
+    margin: 20px auto;
+  }
+}
