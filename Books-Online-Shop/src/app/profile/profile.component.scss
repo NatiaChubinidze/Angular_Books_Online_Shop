@@ -4,7 +4,7 @@
   height: 700px;
 }
 
-input[disabled]{
+input[disabled] {
   background-color: rgb(230, 225, 225);
 }
 .user {
@@ -18,7 +18,7 @@ input[disabled]{
 }
 .profile-img img {
   width: 100%;
-  object-fit:cover;
+  object-fit: cover;
 }
 .profile-img .file {
   position: relative;
@@ -30,16 +30,17 @@ input[disabled]{
   font-size: 15px;
   background: #272129b8;
 }
-.profile-img .file:hover{
-  cursor:pointer;
+.profile-img .file:hover {
+  cursor: pointer;
 }
 .profile-img .file input {
   position: absolute;
   opacity: 0;
   right: 0;
   top: 0;
-} .profile-img .file input:hover{
-  cursor:pointer;
+}
+.profile-img .file input:hover {
+  cursor: pointer;
 }
 .info {
   height: 40px;
@@ -64,28 +65,28 @@ label {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height:445px;
-  .save-password{
+  height: 445px;
+  .save-password {
     justify-self: center;
-    background-color:rgb(200, 196, 202);
+    background-color: rgb(200, 196, 202);
     color: black;
   }
-  .save-password:hover{
+  .save-password:hover {
     background-color: #c4bfc9;
   }
-  .save-password:disabled:hover{
-    background-color:rgb(200, 196, 202);
-    cursor:default;
+  .save-password:disabled:hover {
+    background-color: rgb(200, 196, 202);
+    cursor: default;
   }
   button {
     width: 92px;
     border: 2px solid white;
-    
+
     padding: 5px;
     font-weight: 600;
   }
-  button:hover{
-    cursor:pointer;
+  button:hover {
+    cursor: pointer;
   }
   button.clear {
     margin-top: 40px;
@@ -97,7 +98,7 @@ label {
     background-color: #988ea2;
     color: white;
   }
-  button.save:hover{
+  button.save:hover {
     background-color: #847c8b;
   }
 }
@@ -140,19 +141,19 @@ label {
   bottom: -300px;
   left: -200px;
 }
-.info-text-div{
-  margin-top:25%;
+.info-text-div {
+  margin-top: 25%;
 }
 
- .errorText{
-   font-size: 13px;
- }
- .alert-div{
-  display:flex;
+.errorText {
+  font-size: 13px;
+}
+.alert-div {
+  display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
- }
+}
 @media only screen and (max-width: 575px) {
   .container {
     font-size: 13px;
@@ -164,7 +165,7 @@ label {
     font-size: 12px;
   }
   label {
-    width: 60px;
+    width: 65px;
   }
 }
 

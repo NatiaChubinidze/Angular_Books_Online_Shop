@@ -1,28 +1,34 @@
-.main{
-    width:100%;
-    height:100vh;
-    position: relative;
-    overflow: hidden;
-    img{
-        width:100%;
-        z-index: -1;
-    }
-    .error-text{
-        position:absolute;
-        top:10px;
-        left:5%;
-        
-    }
-    .error-text-two{
-        position:absolute;
-        top:10px;
-        right:5%;
-    }
-    h1{
-        font-size:370px;
-        color:#feffff;
-        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        }
-        
+.main {
+  top: 20px;
+  width: 100%;
+  height: fit-content;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+
+  img {
+    width: 100%;
+    z-index: -1;
+    object-fit: cover;
+  }
 }
 
+@media only screen and (max-width: 575px) {
+  .main {
+    top: 70px;
+    margin-bottom: 70px;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .main {
+    top: 70px;
+    margin-bottom: 70px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  .main {
+    top: 30px;
+    margin-bottom: 30px;
+  }
+}

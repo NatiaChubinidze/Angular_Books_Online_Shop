@@ -6,22 +6,21 @@
   border-radius: 10px;
   position: relative;
   .img {
-    position:relative;
+    position: relative;
     width: 100%;
     height: 160px;
     border-radius: 5px;
-    overflow:hidden;
-  background-color:rgb(219, 211, 211);
-  img{
-    width:128px;
-    min-height:190px;
-}
+    overflow: hidden;
+    background-color: rgb(219, 211, 211);
+    img {
+      width: 128px;
+      min-height: 190px;
+    }
   }
-  .img:hover{
-    opacity:0.8;
-    cursor:pointer;
+  .img:hover {
+    opacity: 0.8;
+    cursor: pointer;
   }
-  
 
   .book-info {
     z-index: 1;
@@ -53,15 +52,6 @@
     .btn {
       height: fit-content;
     }
-    .golden {
-      font-weight: 400;
-      color: orange;
-      background-color: rgba(255, 255, 255, 0.692);
-    }
-    .golden:hover {
-      background-color: #ffc107;
-      color: black;
-    }
   }
   .info {
     width: 100%;
@@ -73,48 +63,48 @@
   }
 }
 
-i{
-  margin-bottom:16px;
-   margin-right:10px;
-   color:gray;
- }
- .icons{
- align-items: center;
- }
- i.fa-heart:hover{
-  color:#bd5ba4;
-  cursor:pointer;
- }
- i.fa-shopping-cart:hover{
-     color:rgb(221, 147, 9);
-     cursor:pointer;
- }
- 
- i.fa-times-circle{
-   color:rgb(145, 67, 97);
- }
- .shopped{
-  color:rgb(221, 147, 9);
- }
- .hearted{
-  color:#bd5ba4;
+i {
+  margin-bottom: 16px;
+  margin-right: 10px;
+  color: gray;
+}
+.icons {
+  align-items: center;
+}
+i.fa-heart:hover {
+  color: #bd1894;
+  cursor: pointer;
+}
+i.fa-shopping-cart:hover {
+  color: rgb(221, 147, 9);
+  cursor: pointer;
+}
+
+i.fa-times-circle {
+  color: rgb(145, 67, 97);
+}
+.shopped {
+  color: rgb(221, 147, 9);
+}
+.hearted {
+  color: #bd1894;
 }
 
 //////////////////////////////tooltip
-i[disabled]:hover{
-color:gray;
-cursor:default;
+i[disabled]:hover {
+  color: gray;
+  cursor: default;
 }
-i.limitReached:hover{
-  cursor:default;
+i.limitReached:hover {
+  cursor: default;
 }
-i[disabled]:hover .tooltipText{
-visibility: visible;
+i[disabled]:hover .tooltipText {
+  visibility: visible;
 }
-.tooltipContainer{
+.tooltipContainer {
   position: relative;
 }
-.tooltipText{
+.tooltipText {
   visibility: hidden;
   width: 150px;
   background-color: rgb(189, 144, 219);
@@ -122,25 +112,29 @@ visibility: visible;
   text-align: center;
   border-radius: 6px;
   padding: 7px 5px;
-  font-size:13px;
+  font-size: 13px;
   position: absolute;
   z-index: 1;
   top: 15px;
   right: 105%;
 }
 ///////////////////////////////////////
-.free{
-  // color:rgb(165, 42, 138);
+
+.free {
   background: -webkit-linear-gradient(rgb(192, 164, 199), rgb(180, 11, 110));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
- font-weight:500;
- font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: 500;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
-.div-free{
- padding:2px 5px;
-  height:30px;
-  background-image: linear-gradient(to right,rgb(245, 197, 197),rgb(193, 132, 206));
+.div-free {
+  padding: 2px 5px;
+  height: 30px;
+  background-image: linear-gradient(
+    to right,
+    rgb(245, 197, 197),
+    rgb(193, 132, 206)
+  );
   border-radius: 10%;
 }

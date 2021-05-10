@@ -59,15 +59,6 @@
     .btn {
       height: fit-content;
     }
-    .golden {
-      font-weight: 400;
-      color: orange;
-      background-color: rgba(255, 255, 255, 0.692);
-    }
-    .golden:hover {
-      background-color: #ffc107;
-      color: black;
-    }
   }
   .info {
     width: 100%;
@@ -102,7 +93,6 @@ i.fa-check-double:hover {
  }
 
 .free {
-  // color:rgb(165, 42, 138);
   background: -webkit-linear-gradient(rgb(192, 164, 199), rgb(180, 11, 110));
   -webkit-background-clip: text;
   background-clip: text;
