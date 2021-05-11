@@ -6,8 +6,8 @@
     <div class="background-rectangle purple"></div>
     <div class="background-rectangle pink"></div>
     <div class="background-rectangle red"></div>
-    <h3 class="text-center mb-3">Books That Users Read</h3>
-    <div class="d-flex filters">
+    <h3 class="text-center mb-3" *ngIf="filteredBooks.length">Books That Users Read</h3>
+    <div class="d-flex filters" *ngIf="filteredBooks.length">
       <div class="col-4 search-div d-flex">
         <input
           type="text"
@@ -37,7 +37,7 @@
         />
       </div>
     </div>
-    <div class="flex-container">
+    <div class="flex-container" *ngIf="filteredBooks.length">
       <div
         class="book-card"
         *ngFor="
@@ -50,6 +50,9 @@
     </div>
     <div class="mt-3 pagination-container" *ngIf="filteredBooks.length>10">
       <pagination-controls (pageChange)="p = $event" class="pagination"></pagination-controls>
+      </div>
+      <div class="col-12 text-center data-empty" *ngIf="!filteredBooks.length">
+        <h2 class="text-secondary">Nothing to Show Here...</h2>
       </div>
   </div>
 </div>
