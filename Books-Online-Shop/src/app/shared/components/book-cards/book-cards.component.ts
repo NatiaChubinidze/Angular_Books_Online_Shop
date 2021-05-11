@@ -16,7 +16,9 @@ export class BookCardsComponent implements OnInit {
   @Input() isInWishlist: boolean;
   @Input() isInShoppingCart: boolean;
   @Output() wishlistEvent = new EventEmitter();
+  @Output() deleteFromWishlistEvent = new EventEmitter();
   @Output() shoppingEvent = new EventEmitter();
+  @Output() deleteFromShoppingEvent = new EventEmitter();
   @Output() bookDetailsEvent = new EventEmitter();
   imgUrl: string;
 
@@ -55,12 +57,16 @@ export class BookCardsComponent implements OnInit {
     if(!this.isWishlistLimitReached && !this.isInWishlist){
       console.log("adding to wishlist");
     this.wishlistEvent.emit(this.book);
+    } else if(this.isInWishlist){
+      this.deleteFromWishlistEvent.emit(this.book);
     }
   }
 
   addToCart() {
     if(!this.isInShoppingCart){
     this.shoppingEvent.emit(this.book);
+    } else if(this.isInShoppingCart){
+      this.deleteFromShoppingEvent.emit(this.book);
     }
   }
 

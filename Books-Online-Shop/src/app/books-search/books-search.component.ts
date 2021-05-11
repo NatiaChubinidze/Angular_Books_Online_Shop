@@ -69,8 +69,8 @@ export class BooksSearchComponent implements OnInit {
     }
 
     this._firebaseAuthService.currentUser$.subscribe((data) => {
-      if(data){
-      this._firebaseAuthService.userUID = data.uid;
+      if (data) {
+        this._firebaseAuthService.userUID = data.uid;
       }
     });
     this._firebaseCrudService
@@ -151,12 +151,11 @@ export class BooksSearchComponent implements OnInit {
       queryParams: refinedParams,
     });
     this._bookService.getFilteredBooks().subscribe((books: any) => {
-      if(books && books.items!==undefined){
-      this.booksArray = books.items;
-      } else{
-        this.booksArray=[];
+      if (books && books.items !== undefined) {
+        this.booksArray = books.items;
+      } else {
+        this.booksArray = [];
       }
-      
     });
   }
   getBooksByCategories(category: string) {
@@ -235,5 +234,32 @@ export class BooksSearchComponent implements OnInit {
 
     console.log(bookToAdd);
     this._firebaseCrudService.saveItem('wishlist', bookToAdd);
+  }
+  deleteFromWishlist(book: IBooks) {
+    if (this.wishlist) {
+      this.wishlist.forEach((item) => {
+        if (
+          item.title
+            .toLowerCase()
+            .includes(book.volumeInfo.title.toLocaleLowerCase())
+        ) {
+          this._firebaseCrudService.deleteItem('wishlist', item.id);
+        }
+      });
+    }
+  }
+
+  deleteFromCart(book: IBooks) {
+    if (this.shoppingCart) {
+      this.shoppingCart.forEach((item) => {
+        if (
+          item.title
+            .toLowerCase()
+            .includes(book.volumeInfo.title.toLocaleLowerCase()) && !item.ordered
+        ) {
+          this._firebaseCrudService.deleteItem('shopping-cart', item.id);
+        }
+      });
+    }
   }
 }

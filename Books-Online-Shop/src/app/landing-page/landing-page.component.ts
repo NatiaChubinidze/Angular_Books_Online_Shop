@@ -26,6 +26,7 @@ export class LandingPageComponent implements OnInit {
   wishlist:IFirebaseBook[];
   shoppingCart:IFirebaseBook[];
 
+
   constructor(
     private _bookService: BooksSearchService,
     private _router: Router,
@@ -164,5 +165,32 @@ export class LandingPageComponent implements OnInit {
     
     console.log(bookToAdd);
     this._firebaseCrudService.saveItem('wishlist', bookToAdd);
+  }
+  deleteFromWishlist(book: IBooks) {
+    if (this.wishlist) {
+      this.wishlist.forEach((item) => {
+        if (
+          item.title
+            .toLowerCase()
+            .includes(book.volumeInfo.title.toLocaleLowerCase())
+        ) {
+          this._firebaseCrudService.deleteItem('wishlist', item.id);
+        }
+      });
+    }
+  }
+
+  deleteFromCart(book: IBooks) {
+    if (this.shoppingCart) {
+      this.shoppingCart.forEach((item) => {
+        if (
+          item.title
+            .toLowerCase()
+            .includes(book.volumeInfo.title.toLocaleLowerCase()) && !item.ordered
+        ) {
+          this._firebaseCrudService.deleteItem('shopping-cart', item.id);
+        }
+      });
+    }
   }
 }
