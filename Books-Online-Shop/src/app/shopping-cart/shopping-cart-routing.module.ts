@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../shared/guards/auth.guard';
 import { ShoppingCartComponent } from './shopping-cart.component';
 
 const routes: Routes = [
   {
     path: 'shopping-cart',
     component: ShoppingCartComponent,
+    canActivate:[AuthGuard]
   },
 ];
 
