@@ -1,5 +1,5 @@
 .main {
-  height: 850px;
+  min-height: 850px;
   display: flex;
   justify-content: flex-end;
   overflow: hidden;
@@ -155,11 +155,12 @@
     .flex-container {
       flex-direction: column;
       flex-wrap: wrap;
-      margin-bottom: 20px;
-      padding-bottom: 40px;
     }
     .box {
       height: fit-content;
+    }
+    .background-circle,.background-line,.background-rectangle{
+      display: none;
     }
   }
   
@@ -197,6 +198,9 @@
     .search-icon-author {
       display: none;
     }
+    .background-circle,.background-line,.background-rectangle{
+      display: none;
+    }
   }
   @media only screen and (min-width: 768px) and (max-width: 1000px) {
     .book-card {
@@ -227,6 +231,9 @@
     }
     .search {
       margin: 0px;
+    }
+    .background-circle,.background-line,.background-rectangle{
+      display: none;
     }
   }
   

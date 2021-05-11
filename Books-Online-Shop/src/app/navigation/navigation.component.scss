@@ -103,7 +103,7 @@ header.fadeStepSix{
 .navbar ul li a:hover {
   color: rgb(164, 138, 165);
 }
-.navbar ul li.nav-item:hover {
+.navbar ul li.nav-item.activeOption, .navbar ul li.nav-item:hover {
   border-bottom: 2px solid white;
 }
 .navbar ul li.nav-item {
