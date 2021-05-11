@@ -13,7 +13,9 @@ export class WishlistCardComponent implements OnInit {
   @Output() readEvent = new EventEmitter();
   @Output() deleteEvent = new EventEmitter();
   @Output() shoppingEvent = new EventEmitter();
+  @Output() deleteFromShoppingEvent = new EventEmitter();
   imgUrl:string;
+  
   constructor() { }
 
   ngOnInit(): void {
@@ -30,6 +32,9 @@ export class WishlistCardComponent implements OnInit {
   addToShoppingCart(){
     if(!this.isInShoppingCart){
     this.shoppingEvent.emit(this.book);
+    }else if(this.isInShoppingCart){
+      console.log("delete from shopping event");
+      this.deleteFromShoppingEvent.emit(this.book);
     }
   }
 

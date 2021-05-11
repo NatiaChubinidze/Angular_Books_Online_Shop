@@ -116,7 +116,7 @@
   </div>
   <div class="books-container mt-3">
     <div class="book-card" *ngFor="let book of booksArray | paginate: { itemsPerPage: 10, currentPage: p }">
-      <app-book-default-card [book]="book" [isInWishlist]="isInWishlist(book)" [isInShoppingCart]="isInShoppingCart(book)" (bookDetailsEvent)="showBookDetails($event)" (wishlistEvent)="addToWishlist($event)" (shoppingEvent)="addToCart($event)"></app-book-default-card>
+      <app-book-default-card [book]="book" [isInWishlist]="isInWishlist(book)" [isInShoppingCart]="isInShoppingCart(book)" (bookDetailsEvent)="showBookDetails($event)" (wishlistEvent)="addToWishlist($event)" (shoppingEvent)="addToCart($event)" (deleteFromWishlistEvent)="deleteFromWishlist($event)" (deleteFromShoppingEvent)="deleteFromCart($event)"></app-book-default-card>
     </div>
     <div *ngIf="!booksArray?.length" class="no-results col-10 mx-auto text-center">
       <h2 class="text-secondary">No Results Found</h2>

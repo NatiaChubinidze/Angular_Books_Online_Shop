@@ -37,6 +37,6 @@
 </div>
 <div class="recommended-books">
   <div class="book-card" *ngFor="let book of popularBooks">
-    <app-book-cards [book]="book" [isInWishlist]="isInWishlist(book)" [isInShoppingCart]="isInShoppingCart(book)" (bookDetailsEvent)="showBookDetails($event)" (wishlistEvent)="addToWishlist($event)" (shoppingEvent)="addToCart($event)"></app-book-cards>
+    <app-book-cards [book]="book" [isInWishlist]="isInWishlist(book)" [isInShoppingCart]="isInShoppingCart(book)" (bookDetailsEvent)="showBookDetails($event)" (wishlistEvent)="addToWishlist($event)" (shoppingEvent)="addToCart($event)" (deleteFromWishlistEvent)="deleteFromWishlist($event)" (deleteFromShoppingEvent)="deleteFromCart($event)"></app-book-cards>
   </div>
 </div>
