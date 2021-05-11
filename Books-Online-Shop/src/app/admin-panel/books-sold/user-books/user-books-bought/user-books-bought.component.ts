@@ -56,6 +56,7 @@ export class UserBooksBoughtComponent implements OnInit {
 
   
   ngOnInit(): void {
+    if(this._adminService.shoppingList){
     this.books=this.filteredBooks=this._adminService.shoppingList.filter(item=>item.userUID===this._adminService.activeUser.userUID);
     setTimeout(() => {
       if (this.books) {
@@ -64,7 +65,7 @@ export class UserBooksBoughtComponent implements OnInit {
       }
     }, 1000);
 
-    
+  }
   }
 
 }

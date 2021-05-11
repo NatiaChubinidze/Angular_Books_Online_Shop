@@ -128,7 +128,14 @@
   .pagination ::ng-deep .ngx-pagination .current {
     background-color: rgb(177, 140, 180) !important;
   }
-  
+  .data-empty{
+    height:200px;
+    display: flex;
+    align-items: flex-end;
+    h2{
+      width:100%;
+    }
+  }
   @media only screen and (max-width: 500px) {
     .book-card {
       width: 100%;
