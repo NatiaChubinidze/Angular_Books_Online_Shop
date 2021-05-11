@@ -38,6 +38,8 @@ export class LandingPageComponent implements OnInit {
     this._firebaseAuthService.currentUser$.subscribe(data=>{
       if(data){
       this._firebaseAuthService.userUID=data.uid;
+      } else{
+        this._router.navigate(['sign-in']);
       }
     })
     this._bookService.getPopularBooks('fantasy').subscribe((data: any) => {

@@ -139,6 +139,20 @@ export class FirebaseAuthService {
       })
     );
   }
+  userIsAdmin() {
+    return this.currentUser$.pipe(
+      map((userInfo: any) => {
+        if (userInfo && userInfo.email && userInfo.email==='admin@gmail.com') {
+          return true;
+        } else {
+          this.signOut();
+          this._router.navigate(['/sign-in']);
+          return false;
+        }
+      })
+    );
+  }
+  
   forgotPassword(emailAddress: string): void {
     this.errorMessage = null;
     this.infoMessage = '';
