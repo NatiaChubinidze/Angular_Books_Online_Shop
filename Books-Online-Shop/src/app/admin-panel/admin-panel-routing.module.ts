@@ -11,7 +11,7 @@ import { OptionsComponent } from './options/options.component';
 import { UserBooksReadComponent } from './books-read/user-books/user-books-read/user-books-read.component';
 import { UserBooksBoughtComponent } from './books-sold/user-books/user-books-bought/user-books-bought.component';
 import { AllBooksReadComponent } from './books-read/books-read/books-read.component';
-import { AuthGuard } from '../shared/guards/auth.guard';
+import { AuthGuard } from '../shared/guards/auth-guard/auth.guard';
 import { AdminGuard } from './shared/guards/admin.guard';
 
 const routes: Routes = [{

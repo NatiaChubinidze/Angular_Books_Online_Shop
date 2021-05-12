@@ -1,5 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { FirebaseAuthService } from './shared/services/firebase-auth/firebase-auth.service';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +9,13 @@ import { FirebaseAuthService } from './shared/services/firebase-auth/firebase-au
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  nav$: Observable<boolean>;
   scrolled:boolean=false;
   fadeSteps:number=0;
   title = 'Books-Online-Shop';
-  constructor(public firebaseAuth:FirebaseAuthService){}
+  constructor(public firebaseAuth:FirebaseAuthService, private store:Store<{nav:boolean}>){
+    this.nav$=store.select('nav');
+  }
   @HostListener('window:scroll', ['$event'])
   onWindowScroll($event) {
     const numb = window.scrollY;

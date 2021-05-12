@@ -29,7 +29,8 @@ import { BooksReadModule } from './books-read/books-read.module';
 import { BooksReadRoutingModule } from './books-read/books-read-routing.module';
 import { Page404Module } from './shared/components/page-404/page404.module';
 import { Page404RoutingModule } from './shared/components/page-404/page404-routing.module';
-
+import { StoreModule } from '@ngrx/store';
+import {navReducer} from './shared/components/page-404/state/nav-visibility.reducer';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { Page404RoutingModule } from './shared/components/page-404/page404-routi
       storageBucket: 'books-app-project-307817.appspot.com',
       messagingSenderId: '828802712642',
     }),
+    StoreModule.forRoot({nav:navReducer}, {}),
     
   ],
   providers: [],
