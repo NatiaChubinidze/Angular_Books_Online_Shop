@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Page404Component } from './shared/components/page-404/page404.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
   {
     path:'admin',
-    loadChildren: ()=>import("./admin-panel/admin-panel.module").then((m)=>m.AdminPanelModule)
+    loadChildren: ()=>import("../admin-panel/admin-panel.module").then((m)=>m.AdminPanelModule)
   },
 ];
 

@@ -1,5 +1,5 @@
 import {createReducer, on} from '@ngrx/store';
-import {showNav,hideNav} from '../state/nav-visibility.actions';
+import {showNav,hideNav} from './nav-visibility.actions';
 
 export const initialState = true;
 
