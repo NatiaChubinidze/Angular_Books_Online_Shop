@@ -139,6 +139,18 @@ export class FirebaseAuthService {
       })
     );
   }
+  userIsInactive() {
+    return this.currentUser$.pipe(
+      map((userInfo: any) => {
+        if (userInfo && userInfo.uid) {
+          this._router.navigate(['/home']);
+          return false;
+        } else {
+          return true;
+        }
+      })
+    );
+  }
   userIsAdmin() {
     return this.currentUser$.pipe(
       map((userInfo: any) => {

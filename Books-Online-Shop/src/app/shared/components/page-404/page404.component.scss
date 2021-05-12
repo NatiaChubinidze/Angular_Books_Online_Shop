@@ -1,34 +1,16 @@
 .main {
-  top: 20px;
+  display: flex;
+  align-items: center;
   width: 100%;
-  height: fit-content;
+  height: 100vh;
   position: relative;
   overflow: hidden;
-  margin-bottom: 20px;
+  padding-top: 30px;
+  background-color: #298787;
 
   img {
     width: 100%;
     z-index: -1;
     object-fit: cover;
-  }
-}
-
-@media only screen and (max-width: 575px) {
-  .main {
-    top: 70px;
-    margin-bottom: 70px;
-  }
-}
-
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-  .main {
-    top: 70px;
-    margin-bottom: 70px;
-  }
-}
-@media only screen and (min-width: 768px) and (max-width: 1199px) {
-  .main {
-    top: 30px;
-    margin-bottom: 30px;
   }
 }
