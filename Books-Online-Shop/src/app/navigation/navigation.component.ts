@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import firebase from 'firebase/app';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 import { IProfile } from '../profile/shared/interfaces/profile.interface';
 import { EXP_TIME, TOKEN_EXP_KEY, TOKEN_KEY } from '../shared/constants/constants';
@@ -12,14 +14,15 @@ import { FireBaseCrudService } from '../shared/services/firebase-crud/firebase-c
   styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent implements OnInit {
-  @Input() fadeSteps:number;
+  fadeNav$:Observable<number>;
   profilePictureURL:string = '';
   displayName:string = '';
   constructor(
     private _auth: AuthService,
     private _firebaseAuth: FirebaseAuthService,
     private _firebaseCrudService: FireBaseCrudService,
-  ) {}
+    private store:Store<any>
+  ) {this.fadeNav$=this.store.select('fadeNav');}
 
   ngOnInit(): void {
     if (localStorage.getItem(TOKEN_KEY)) {

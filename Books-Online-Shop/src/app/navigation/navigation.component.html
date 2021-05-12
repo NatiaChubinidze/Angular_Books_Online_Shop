@@ -1,6 +1,6 @@
 <!-- Header -->
-<header class="body" [class.fadeStepOne]="fadeSteps===1" [class.fadeStepTwo]="fadeSteps===2" [class.fadeStepThree]="fadeSteps===3"
-[class.fadeStepFour]="fadeSteps===4" [class.fadeStepFive]="fadeSteps===5" [class.fadeStepSix]="fadeSteps===6">
+<header class="body" [class.fadeStepOne]="(fadeNav$ | async)?.fadeSteps===1" [class.fadeStepTwo]="(fadeNav$ | async)?.fadeSteps===2" [class.fadeStepThree]="(fadeNav$ | async)?.fadeSteps===3"
+[class.fadeStepFour]="(fadeNav$ | async)?.fadeSteps===4" [class.fadeStepFive]="(fadeNav$ | async)?.fadeSteps===5" [class.fadeStepSix]="(fadeNav$ | async)?.fadeSteps===6">
     <nav class="navbar navbar-expand-lg">
       <div class="container">
         <a class="navbar-brand mt-2" [routerLink]="['/home']"
@@ -54,32 +54,32 @@
               </span>
               <div class="dropdown-content">
                 <ul class="dropdown-menu">
-                  <li [routerLink]="['/profile']" [class.fadeStepOne]="fadeSteps===1" [class.fadeStepTwo]="fadeSteps===2" [class.fadeStepThree]="fadeSteps===3"
-                  [class.fadeStepFour]="fadeSteps===4" [class.fadeStepFive]="fadeSteps===5" [class.fadeStepSix]="fadeSteps===6">
+                  <li [routerLink]="['/profile']" [class.fadeStepOne]="(fadeNav$ | async)?.fadeSteps===1" [class.fadeStepTwo]="(fadeNav$ | async)?.fadeSteps===2" [class.fadeStepThree]="(fadeNav$ | async)?.fadeSteps===3"
+                  [class.fadeStepFour]="(fadeNav$ | async)?.fadeSteps===4" [class.fadeStepFive]="(fadeNav$ | async)?.fadeSteps===5" [class.fadeStepSix]="(fadeNav$ | async)?.fadeSteps===6">
                     Profile
                   </li>
-                  <li class="toggleVisible" [routerLink]="['/home']" [class.fadeStepOne]="fadeSteps===1" [class.fadeStepTwo]="fadeSteps===2" [class.fadeStepThree]="fadeSteps===3"
-                  [class.fadeStepFour]="fadeSteps===4" [class.fadeStepFive]="fadeSteps===5" [class.fadeStepSix]="fadeSteps===6">
+                  <li class="toggleVisible" [routerLink]="['/home']" [class.fadeStepOne]="(fadeNav$ | async)?.fadeSteps===1" [class.fadeStepTwo]="(fadeNav$ | async)?.fadeSteps===2" [class.fadeStepThree]="(fadeNav$ | async)?.fadeSteps===3"
+                  [class.fadeStepFour]="(fadeNav$ | async)?.fadeSteps===4" [class.fadeStepFive]="(fadeNav$ | async)?.fadeSteps===5" [class.fadeStepSix]="(fadeNav$ | async)?.fadeSteps===6">
                     Home
                   </li>
-                  <li class="toggleVisible" [routerLink]="['/book-search']"[class.fadeStepOne]="fadeSteps===1" [class.fadeStepTwo]="fadeSteps===2" [class.fadeStepThree]="fadeSteps===3"
-                  [class.fadeStepFour]="fadeSteps===4" [class.fadeStepFive]="fadeSteps===5" [class.fadeStepSix]="fadeSteps===6">
+                  <li class="toggleVisible" [routerLink]="['/book-search']"[class.fadeStepOne]="(fadeNav$ | async)?.fadeSteps===1" [class.fadeStepTwo]="(fadeNav$ | async)?.fadeSteps===2" [class.fadeStepThree]="(fadeNav$ | async)?.fadeSteps===3"
+                  [class.fadeStepFour]="(fadeNav$ | async)?.fadeSteps===4" [class.fadeStepFive]="(fadeNav$ | async)?.fadeSteps===5" [class.fadeStepSix]="(fadeNav$ | async)?.fadeSteps===6">
                     Books
                   </li>
-                  <li class="toggleVisible shopping" [routerLink]="['/shopping-cart']" [class.fadeStepOne]="fadeSteps===1" [class.fadeStepTwo]="fadeSteps===2" [class.fadeStepThree]="fadeSteps===3"
-                  [class.fadeStepFour]="fadeSteps===4" [class.fadeStepFive]="fadeSteps===5" [class.fadeStepSix]="fadeSteps===6">
+                  <li class="toggleVisible shopping" [routerLink]="['/shopping-cart']" [class.fadeStepOne]="(fadeNav$ | async)?.fadeSteps===1" [class.fadeStepTwo]="(fadeNav$ | async)?.fadeSteps===2" [class.fadeStepThree]="(fadeNav$ | async)?.fadeSteps===3"
+                  [class.fadeStepFour]="(fadeNav$ | async)?.fadeSteps===4" [class.fadeStepFive]="(fadeNav$ | async)?.fadeSteps===5" [class.fadeStepSix]="(fadeNav$ | async)?.fadeSteps===6">
                     Shopping-Cart
                   </li>
-                  <li class="toggleVisible" [routerLink]="['/wishlist']" [class.fadeStepOne]="fadeSteps===1" [class.fadeStepTwo]="fadeSteps===2" [class.fadeStepThree]="fadeSteps===3"
-                  [class.fadeStepFour]="fadeSteps===4" [class.fadeStepFive]="fadeSteps===5" [class.fadeStepSix]="fadeSteps===6">
+                  <li class="toggleVisible" [routerLink]="['/wishlist']" [class.fadeStepOne]="(fadeNav$ | async)?.fadeSteps===1" [class.fadeStepTwo]="(fadeNav$ | async)?.fadeSteps===2" [class.fadeStepThree]="(fadeNav$ | async)?.fadeSteps===3"
+                  [class.fadeStepFour]="(fadeNav$ | async)?.fadeSteps===4" [class.fadeStepFive]="(fadeNav$ | async)?.fadeSteps===5" [class.fadeStepSix]="(fadeNav$ | async)?.fadeSteps===6">
                     Wishlist
                   </li>
-                  <li class="toggleVisible" [routerLink]="['/books-read']" [class.fadeStepOne]="fadeSteps===1" [class.fadeStepTwo]="fadeSteps===2" [class.fadeStepThree]="fadeSteps===3"
-                  [class.fadeStepFour]="fadeSteps===4" [class.fadeStepFive]="fadeSteps===5" [class.fadeStepSix]="fadeSteps===6">
+                  <li class="toggleVisible" [routerLink]="['/books-read']" [class.fadeStepOne]="(fadeNav$ | async)?.fadeSteps===1" [class.fadeStepTwo]="(fadeNav$ | async)?.fadeSteps===2" [class.fadeStepThree]="(fadeNav$ | async)?.fadeSteps===3"
+                  [class.fadeStepFour]="(fadeNav$ | async)?.fadeSteps===4" [class.fadeStepFive]="(fadeNav$ | async)?.fadeSteps===5" [class.fadeStepSix]="(fadeNav$ | async)?.fadeSteps===6">
                     Books Read
                   </li>
-                  <li (click)="signOut()" [class.fadeStepOne]="fadeSteps===1" [class.fadeStepTwo]="fadeSteps===2" [class.fadeStepThree]="fadeSteps===3"
-                  [class.fadeStepFour]="fadeSteps===4" [class.fadeStepFive]="fadeSteps===5" [class.fadeStepSix]="fadeSteps===6">
+                  <li (click)="signOut()" [class.fadeStepOne]="(fadeNav$ | async)?.fadeSteps===1" [class.fadeStepTwo]="(fadeNav$ | async)?.fadeSteps===2" [class.fadeStepThree]="(fadeNav$ | async)?.fadeSteps===3"
+                  [class.fadeStepFour]="(fadeNav$ | async)?.fadeSteps===4" [class.fadeStepFive]="(fadeNav$ | async)?.fadeSteps===5" [class.fadeStepSix]="(fadeNav$ | async)?.fadeSteps===6">
                     Sign Out
                   </li>
                 </ul>
