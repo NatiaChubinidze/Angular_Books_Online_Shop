@@ -3,11 +3,11 @@ import firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 
-import { IProfile } from '../profile/shared/interfaces/profile.interface';
-import { EXP_TIME, TOKEN_EXP_KEY, TOKEN_KEY } from '../shared/constants/constants';
-import { AuthService } from '../shared/services/auth/auth.service';
-import { FirebaseAuthService } from '../shared/services/firebase-auth/firebase-auth.service';
-import { FireBaseCrudService } from '../shared/services/firebase-crud/firebase-crud.service';
+import { IProfile } from '../../../profile/shared/interfaces/profile.interface';
+import { EXP_TIME, TOKEN_EXP_KEY, TOKEN_KEY } from '../../constants/constants';
+import { AuthService } from '../../services/auth/auth.service';
+import { FirebaseAuthService } from '../../services/firebase-auth/firebase-auth.service';
+import { FireBaseCrudService } from '../../services/firebase-crud/firebase-crud.service';
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',

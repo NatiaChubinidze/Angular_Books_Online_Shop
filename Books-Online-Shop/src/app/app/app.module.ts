@@ -5,11 +5,11 @@ import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavigationModule } from '../navigation/navigation.module';
+import { NavigationModule } from '../shared/components/navigation/navigation.module';
 import { LandingPageModule } from '../landing-page/landing-page.module';
 import { DetailedPageModule } from '../detailed-page/detailed-page.module';
 import { BooksSearchModule } from '../books-search/books-search.module';
-import { NavigationRoutingModule } from '../navigation/navigation-routing.module';
+import { NavigationRoutingModule } from '../shared/components/navigation/navigation-routing.module';
 import { LandingPageRoutingModule } from '../landing-page/landing-page-routing.module';
 import { DetailedPageRoutingModule } from '../detailed-page/detailed-page-routing.module';
 import { BooksSearchRoutingModule } from '../books-search/books-search-routing.module';
@@ -23,15 +23,15 @@ import { ProfileModule } from '../profile/profile.module';
 import { ProfileRoutingModule } from '../profile/profile-routing.module';
 import { AdminPanelModule } from '../admin-panel/admin-panel.module';
 
-import { FooterComponent } from '../footer/footer.component';
+import { FooterComponent } from '../shared/components/footer/footer.component';
 import {firebaseConfig} from '../../../firebaseConfig';
 import { BooksReadModule } from '../books-read/books-read.module';
 import { BooksReadRoutingModule } from '../books-read/books-read-routing.module';
 import { Page404Module } from '../shared/components/page-404/page404.module';
 import { Page404RoutingModule } from '../shared/components/page-404/page404-routing.module';
 import { StoreModule } from '@ngrx/store';
-import {navReducer} from '../navigation/state/nav-visibility/nav-visibility.reducer';
-import { fadeNavReducer } from '../navigation/state/nav-fade/nav-fade.reducer';
+import {navReducer} from '../shared/components/navigation/state/nav-visibility/nav-visibility.reducer';
+import { fadeNavReducer } from '../shared/components/navigation/state/nav-fade/nav-fade.reducer';
 
 
 @NgModule({

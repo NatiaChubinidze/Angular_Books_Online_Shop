@@ -2,7 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { FirebaseAuthService } from '../shared/services/firebase-auth/firebase-auth.service';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { fadeNav } from '../navigation/state/nav-fade/nav-fade.actions';
+import { fadeNav } from '../shared/components/navigation/state/nav-fade/nav-fade.actions';
 
 @Component({
   selector: 'app-root',
