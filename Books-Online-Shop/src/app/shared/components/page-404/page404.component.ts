@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import {showNav,hideNav} from '../../../navigation/state/nav-visibility/nav-visibility.actions';
+import {showNav,hideNav} from '../navigation/state/nav-visibility/nav-visibility.actions';
 
 @Component({
   selector: 'app-page404',
