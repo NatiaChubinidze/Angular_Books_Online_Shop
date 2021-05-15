@@ -25,10 +25,37 @@ export class BooksSearchComponent implements OnInit {
     'Adventure',
     'Fiction',
   ];
-  books: string[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  allCategories: string[] = [
+    'action',
+    'adventure',
+    'biography',
+    'classic',
+    'comic',
+    'detective',
+    'essay',
+    'fantasy',
+    'fiction',
+    'graphic novel',
+    'historical',
+    'horror',
+    'mystery',
+    'romance',
+    'science-fiction',
+  ];
+  Languages = {
+    Arabic: 'ar',
+    Chinese: 'zh',
+    English: 'en',
+    French: 'fr',
+    Georgian: 'ka',
+    German: 'de',
+    Italian: 'it',
+    Japanese: 'ja',
+    Russian: 'ru',
+    Spanish: 'es',
+  };
   wishlist: IFirebaseBook[];
   shoppingCart: IFirebaseBook[];
-
   searchParams: IBookSearchParams = {};
   booksArray: IBooks[];
   constructor(
@@ -38,6 +65,7 @@ export class BooksSearchComponent implements OnInit {
     private _firebaseCrudService: FireBaseCrudService,
     private _firebaseAuthService: FirebaseAuthService
   ) {
+    console.log(Object.keys(this.Languages));
     this.activeCategory = this._bookService.activeCategory;
   }
 
@@ -255,7 +283,8 @@ export class BooksSearchComponent implements OnInit {
         if (
           item.title
             .toLowerCase()
-            .includes(book.volumeInfo.title.toLocaleLowerCase()) && !item.ordered
+            .includes(book.volumeInfo.title.toLocaleLowerCase()) &&
+          !item.ordered
         ) {
           this._firebaseCrudService.deleteItem('shopping-cart', item.id);
         }
