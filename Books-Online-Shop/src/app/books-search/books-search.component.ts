@@ -44,10 +44,8 @@ export class BooksSearchComponent implements OnInit {
   ];
   Languages = {
     Arabic: 'ar',
-    Chinese: 'zh',
     English: 'en',
     French: 'fr',
-    Georgian: 'ka',
     German: 'de',
     Italian: 'it',
     Japanese: 'ja',
