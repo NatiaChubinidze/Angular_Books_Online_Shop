@@ -21,19 +21,33 @@
     </div>
     <div class="buy">
       <div class="d-flex wishlist">
-        <img src="https://image.flaticon.com/icons/png/128/4207/4207539.png" (click)="addToWishlist()"/>
-        <p class="ms-1" (click)="addToWishlist()"[class.limitReached]="isWishlistLimitReached"
-        [class.disabled]="
-          isWishlistLimitReached && !isInWishlist ? true : null
-        ">Add To Wishlist <span class="tooltipContainer" *ngIf="!isInWishlist">
-          <span class="tooltipText">Limit has been reached!</span>
-        </span></p>
+        <img
+          src="https://image.flaticon.com/icons/png/128/4207/4207539.png"
+          (click)="addToWishlist()"
+        />
+        <p
+          class="ms-1"
+          (click)="addToWishlist()"
+          [class.limitReached]="isWishlistLimitReached"
+          [class.disabled]="
+            isWishlistLimitReached && !isInWishlist ? true : null
+          "
+        >
+          Add To Wishlist
+          <span class="tooltipContainer" *ngIf="!isInWishlist">
+            <span class="tooltipText">Limit has been reached!</span>
+          </span>
+        </p>
       </div>
       <hr />
-      <h5 *ngIf="
-      bookService.activeBook.saleInfo?.saleability.toLowerCase() !==
-      'not_for_sale'
-    ">Buy Now</h5>
+      <h5
+        *ngIf="
+          bookService.activeBook.saleInfo?.saleability.toLowerCase() !==
+          'not_for_sale'
+        "
+      >
+        Buy Now
+      </h5>
       <h5
         *ngIf="
           bookService.activeBook.saleInfo?.saleability.toLowerCase() ===
@@ -59,10 +73,21 @@
       >
         34.5$ <span class="secondary-text">USD</span>
       </h5>
-      <button type="button" class="btn btn-warning col-12 mt-3" (click)="addToCart()" *ngIf="
-      bookService.activeBook.saleInfo?.saleability.toLowerCase() !==
-      'not_for_sale'
-    ">{{ bookService.activeBook.saleInfo?.saleability.toLowerCase() === 'free' ? 'Add to Cart' : 'Buy Now'}}</button>
+      <button
+        type="button"
+        class="btn btn-warning col-12 mt-3"
+        (click)="addToCart()"
+        *ngIf="
+          bookService.activeBook.saleInfo?.saleability.toLowerCase() !==
+          'not_for_sale'
+        "
+      >
+        {{
+          bookService.activeBook.saleInfo?.saleability.toLowerCase() === "free"
+            ? "Add to Cart"
+            : "Buy Now"
+        }}
+      </button>
     </div>
   </div>
   <div class="container" *ngIf="bookService.activeBook">
@@ -75,20 +100,10 @@
           <td>{{ bookService.activeBook.volumeInfo?.language }}</td>
         </tr>
         <tr>
-          <th scope="row">Category</th>
-          <td>{{ bookService.activeBook.volumeInfo?.categories ? bookService.activeBook.volumeInfo?.categories[0] : '' }}</td>
-          <th scope="row">Web Reader Link</th>
+          <th scope="row">Publisher</th>
           <td>
-            <a
-              [href]="bookService.activeBook.accessInfo?.webReaderLink"
-              target="_blank"
-              >Web Reader</a
-            >
+            {{ bookService.activeBook.volumeInfo?.publisher ? bookService.activeBook.volumeInfo?.publisher : ''}}
           </td>
-        </tr>
-        <tr>
-          <th scope="row">Maturity Rating</th>
-          <td>{{ bookService.activeBook.volumeInfo?.maturityRating }}</td>
           <th scope="row">Preview Link</th>
           <td>
             <a
@@ -97,6 +112,18 @@
               >Preview</a
             >
           </td>
+        </tr>
+        <tr>
+          <th scope="row">Category</th>
+          <td>
+            {{
+              bookService.activeBook.volumeInfo?.categories
+                ? bookService.activeBook.volumeInfo?.categories[0]
+                : ""
+            }}
+          </td>
+          <th scope="row">Maturity Rating</th>
+          <td>{{ bookService.activeBook.volumeInfo?.maturityRating }}</td>
         </tr>
       </tbody>
     </table>

@@ -14,6 +14,7 @@
         id="intitle"
         placeholder="Book Title"
         name="intitle"
+        autocomplete="off"
         [(ngModel)]="searchParams.intitle"
       />
     </div>
@@ -24,6 +25,7 @@
         id="inauthor"
         name="inauthor"
         placeholder="Author"
+        autocomplete="off"
         [(ngModel)]="searchParams.inauthor"
       />
     </div>
@@ -34,6 +36,7 @@
         id="inpublisher"
         name="inpublisher"
         placeholder="Publisher"
+        autocomplete="off"
         [(ngModel)]="searchParams.inpublisher"
       />
     </div>
@@ -44,6 +47,7 @@
         id="isbn"
         name="isbn"
         placeholder="ISBN"
+        autocomplete="off"
         [(ngModel)]="searchParams.isbn"
       />
     </div>
@@ -51,46 +55,21 @@
       <select class="form-select select" id="subject" name="subject" 
        [(ngModel)]="searchParams.subject">
         <option selected>Choose Category</option>
-        <option value="action">Action</option>
-        <option value="adventure">Adventure</option>
-        <option value="biography">Biography</option>
-        <option value="classic">Classics</option>
-        <option value="comic">Comic</option>
-        <option value="detective">Detective</option>
-        <option value="essay">Essay</option>
-        <option value="fantasy">Fantasy</option>
-        <option value="fiction">Fiction</option>
-        <option value="graphic novel">Graphic Novel</option>
-        <option value="historical">Historical</option>
-        <option value="horror">Horror</option>
-        <option value="mystery">Mystery</option>
-        <option value="romance">Romance</option>
-        <option value="science-fiction">Science Fiction</option>
+        <option *ngFor="let category of allCategories" [value]="category">{{category | titlecase}}</option>
       </select>
     </div>
     <div class="col-3 search-div d-flex">
       <select class="form-select select" id="langRestrict" name="langRestrict" [(ngModel)]="searchParams.langRestrict">
         <option selected>Choose Language</option>
-        <option value="en">English</option>
-        <option value="ka">Georgian</option>
-        <option value="de">German</option>
-        <option value="fr">French</option>
-        <option value="it">Italian</option>
-        <option value="es">Spanish</option>
-        <option value="ru">Russian</option>
-        <option value="ar">Arabic</option>
-        <option value="zh">Chinese</option>
-        <option value="ja">Japanese</option>
+        <option *ngFor="let language of Languages | keyvalue" [value]="language.value">{{language.key}}</option>
       </select>
     </div>
     <div class="col-3 search-div d-flex">
       <select class="form-select select" id="filter" name="filter" [(ngModel)]="searchParams.filter">
         <option selected>Filter by</option>
-        <option value="ebooks">E-Books</option>
         <option value="free-ebooks">Free E-Books</option>
-        <option value="paid-ebooks">Paid E-Books</option>
-        <option value="full">Full</option>
-        <option value="partial">Partial</option>
+        <option value="full">Full Preview</option>
+        <option value="partial">Partial Preview</option>
       </select>
     </div>
     <div class="col-3 search-div d-flex">

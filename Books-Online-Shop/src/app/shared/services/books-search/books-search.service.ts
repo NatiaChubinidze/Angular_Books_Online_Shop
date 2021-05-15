@@ -27,7 +27,7 @@ export class BooksSearchService {
     let searchParamsFilter={
       orderBy:this.searchParam.orderBy,
       filter:this.searchParam.filter,
-      langRestrics:this.searchParam.langRestrict
+      langRestrict:this.searchParam.langRestrict
     }
     for(const key in searchParamsQuery){
       if (searchParamsQuery[key]!==undefined && searchParamsQuery[key]!==null && searchParamsQuery[key]!==""){
