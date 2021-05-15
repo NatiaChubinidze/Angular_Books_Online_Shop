@@ -1,22 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 import { FirebaseAuthService } from '../../shared/services/firebase-auth/firebase-auth.service';
 import { MustMatch } from '../../shared/validators/passwords-match.validator';
 import { forbiddenNameValidator } from '../../shared/validators/forbidden-email.validator';
 import { IUserAuthInfo } from '../shared/interfaces/auth.interface';
+import {showNav,hideNav} from '../../shared/components/navigation/state/nav-visibility/nav-visibility.actions';
+
+
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss'],
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent implements OnInit,OnDestroy {
+  nav$: Observable<boolean>;
   signUpData:IUserAuthInfo={
     email:'',
     password:'',
@@ -30,7 +36,8 @@ export class SignUpComponent implements OnInit {
   buttonHover: boolean = false;
 
   constructor(public fireBaseAuthService: FirebaseAuthService,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder, private store:Store<{nav:boolean}>) {
+      this.nav$=store.select('nav');
       this.fireBaseAuthService.errorMessage=null;
     this.fireBaseAuthService.infoMessage=null;
       this.email = new FormControl(
@@ -88,6 +95,16 @@ export class SignUpComponent implements OnInit {
       this.signUpData = this.signUpForm.value as IUserAuthInfo;
       this.fireBaseAuthService.register(this.signUpData);
     }
-
-  ngOnInit(): void {}
+    hideNav() {
+      this.store.dispatch(hideNav());
+    }
+    showNav() {
+      this.store.dispatch(showNav());
+    }
+  ngOnInit(): void {
+    this.hideNav();
+  }
+  ngOnDestroy():void{
+    this.showNav();
+  }
 }

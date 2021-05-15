@@ -1,17 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 import { TOKEN_EXP_KEY, TOKEN_KEY } from 'src/app/shared/constants/constants';
 import { FirebaseAuthService } from '../../shared/services/firebase-auth/firebase-auth.service';
 import { IUserAuthInfo } from '../shared/interfaces/auth.interface';
+import {showNav,hideNav} from '../../shared/components/navigation/state/nav-visibility/nav-visibility.actions';
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
 })
-export class SignInComponent implements OnInit {
+export class SignInComponent implements OnInit, OnDestroy {
+  nav$: Observable<boolean>;
   signInInfo: IUserAuthInfo = {
     email: '',
     password: '',
@@ -25,8 +29,10 @@ export class SignInComponent implements OnInit {
 
   constructor(
     public fireBaseAuthService: FirebaseAuthService,
-    private _router: Router
+    private _router: Router,
+    private store:Store<{nav:boolean}>
   ) {
+    this.nav$=store.select('nav');
     this.fireBaseAuthService.errorMessage=null;
     this.fireBaseAuthService.infoMessage=null;
     this.email = new FormControl(
@@ -81,8 +87,14 @@ export class SignInComponent implements OnInit {
  
   }
   
-
+  hideNav() {
+    this.store.dispatch(hideNav());
+  }
+  showNav() {
+    this.store.dispatch(showNav());
+  }
   ngOnInit(): void {
+    this.hideNav();
     if (
       localStorage.getItem(TOKEN_KEY) &&
       localStorage.getItem(TOKEN_EXP_KEY)
@@ -98,5 +110,8 @@ export class SignInComponent implements OnInit {
       })
     
     }
+  }
+  ngOnDestroy(): void{
+    this.showNav();
   }
 }
