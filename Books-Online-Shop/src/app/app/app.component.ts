@@ -1,7 +1,9 @@
-import { Component, HostListener } from '@angular/core';
+import { AfterContentInit, AfterViewChecked, AfterViewInit, Component, HostListener, OnChanges } from '@angular/core';
 import { FirebaseAuthService } from '../shared/services/firebase-auth/firebase-auth.service';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
+import { ChangeDetectorRef } from '@angular/core';
+
 import { fadeNav } from '../shared/components/navigation/state/nav-fade/nav-fade.actions';
 
 @Component({
@@ -9,12 +11,12 @@ import { fadeNav } from '../shared/components/navigation/state/nav-fade/nav-fade
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewChecked {
   nav$: Observable<boolean>;
   fadeNav$:Observable<number>;
   scrolled:boolean=false;
   title = 'Books-Online-Store';
-  constructor(public firebaseAuth:FirebaseAuthService, private store:Store<any>){
+  constructor(public firebaseAuth:FirebaseAuthService, private store:Store<any>,  private ref: ChangeDetectorRef){
     this.nav$=this.store.select('nav');
     this.fadeNav$=this.store.select('fadeNav');
   }
@@ -49,5 +51,8 @@ export class AppComponent {
     else {
       this.scrolled = false;
     }
+  }
+  ngAfterViewChecked():void{
+    this.ref.detectChanges();
   }
 }

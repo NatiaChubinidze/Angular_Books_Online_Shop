@@ -12,12 +12,7 @@
         class="far fa-times-circle fa-lg mt-2"
         *ngIf="book.price.toLowerCase() === 'not_for_sale'"
       ></i>
-      <p
-        class="pricing"
-        *ngIf="
-          book.price.toLowerCase() === 'for_sale'
-        "
-      >
+      <p class="pricing" *ngIf="book.price.toLowerCase() === 'for_sale'">
         {{ book.priceAmount }} $
       </p>
       <div class="div-free" *ngIf="book.price.toLowerCase() === 'free'">

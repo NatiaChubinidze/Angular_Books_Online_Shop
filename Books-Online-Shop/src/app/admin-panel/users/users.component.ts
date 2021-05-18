@@ -7,19 +7,17 @@ import { AdminService } from '../shared/services/admin.service';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  styleUrls: ['./users.component.scss'],
 })
 export class UsersComponent implements OnInit {
   users: IUser[];
-  constructor(private _adminService:AdminService, private _router:Router) { }
+  constructor(private _adminService: AdminService, private _router: Router) {}
 
   ngOnInit(): void {
-    this.users=this._adminService.usersList;
+    this.users = this._adminService.usersList;
   }
-  navigateToOptions(user:IUser){
-    this._adminService.activeUser=user;
+  navigateToOptions(user: IUser) {
+    this._adminService.activeUser = user;
     this._router.navigate(['/users/options']);
-
   }
-
 }

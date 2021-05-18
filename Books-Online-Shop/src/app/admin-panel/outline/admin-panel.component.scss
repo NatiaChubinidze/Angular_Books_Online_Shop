@@ -72,62 +72,62 @@
   cursor: pointer;
   color: rgb(208, 196, 216);
 }
-.activeOption{
-  color:rgb(171, 155, 187);
+.activeOption {
+  color: rgb(171, 155, 187);
 }
 @media only screen and (max-width: 575px) {
-  .sidebar,.app-title{
-    width:160px;
+  .sidebar,
+  .app-title {
+    width: 160px;
   }
-  .search{
-   display: none;
+  .search {
+    display: none;
   }
-  button.sign-out{
-    font-size:11px;
-    margin-right:10px;
-    height:35px;
-    width:60px;
+  button.sign-out {
+    font-size: 11px;
+    margin-right: 10px;
+    height: 35px;
+    width: 60px;
   }
-  h5.appName{
-    font-size:13px;
+  h5.appName {
+    font-size: 13px;
   }
-  .sidebar{
-    font-size:11px;
+  .sidebar {
+    font-size: 11px;
   }
 }
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
-  .sidebar,.app-title{
-    width:180px;
+  .sidebar,
+  .app-title {
+    width: 180px;
   }
-  .search{
-   display: none;
-  }
-  button.sign-out{
-    
-    margin-right:10px;
-    height:45px;
-    width:80px;
-  }
-  h5.appName{
-    font-size:16px;
-  }
- 
-
-}
-@media only screen and (min-width: 768px) and (max-width: 1275px) {
-  .sidebar,.app-title{
-    width:180px;
-  }
-  .search{
+  .search {
     display: none;
   }
-  button.sign-out{
-    margin-right:5px;
-    height:45px;
-    width:80px;
+  button.sign-out {
+    margin-right: 10px;
+    height: 45px;
+    width: 80px;
   }
-  h5.appName{
-    font-size:16px;
+  h5.appName {
+    font-size: 16px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1275px) {
+  .sidebar,
+  .app-title {
+    width: 180px;
+  }
+  .search {
+    display: none;
+  }
+  button.sign-out {
+    margin-right: 5px;
+    height: 45px;
+    width: 80px;
+  }
+  h5.appName {
+    font-size: 16px;
   }
 }

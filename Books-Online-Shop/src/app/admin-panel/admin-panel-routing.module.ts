@@ -11,62 +11,61 @@ import { OptionsComponent } from './options/options.component';
 import { UserBooksReadComponent } from './books-read/user-books/user-books-read/user-books-read.component';
 import { UserBooksBoughtComponent } from './books-sold/user-books/user-books-bought/user-books-bought.component';
 import { AllBooksReadComponent } from './books-read/books-read/books-read.component';
-import { AuthGuard } from '../shared/guards/auth-guard/auth.guard';
 import { AdminGuard } from './shared/guards/admin.guard';
 
-const routes: Routes = [{
-  path: '',
-  component: AdminPanelComponent,
-  children:[
-    {
-      path: '',
-      redirectTo:'dashboard',
-      pathMatch:'full'
-    },
-    {
-      path: 'dashboard',
-      component: DashboardComponent,
-    },
-    {
-      path: 'users',
-      component: UsersComponent,
-    },
-    {
-      path: 'users/options',
-      component:OptionsComponent,
-    },
+const routes: Routes = [
   {
-    path: 'users/options/wishlist',
-    component: WishlistsComponent,
+    path: '',
+    component: AdminPanelComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full',
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+      },
+      {
+        path: 'users',
+        component: UsersComponent,
+      },
+      {
+        path: 'users/options',
+        component: OptionsComponent,
+      },
+      {
+        path: 'users/options/wishlist',
+        component: WishlistsComponent,
+      },
+      {
+        path: 'users/options/books-read',
+        component: UserBooksReadComponent,
+      },
+      {
+        path: 'users/options/shopping-cart',
+        component: UserBooksBoughtComponent,
+      },
+      {
+        path: 'wishlist-books',
+        component: WishlistBooksComponent,
+      },
+      {
+        path: 'books-sold',
+        component: BooksSoldComponent,
+      },
+      {
+        path: 'books-reading-list',
+        component: AllBooksReadComponent,
+      },
+    ],
+    canActivate: [AdminGuard],
   },
-  {
-    path: 'users/options/books-read',
-    component: UserBooksReadComponent,
-  },
-  {
-    path: 'users/options/shopping-cart',
-    component: UserBooksBoughtComponent,
-  },
-  {
-    path: 'wishlist-books',
-    component: WishlistBooksComponent,
-  },
-  {
-    path: 'books-sold',
-    component: BooksSoldComponent,
-  },
-  {
-    path: 'books-reading-list',
-    component: AllBooksReadComponent,
-  },
-  
-  ],
-  canActivate:[AdminGuard],
-},
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class AdminPanelRoutingModule { }
+export class AdminPanelRoutingModule {}

@@ -127,12 +127,12 @@
 .pagination ::ng-deep .ngx-pagination .current {
   background-color: rgb(177, 140, 180) !important;
 }
-.data-empty{
-  height:200px;
+.data-empty {
+  height: 200px;
   display: flex;
   align-items: flex-end;
-  h2{
-    width:100%;
+  h2 {
+    width: 100%;
   }
 }
 @media only screen and (max-width: 500px) {
@@ -166,7 +166,9 @@
   .box {
     height: fit-content;
   }
-  .background-circle,.background-line,.background-rectangle{
+  .background-circle,
+  .background-line,
+  .background-rectangle {
     display: none;
   }
 }
@@ -205,7 +207,9 @@
   .search-icon-author {
     display: none;
   }
-  .background-circle,.background-line,.background-rectangle{
+  .background-circle,
+  .background-line,
+  .background-rectangle {
     display: none;
   }
 }
@@ -239,7 +243,9 @@
   .search {
     margin: 0px;
   }
-  .background-circle,.background-line,.background-rectangle{
+  .background-circle,
+  .background-line,
+  .background-rectangle {
     display: none;
   }
 }

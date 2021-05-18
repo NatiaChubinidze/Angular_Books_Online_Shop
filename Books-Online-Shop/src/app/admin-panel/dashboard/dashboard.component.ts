@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
+
 import { IFirebaseBook } from 'src/app/shared/interfaces/firebase-book.interface';
 import { IUser } from 'src/app/shared/interfaces/user.interface';
 import { ITopBooks } from '../shared/interfaces/top-books.interface';
@@ -106,8 +107,7 @@ export class DashboardComponent implements OnInit {
           counter++;
         }
       });
-      console.log("books count", counter);
-      console.log("array length", array.length);
+
       let chartBook: ITopBooks = {
         name: item.title,
         y: counter / array.length,
@@ -115,15 +115,13 @@ export class DashboardComponent implements OnInit {
       numberedArray.push(chartBook);
     });
     numberedArray.sort((a, b) => b.y - a.y);
-    console.log(numberedArray);
+
     if (numberedArray.length > 10) {
-      console.log('arrays is longer than 10');
       arrayToAssign = numberedArray.slice(0, 10);
     } else {
-      console.log('arrays is not longer than 10');
       arrayToAssign = numberedArray.slice();
     }
-    console.log('saboloo masivi', arrayToAssign);
+
     return arrayToAssign;
   }
 

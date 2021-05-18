@@ -1,19 +1,20 @@
 import { Component, Input, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
+
 import { ITopBooks } from '../../interfaces/top-books.interface';
 
 @Component({
   selector: 'app-pie-chart',
   templateUrl: './pie-chart.component.html',
-  styleUrls: ['./pie-chart.component.scss']
+  styleUrls: ['./pie-chart.component.scss'],
 })
 export class PieChartComponent implements OnInit {
   @Input() topBooks: ITopBooks[] = [];
-  @Input() chartText:string='';
+  @Input() chartText: string = '';
   chartOptions = {};
 
   Highcharts = Highcharts;
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     this.chartOptions = {
@@ -53,5 +54,4 @@ export class PieChartComponent implements OnInit {
       ],
     };
   }
-
 }

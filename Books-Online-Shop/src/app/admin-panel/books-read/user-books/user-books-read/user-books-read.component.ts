@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { AdminService } from 'src/app/admin-panel/shared/services/admin.service';
 import { IFirebaseBook } from 'src/app/shared/interfaces/firebase-book.interface';
 import { IUser } from 'src/app/shared/interfaces/user.interface';
@@ -6,21 +7,18 @@ import { IUser } from 'src/app/shared/interfaces/user.interface';
 @Component({
   selector: 'app-user-books-read',
   templateUrl: './user-books-read.component.html',
-  styleUrls: ['./user-books-read.component.scss']
+  styleUrls: ['./user-books-read.component.scss'],
 })
 export class UserBooksReadComponent implements OnInit {
-  activeUser:IUser;
+  activeUser: IUser;
   p: number = 1;
   private _searchTitle: string;
   private _searchAuthor: string;
   books: IFirebaseBook[] = [];
   filteredBooks: IFirebaseBook[] = [];
 
-
-  constructor(
-    private _adminService:AdminService
-  ) {
-    this.activeUser=this._adminService.activeUser;
+  constructor(private _adminService: AdminService) {
+    this.activeUser = this._adminService.activeUser;
   }
 
   get searchTitle(): string {
@@ -37,7 +35,6 @@ export class UserBooksReadComponent implements OnInit {
           .toLowerCase()
           .includes(this._searchTitle.toLowerCase());
       });
-      console.log(this.filteredBooks);
     } else {
       this.filteredBooks = this.books.slice();
     }
@@ -48,21 +45,20 @@ export class UserBooksReadComponent implements OnInit {
       this.filteredBooks = this.books.filter((book) =>
         book.author.toLowerCase().includes(this._searchAuthor.toLowerCase())
       );
-      console.log(this.filteredBooks);
     } else {
       this.filteredBooks = this.books.slice();
     }
   }
 
   ngOnInit(): void {
-    this.books=this.filteredBooks=this._adminService.readBooksList.filter(item=>item.userUID===this._adminService.activeUser.userUID);
+    this.books = this.filteredBooks = this._adminService.readBooksList.filter(
+      (item) => item.userUID === this._adminService.activeUser.userUID
+    );
     setTimeout(() => {
       if (this.books) {
         this.searchTitle = '';
         this.searchAuthor = '';
       }
     }, 1000);
-
-    
   }
 }

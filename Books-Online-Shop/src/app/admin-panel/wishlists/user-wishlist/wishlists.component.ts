@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+
 import { IFirebaseBook } from 'src/app/shared/interfaces/firebase-book.interface';
 import { IUser } from 'src/app/shared/interfaces/user.interface';
-import { FirebaseAuthService } from 'src/app/shared/services/firebase-auth/firebase-auth.service';
-import { FireBaseCrudService } from 'src/app/shared/services/firebase-crud/firebase-crud.service';
 import { AdminService } from '../../shared/services/admin.service';
 
 @Component({
   selector: 'app-wishlists',
   templateUrl: './wishlists.component.html',
-  styleUrls: ['./wishlists.component.scss']
+  styleUrls: ['./wishlists.component.scss'],
 })
 export class WishlistsComponent implements OnInit {
   p: number = 1;
@@ -16,12 +15,10 @@ export class WishlistsComponent implements OnInit {
   private _searchAuthor: string;
   books: IFirebaseBook[] = [];
   filteredBooks: IFirebaseBook[] = [];
-  activeUser:IUser;
+  activeUser: IUser;
 
-  constructor(
-    private _adminService:AdminService
-  ) {
-    this.activeUser=this._adminService.activeUser;
+  constructor(private _adminService: AdminService) {
+    this.activeUser = this._adminService.activeUser;
   }
 
   get searchTitle(): string {
@@ -38,7 +35,6 @@ export class WishlistsComponent implements OnInit {
           .toLowerCase()
           .includes(this._searchTitle.toLowerCase());
       });
-      console.log(this.filteredBooks);
     } else {
       this.filteredBooks = this.books.slice();
     }
@@ -49,24 +45,20 @@ export class WishlistsComponent implements OnInit {
       this.filteredBooks = this.books.filter((book) =>
         book.author.toLowerCase().includes(this._searchAuthor.toLowerCase())
       );
-      console.log(this.filteredBooks);
     } else {
       this.filteredBooks = this.books.slice();
     }
   }
 
-
-  
   ngOnInit(): void {
-    this.books=this.filteredBooks=this._adminService.wishlist.filter(item=>item.userUID===this._adminService.activeUser.userUID);
+    this.books = this.filteredBooks = this._adminService.wishlist.filter(
+      (item) => item.userUID === this._adminService.activeUser.userUID
+    );
     setTimeout(() => {
       if (this.books) {
         this.searchTitle = '';
         this.searchAuthor = '';
       }
     }, 1000);
-
-    
   }
-
 }

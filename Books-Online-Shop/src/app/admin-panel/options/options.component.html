@@ -1,13 +1,25 @@
 <div class="main" *ngIf="adminService.activeUser">
-    <div class="box col-10">
-  <div class="option"[routerLink]="['wishlist']">
-    <h6>{{adminService.activeUser.name ? adminService.activeUser.name : 'User'}}'s Wishlist</h6>
+  <div class="box col-10">
+    <div class="option" [routerLink]="['wishlist']">
+      <h6>
+        {{
+          adminService.activeUser.name ? adminService.activeUser.name : "User"
+        }}'s Wishlist
+      </h6>
+    </div>
+    <div class="option" [routerLink]="['shopping-cart']">
+      <h6>
+        {{
+          adminService.activeUser.name ? adminService.activeUser.name : "User"
+        }}'s Shopping-cart
+      </h6>
+    </div>
+    <div class="option" [routerLink]="['books-read']">
+      <h6>
+        {{
+          adminService.activeUser.name ? adminService.activeUser.name : "User"
+        }}'s Reading List
+      </h6>
+    </div>
   </div>
-  <div class="option" [routerLink]="['shopping-cart']">
-    <h6>{{adminService.activeUser.name ? adminService.activeUser.name : 'User'}}'s Shopping-cart</h6>
-  </div>
-  <div class="option"[routerLink]="['books-read']">
-    <h6>{{adminService.activeUser.name ? adminService.activeUser.name : 'User'}}'s Reading List</h6>
-  </div>
-</div>
 </div>

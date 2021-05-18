@@ -6,7 +6,7 @@ import { AdminService } from '../../shared/services/admin.service';
 @Component({
   selector: 'app-wishlist-books',
   templateUrl: './wishlist-books.component.html',
-  styleUrls: ['./wishlist-books.component.scss']
+  styleUrls: ['./wishlist-books.component.scss'],
 })
 export class WishlistBooksComponent implements OnInit {
   p: number = 1;
@@ -15,12 +15,7 @@ export class WishlistBooksComponent implements OnInit {
   books: IFirebaseBook[] = [];
   filteredBooks: IFirebaseBook[] = [];
 
-
-  constructor(
-   private _adminService:AdminService
-  ) {
-    
-  }
+  constructor(private _adminService: AdminService) {}
 
   get searchTitle(): string {
     return this._searchTitle;
@@ -36,7 +31,6 @@ export class WishlistBooksComponent implements OnInit {
           .toLowerCase()
           .includes(this._searchTitle.toLowerCase());
       });
-      console.log(this.filteredBooks);
     } else {
       this.filteredBooks = this.books.slice();
     }
@@ -47,34 +41,31 @@ export class WishlistBooksComponent implements OnInit {
       this.filteredBooks = this.books.filter((book) =>
         book.author.toLowerCase().includes(this._searchAuthor.toLowerCase())
       );
-      console.log(this.filteredBooks);
     } else {
       this.filteredBooks = this.books.slice();
     }
   }
 
-
-  
   ngOnInit(): void {
-    let dublicatesRemovedArray:IFirebaseBook[]=[];
-    if(this._adminService.wishlist){
-    this._adminService.wishlist.forEach(item=>{
-      if(this._adminService.wishlist.indexOf(item)===0){
-        dublicatesRemovedArray.push(item);
-      } else {
-        let isInArray:boolean=false;
-        dublicatesRemovedArray.forEach(book=>{
-          if(book.title===item.title){
-            isInArray=true;
-          }
-        })
-        if(!isInArray){
+    let dublicatesRemovedArray: IFirebaseBook[] = [];
+    if (this._adminService.wishlist) {
+      this._adminService.wishlist.forEach((item) => {
+        if (this._adminService.wishlist.indexOf(item) === 0) {
           dublicatesRemovedArray.push(item);
+        } else {
+          let isInArray: boolean = false;
+          dublicatesRemovedArray.forEach((book) => {
+            if (book.title === item.title) {
+              isInArray = true;
+            }
+          });
+          if (!isInArray) {
+            dublicatesRemovedArray.push(item);
+          }
         }
-      }
-    });
-  }
-    this.books=this.filteredBooks=dublicatesRemovedArray.slice();
+      });
+    }
+    this.books = this.filteredBooks = dublicatesRemovedArray.slice();
 
     setTimeout(() => {
       if (this.books) {
@@ -82,7 +73,5 @@ export class WishlistBooksComponent implements OnInit {
         this.searchAuthor = '';
       }
     }, 1000);
-
-    
   }
 }
