@@ -129,12 +129,12 @@
   background-color: rgb(177, 140, 180) !important;
 }
 
-.data-empty{
-  height:200px;
+.data-empty {
+  height: 200px;
   display: flex;
   align-items: flex-end;
-  h2{
-    width:100%;
+  h2 {
+    width: 100%;
   }
 }
 @media only screen and (max-width: 500px) {
@@ -168,7 +168,9 @@
   .box {
     height: fit-content;
   }
-  .background-circle,.background-line,.background-rectangle{
+  .background-circle,
+  .background-line,
+  .background-rectangle {
     display: none;
   }
 }
@@ -186,20 +188,19 @@
     width: 100% !important;
   }
   .search-div {
-    width:46%;
+    width: 46%;
   }
- 
-  .search{
-    font-size:11px !important;
-    padding:5px;
-    margin:0px
+
+  .search {
+    font-size: 11px !important;
+    padding: 5px;
+    margin: 0px;
   }
- 
-  
+
   h3 {
     font-size: 15px;
   }
- 
+
   .box {
     height: fit-content;
     padding-left: 80px !important;
@@ -208,7 +209,9 @@
   .search-icon-author {
     display: none;
   }
-  .background-circle,.background-line,.background-rectangle{
+  .background-circle,
+  .background-line,
+  .background-rectangle {
     display: none;
   }
 }
@@ -224,25 +227,27 @@
     width: 100% !important;
   }
   .search-div {
-    width:45%;
+    width: 45%;
   }
   .search-icon-book,
   .search-icon-author {
     position: absolute;
   }
-  .search-icon-book{
-    left:38% !important;
+  .search-icon-book {
+    left: 38% !important;
   }
-  .search-icon-author{
-    left:88% !important;
+  .search-icon-author {
+    left: 88% !important;
   }
   .filters {
     justify-content: space-between;
   }
-  .search{
-    margin:0px;
+  .search {
+    margin: 0px;
   }
-  .background-circle,.background-line,.background-rectangle{
+  .background-circle,
+  .background-line,
+  .background-rectangle {
     display: none;
   }
 }

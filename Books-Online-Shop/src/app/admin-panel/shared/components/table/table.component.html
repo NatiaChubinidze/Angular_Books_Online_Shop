@@ -1,18 +1,18 @@
 <table class="table table-striped table-hover">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Surname</th>
-        <th scope="col" class="email">Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of topUsers">
-        <th scope="row">{{ topUsers.indexOf(user) + 1 }}</th>
-        <td>{{user.name ? user.name : 'user'}}</td>
-        <td>{{user.surname ? user.surname : 'Unknown'}}</td>
-        <td class="email">{{user.email ? user.email : 'Unknown'}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Surname</th>
+      <th scope="col" class="email">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of topUsers">
+      <th scope="row">{{ topUsers.indexOf(user) + 1 }}</th>
+      <td>{{ user.name ? user.name : "user" }}</td>
+      <td>{{ user.surname ? user.surname : "Unknown" }}</td>
+      <td class="email">{{ user.email ? user.email : "Unknown" }}</td>
+    </tr>
+  </tbody>
+</table>

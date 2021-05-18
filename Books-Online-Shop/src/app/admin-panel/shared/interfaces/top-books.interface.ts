@@ -1,4 +1,4 @@
-export interface ITopBooks{
-   name:string;
-    y:number;
+export interface ITopBooks {
+  name: string;
+  y: number;
 }

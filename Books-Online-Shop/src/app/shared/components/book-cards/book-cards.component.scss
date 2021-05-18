@@ -95,9 +95,7 @@ i[disabled]:hover {
   color: gray;
   cursor: default;
 }
-i.limitReached:hover {
-  cursor: default;
-}
+
 i[disabled]:hover .tooltipText {
   visibility: visible;
 }

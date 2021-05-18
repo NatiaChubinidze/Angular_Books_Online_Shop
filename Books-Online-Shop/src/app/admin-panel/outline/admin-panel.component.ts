@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { TOKEN_EXP_KEY, TOKEN_KEY } from '../../shared/constants/constants';
 import { FirebaseAuthService } from '../../shared/services/firebase-auth/firebase-auth.service';
 
@@ -8,10 +9,9 @@ import { FirebaseAuthService } from '../../shared/services/firebase-auth/firebas
   styleUrls: ['./admin-panel.component.scss'],
 })
 export class AdminPanelComponent implements OnInit {
-  
   constructor(private _firebaseAuth: FirebaseAuthService) {}
 
- ngOnInit():void{}
+  ngOnInit(): void {}
 
   signOut() {
     this._firebaseAuth.signOut();

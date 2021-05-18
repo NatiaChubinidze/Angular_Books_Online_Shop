@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { HighchartsChartModule } from 'highcharts-angular';
 
 import { AdminPanelComponent } from './outline/admin-panel.component';
@@ -36,6 +36,13 @@ import { PieChartComponent } from './shared/components/pie-chart/pie-chart.compo
     TableComponent,
     PieChartComponent,
   ],
-  imports: [CommonModule, HighchartsChartModule, RouterModule,FormsModule, NgxPaginationModule,AdminPanelRoutingModule],
+  imports: [
+    CommonModule,
+    HighchartsChartModule,
+    RouterModule,
+    FormsModule,
+    NgxPaginationModule,
+    AdminPanelRoutingModule,
+  ],
 })
 export class AdminPanelModule {}
