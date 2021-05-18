@@ -5,37 +5,35 @@ import { IFirebaseBook } from '../../interfaces/firebase-book.interface';
 @Component({
   selector: 'app-wishlist-card',
   templateUrl: './wishlist-card.component.html',
-  styleUrls: ['./wishlist-card.component.scss']
+  styleUrls: ['./wishlist-card.component.scss'],
 })
 export class WishlistCardComponent implements OnInit {
-  @Input() book:IFirebaseBook;
-  @Input() isInShoppingCart:boolean;
+  @Input() book: IFirebaseBook;
+  @Input() isInShoppingCart: boolean;
   @Output() readEvent = new EventEmitter();
   @Output() deleteEvent = new EventEmitter();
   @Output() shoppingEvent = new EventEmitter();
   @Output() deleteFromShoppingEvent = new EventEmitter();
-  imgUrl:string;
-  
-  constructor() { }
+  imgUrl: string;
+
+  constructor() {}
 
   ngOnInit(): void {
-    this.imgUrl=this.book?.thumbnail;
+    this.imgUrl = this.book?.thumbnail;
   }
 
-  addToReadBooks(){
+  addToReadBooks() {
     this.readEvent.emit(this.book);
   }
 
-  removeFromWishlist(){
+  removeFromWishlist() {
     this.deleteEvent.emit(this.book);
   }
-  addToShoppingCart(){
-    if(!this.isInShoppingCart){
-    this.shoppingEvent.emit(this.book);
-    }else if(this.isInShoppingCart){
-      console.log("delete from shopping event");
+  addToShoppingCart() {
+    if (!this.isInShoppingCart) {
+      this.shoppingEvent.emit(this.book);
+    } else if (this.isInShoppingCart) {
       this.deleteFromShoppingEvent.emit(this.book);
     }
   }
-
 }

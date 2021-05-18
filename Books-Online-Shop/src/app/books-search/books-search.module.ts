@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { BooksSearchComponent } from './books-search.component';
 import { BookCardsModule } from '../shared/components/book-cards.module';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AddHeaderInterceptorService } from './shared/services/add-header.interceptor';
 import { HttpCacheInterceptor } from './shared/services/http-cache.interceptor';
 
@@ -18,10 +18,7 @@ import { HttpCacheInterceptor } from './shared/services/http-cache.interceptor';
       useClass: AddHeaderInterceptorService,
       multi: true,
     },
-    { provide:HTTP_INTERCEPTORS,
-      useClass:HttpCacheInterceptor,
-      multi:true
-    }
+    { provide: HTTP_INTERCEPTORS, useClass: HttpCacheInterceptor, multi: true },
   ],
 })
 export class BooksSearchModule {}

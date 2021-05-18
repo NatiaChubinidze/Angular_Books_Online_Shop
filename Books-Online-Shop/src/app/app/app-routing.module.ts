@@ -4,8 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
   {
-    path:'admin',
-    loadChildren: ()=>import("../admin-panel/admin-panel.module").then((m)=>m.AdminPanelModule)
+    path: 'admin',
+    loadChildren: () =>
+      import('../admin-panel/admin-panel.module').then(
+        (m) => m.AdminPanelModule
+      ),
   },
 ];
 

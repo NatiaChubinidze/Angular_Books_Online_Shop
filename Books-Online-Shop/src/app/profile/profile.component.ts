@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
     userUID: '',
   };
   profileIsEmpty: boolean;
-  profilePictureURL:string = '';
+  profilePictureURL: string = '';
   selectedImage: any;
   constructor(
     public firebaseAuthService: FirebaseAuthService,
@@ -61,17 +61,14 @@ export class ProfileComponent implements OnInit {
       },
       { validators: MustMatch('password', 'confirmPassword') }
     );
-   
   }
 
   ngOnInit(): void {
-    console.log(this.firebaseAuthService.isSignedInWithEmail);
     this.firebaseAuthService.currentUser$.subscribe((data: any) => {
-     if(data){
-      this.profileInfo.userUID = this.firebaseAuthService.userUID = data.uid;
-     }
+      if (data) {
+        this.profileInfo.userUID = this.firebaseAuthService.userUID = data.uid;
+      }
     });
-    console.log(this.profileInfo);
     this._firebaseCrudService
       .getCollection('profile')
       .subscribe((data: IProfile[]) => {
@@ -81,18 +78,13 @@ export class ProfileComponent implements OnInit {
         if (myProfile) {
           this.profileInfo = myProfile;
           this.profileIsEmpty = false;
-          console.log('user is not new');
           if (this.profileInfo.profilePicture) {
-            console.log('profile image exists');
             this.profilePictureURL = this.profileInfo.profilePicture;
           } else {
-            console.log('profile exists but not image');
             this.profilePictureURL = '../../assets/images/user (1).png';
           }
         } else {
           this.profileIsEmpty = true;
-          console.log('user is new');
-          console.log('no profile exists');
           this.profilePictureURL = '../../assets/images/user (1).png';
         }
       });
@@ -164,10 +156,7 @@ export class ProfileComponent implements OnInit {
 
   uploadProfileImage() {
     if (this.selectedImage) {
-      //თუ არჩეული სურათი არსებობს
       if (this.profileInfo.profilePicture) {
-        //თუ უკვე არის ატვირთული და ვაედითებ
-
         this.editImage();
       } else {
         this.saveImage();
@@ -175,7 +164,6 @@ export class ProfileComponent implements OnInit {
     }
   }
   editImage() {
-    console.log('image editing');
     if (this.selectedImage) {
       this.deleteImage();
       let filePath = `${this.selectedImage.name}_${new Date().getTime()}}`;
@@ -190,7 +178,7 @@ export class ProfileComponent implements OnInit {
               this._firebaseCrudService.editItem(
                 'profile',
                 this.profileInfo.id,
-                {profilePicture:this.profilePictureURL}
+                { profilePicture: this.profilePictureURL }
               );
             });
           }),
@@ -201,7 +189,6 @@ export class ProfileComponent implements OnInit {
   }
 
   saveImage() {
-    console.log('image saving');
     if (this.selectedImage) {
       let filePath = `${this.selectedImage.name}_${new Date().getTime()}}`;
       const fileRef = this._fireBaseStorage.ref(filePath);
@@ -222,8 +209,6 @@ export class ProfileComponent implements OnInit {
   }
   deleteImage() {
     let image = this._fireBaseStorage.refFromURL(this.profilePictureURL);
-    image.delete().subscribe((data) => {
-      console.log('image deleted');
-    });
+    image.delete().subscribe((data) => {});
   }
 }

@@ -3,23 +3,22 @@
   min-height: 600px;
   width: 100%;
   margin: 0 auto;
-  position:relative;
+  position: relative;
 }
 
 .image {
   height: 350px;
   width: 300px;
   border: 1px solid rgb(180, 173, 173);
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   background-color: white;
   img {
     width: 190px;
-    height:297px;
+    height: 297px;
   }
 }
-
 
 .buy {
   border: 1px solid rgb(180, 173, 173);
@@ -33,51 +32,52 @@
   }
 
   .wishlist {
-    width:fit-content;
-    height:100px;
-    margin:0 auto;
+    width: fit-content;
+    height: 100px;
+    margin: 0 auto;
     align-items: flex-end;
-    img:hover,p:hover{
-      cursor:pointer;
+    img:hover,
+    p:hover {
+      cursor: pointer;
     }
-    p{
-      font-weight:bold;
+    p {
+      font-weight: bold;
     }
   }
 }
 ///////////////////////////////
 
-  p.limitReached:hover{
-    cursor:default;
-  }
-  p.disabled:hover .tooltipText{
+p.limitReached:hover {
+  cursor: default;
+}
+p.disabled:hover .tooltipText {
   visibility: visible;
-  }
-  .tooltipContainer{
-    position: relative;
-  }
-  .tooltipText{
-    visibility: hidden;
-    width: 140px;
-    background-color: rgb(189, 144, 219);
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px;
-    font-size:12px;
-    position: absolute;
-    z-index: 1;
-    top: 10px;
-    right: 105%;
-  }
+}
+.tooltipContainer {
+  position: relative;
+}
+.tooltipText {
+  visibility: hidden;
+  width: 140px;
+  background-color: rgb(189, 144, 219);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  font-size: 12px;
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  right: 105%;
+}
 //////////////////////////////
-.free{
+.free {
   background: -webkit-linear-gradient(rgb(192, 164, 199), rgb(180, 11, 110));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-   font-weight:500;
-   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 500;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 .flex-cont {
   display: flex;
@@ -87,96 +87,95 @@
 .container {
   min-height: 200px;
   margin-top: 50px;
-  padding:0px;
-  border:2px solid white;
-  a{
-      color:rgb(58, 55, 55);
+  padding: 0px;
+  border: 2px solid white;
+  a {
+    color: rgb(58, 55, 55);
   }
 }
 
-.background-image{
-  position:absolute;
-  width:70px;
-  height:70px;
-  img{
-    width:100%;
-    height:100%;
-    
+.background-image {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  img {
+    width: 100%;
+    height: 100%;
   }
   z-index: 1;
-  top:110px;
-  right:21.35%;
+  top: 110px;
+  right: 21.35%;
 }
 
-.background-line{
+.background-line {
   position: absolute;
   height: 20px;
   transform: skewY(-40deg);
   border-radius: 10%;
   z-index: -1;
   background-color: rgb(179, 28, 103);
-  left:0px;
-  top:190px;
-  width:500px;
+  left: 0px;
+  top: 190px;
+  width: 500px;
 }
 
 @media only screen and (max-width: 575px) {
-  .background-line{
+  .background-line {
     display: none;
   }
-  .background-image{
+  .background-image {
     display: none;
   }
-  .flex-cont{
+  .flex-cont {
     flex-direction: column;
-    .description{
-      width:100%;
+    .description {
+      width: 100%;
     }
-    .buy{
-      width:100%;
+    .buy {
+      width: 100%;
     }
   }
 }
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
-  .background-line{
+  .background-line {
     display: none;
   }
-  .background-image{
+  .background-image {
     display: none;
   }
-  .flex-cont{
+  .flex-cont {
     flex-direction: column;
     align-items: center;
-    .description{
-      width:80%;
+    .description {
+      width: 80%;
       text-align: center;
     }
-    .buy{
-      width:50%;
+    .buy {
+      width: 50%;
     }
   }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1199px) {
-  .background-image{
+  .background-image {
     display: none;
   }
-  .image{
-    width:200px;
-    height:250px;
+  .image {
+    width: 200px;
+    height: 250px;
   }
-  .buy{
-    width:200px;
-    height:250px;
-    h5{
-      font-size:14px;
+  .buy {
+    width: 200px;
+    height: 250px;
+    h5 {
+      font-size: 14px;
     }
-    .btn-warning{
-      margin-top:0px;
+    .btn-warning {
+      margin-top: 0px;
     }
-    .wishlist{
-      height:70px;
+    .wishlist {
+      height: 70px;
     }
   }
 }

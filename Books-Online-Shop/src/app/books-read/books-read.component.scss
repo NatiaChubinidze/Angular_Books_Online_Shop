@@ -51,12 +51,12 @@
 .search-div {
   align-items: center;
 }
-.search-div input:first-child{
-  margin-left:2px;
+.search-div input:first-child {
+  margin-left: 2px;
 }
 
 .background-line {
-  right:0px;
+  right: 0px;
   position: absolute;
   top: 500px;
   height: 100px;
@@ -111,9 +111,9 @@
   height: 200px;
   transform: rotate(-20deg);
 }
-.pagination-container{
-  width:fit-content;
-  margin:0 auto;
+.pagination-container {
+  width: fit-content;
+  margin: 0 auto;
 }
 .pagination ::ng-deep .ngx-pagination .current {
   background-color: rgb(177, 140, 180) !important;
@@ -159,13 +159,12 @@
   .book-card {
     width: 31%;
   }
-  input{
-    width:250px;
+  input {
+    width: 250px;
   }
   .search-icon-book {
     position: absolute;
     left: 21%;
-    
   }
   .search-icon-author {
     position: absolute;

@@ -1,33 +1,36 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import firebase from 'firebase/app';
 import { Observable } from 'rxjs';
-import { Store } from '@ngrx/store';
+
 
 import { IProfile } from '../../../profile/shared/interfaces/profile.interface';
 import { EXP_TIME, TOKEN_EXP_KEY, TOKEN_KEY } from '../../constants/constants';
 import { AuthService } from '../../services/auth/auth.service';
 import { FirebaseAuthService } from '../../services/firebase-auth/firebase-auth.service';
 import { FireBaseCrudService } from '../../services/firebase-crud/firebase-crud.service';
+
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent implements OnInit {
-  fadeNav$:Observable<number>;
-  profilePictureURL:string = '';
-  displayName:string = '';
+  fadeNav$: Observable<number>;
+  profilePictureURL: string = '';
+  displayName: string = '';
   constructor(
     private _auth: AuthService,
     private _firebaseAuth: FirebaseAuthService,
     private _firebaseCrudService: FireBaseCrudService,
-    private store:Store<any>
-  ) {this.fadeNav$=this.store.select('fadeNav');}
+    private store: Store<any>
+  ) {
+    this.fadeNav$ = this.store.select('fadeNav');
+  }
 
   ngOnInit(): void {
     if (localStorage.getItem(TOKEN_KEY)) {
       setInterval(() => {
-        console.log('checking');
         if (!this._auth.tokenIsValid()) {
           this._firebaseAuth.userIsActive().subscribe((data) => {
             if (data === true) {
@@ -38,7 +41,6 @@ export class NavigationComponent implements OnInit {
                   localStorage.setItem(TOKEN_KEY, token);
                   if (TOKEN_EXP_KEY) {
                     localStorage.removeItem(TOKEN_EXP_KEY);
-                    console.log('removing old key');
                   }
                   this._auth.setTokenValidTime();
                 })
@@ -52,9 +54,8 @@ export class NavigationComponent implements OnInit {
     }
 
     this._firebaseAuth.currentUser$.subscribe((data: any) => {
-      console.log(data);
-      if(data){
-      this._firebaseAuth.userUID = data.uid;
+      if (data) {
+        this._firebaseAuth.userUID = data.uid;
       }
     });
     this._firebaseCrudService
@@ -63,46 +64,41 @@ export class NavigationComponent implements OnInit {
         const myProfile = data.filter(
           (profile) => profile.userUID === this._firebaseAuth.userUID
         )[0];
-        console.log(myProfile);
         if (myProfile) {
-          console.log("profile exists");
-          if(myProfile.profilePicture){
-            console.log(myProfile.profilePicture);
-            this.profilePictureURL=myProfile.profilePicture;
+          if (myProfile.profilePicture) {
+            this.profilePictureURL = myProfile.profilePicture;
           }
-          if(myProfile.name){
-            console.log("profile name exists");
-            this.displayName=myProfile.name;
+          if (myProfile.name) {
+            this.displayName = myProfile.name;
           }
-        } 
-         if(firebase.auth().currentUser && this.displayName===''){
-          console.log("firebase user exists");
-          if(firebase.auth().currentUser.displayName){
-            console.log("firebase displayname exists");
-            this.displayName=firebase.auth().currentUser.displayName.split(' ')[0];
-          }
-          if(firebase.auth().currentUser && this.profilePictureURL===''){
-          if(firebase.auth().currentUser.photoURL){
-            this.profilePictureURL=firebase.auth().currentUser.photoURL;
-          }
-        } 
-      }
-        if(this.profilePictureURL===''){
-          console.log("default values");
-          this.profilePictureURL="../../assets/images/user.png";
         }
-        if(this.displayName===''){this.displayName='User';}
-        console.log(this.displayName);
-        })
-    
+        if (firebase.auth().currentUser && this.displayName === '') {
+          if (firebase.auth().currentUser.displayName) {
+            this.displayName = firebase
+              .auth()
+              .currentUser.displayName.split(' ')[0];
+          }
+          if (firebase.auth().currentUser && this.profilePictureURL === '') {
+            if (firebase.auth().currentUser.photoURL) {
+              this.profilePictureURL = firebase.auth().currentUser.photoURL;
+            }
+          }
+        }
+        if (this.profilePictureURL === '') {
+          this.profilePictureURL = '../../assets/images/user.png';
+        }
+        if (this.displayName === '') {
+          this.displayName = 'User';
+        }
+      });
   }
 
-  signOut(){
+  signOut() {
     this._firebaseAuth.signOut();
-    if(localStorage.getItem(TOKEN_KEY)){
+    if (localStorage.getItem(TOKEN_KEY)) {
       localStorage.removeItem(TOKEN_KEY);
     }
-    if(localStorage.getItem(TOKEN_EXP_KEY)){
+    if (localStorage.getItem(TOKEN_EXP_KEY)) {
       localStorage.removeItem(TOKEN_EXP_KEY);
     }
   }

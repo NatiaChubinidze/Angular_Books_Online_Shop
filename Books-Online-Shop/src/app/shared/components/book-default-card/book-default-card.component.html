@@ -1,5 +1,4 @@
 <div class="card-light">
-
   <div class="img text-center" (click)="showBookDetails()">
     <img [src]="book.volumeInfo.imageLinks?.smallThumbnail" />
   </div>
@@ -16,10 +15,7 @@
         class="far fa-times-circle fa-lg mt-2"
         *ngIf="book.saleInfo?.saleability.toLowerCase() === 'not_for_sale'"
       ></i>
-      <p
-        class="pricing"
-        *ngIf="book.saleInfo?.retailPrice"
-      >
+      <p class="pricing" *ngIf="book.saleInfo?.retailPrice">
         {{ book.saleInfo?.retailPrice.amount }}$
       </p>
       <div
@@ -32,7 +28,9 @@
         <i
           class="far fa-heart fa-lg"
           [class.limitReached]="isWishlistLimitReached"
-          [class.mt-2]="book.saleInfo?.saleability.toLowerCase() === 'not_for_sale'"
+          [class.mt-2]="
+            book.saleInfo?.saleability.toLowerCase() === 'not_for_sale'
+          "
           [attr.disabled]="
             isWishlistLimitReached && !isInWishlist ? true : null
           "

@@ -73,7 +73,7 @@ hr {
 .btn-github {
   i {
     background-color: black;
-    border-right:1px solid rgb(110, 103, 103) !important;
+    border-right: 1px solid rgb(110, 103, 103) !important;
   }
   background-color: black;
 }
@@ -107,13 +107,14 @@ hr {
   text-align: center;
   border-right: 1px solid rgba(10, 10, 43, 0.651);
 }
-.patternText, .errorText{
+.patternText,
+.errorText {
   font-size: 12px;
 }
-.errorText{
-  min-height:20px;
-  max-height:45px;
-  margin:0px 0px 0px 40px;
+.errorText {
+  min-height: 20px;
+  max-height: 45px;
+  margin: 0px 0px 0px 40px;
 }
 // .errorText p{
 // text-overflow: ellipsis;
@@ -121,16 +122,18 @@ hr {
 //   white-space:nowrap;
 //   height:40px;
 // }
-.patternText{
+.patternText {
   height: 18px;
-  color:red;
+  color: red;
 }
-.errorTextWrapper{
-  min-height:20px;
-  max-height:45px;
+.errorTextWrapper {
+  min-height: 20px;
+  max-height: 45px;
 }
-.form-check-label, .form-check-input, .wrapper{
-  cursor:pointer;
+.form-check-label,
+.form-check-input,
+.wrapper {
+  cursor: pointer;
 }
 @media only screen and (max-width: 575px) {
   .box {
@@ -151,7 +154,7 @@ hr {
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .box {
     padding: 20px;
-    height:100%;
+    height: 100%;
   }
   .auth {
     padding: 20px;

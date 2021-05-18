@@ -13,40 +13,37 @@ export class ShoppingCartComponent implements OnInit {
   p: number = 1;
   shoppingList: IFirebaseBook[];
   shoppingItemsWithPrice: IFirebaseBook[];
-  totalPrice: number=0;
-  newOrder:boolean=false;
+  totalPrice: number = 0;
+  newOrder: boolean = false;
 
   constructor(
     private _firebaseCrudService: FireBaseCrudService,
     private _firebaseAuthService: FirebaseAuthService
-  ) {
-    
-  }
+  ) {}
 
   ngOnInit(): void {
-    console.log("on init");
     this._firebaseCrudService
       .getCollection('shopping-cart')
       .subscribe((books: IFirebaseBook[]) => {
         if (books) {
-          this.totalPrice=0;
+          this.totalPrice = 0;
           this._firebaseAuthService.currentUser$.subscribe((data) => {
-            if(data){
-            this._firebaseAuthService.userUID = data.uid;
+            if (data) {
+              this._firebaseAuthService.userUID = data.uid;
             }
             this.shoppingList = books.filter((item) => {
-              return item.userUID === this._firebaseAuthService.userUID && item.ordered!=="ordered";
+              return (
+                item.userUID === this._firebaseAuthService.userUID &&
+                item.ordered !== 'ordered'
+              );
             });
             this.shoppingItemsWithPrice = this.shoppingList.filter(
-              (item) =>
-                item.price.toLowerCase() === 'for_sale'
+              (item) => item.price.toLowerCase() === 'for_sale'
             );
             this.shoppingItemsWithPrice.forEach((item) => {
               this.totalPrice += item.quantity * item.priceAmount;
             });
           });
-          console.log(this.shoppingList);
-          
         }
       });
   }
@@ -68,11 +65,13 @@ export class ShoppingCartComponent implements OnInit {
   deleteItem(item: IFirebaseBook) {
     this._firebaseCrudService.deleteItem('shopping-cart', item.id);
   }
-  order(){
-    this.newOrder=true;
-    this.shoppingList.forEach(item=>{
-      this._firebaseCrudService.editItem('shopping-cart', item.id,{ordered:"ordered"})
-    })
+  order() {
+    this.newOrder = true;
+    this.shoppingList.forEach((item) => {
+      this._firebaseCrudService.editItem('shopping-cart', item.id, {
+        ordered: 'ordered',
+      });
+    });
     // setTimeout(() => {
     //   this.newOrder=false;
     // }, 10000);

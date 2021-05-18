@@ -2,28 +2,24 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { throwError } from 'rxjs';
-
 import { catchError, map } from 'rxjs/operators';
+
 import { IFirebaseBook } from '../../interfaces/firebase-book.interface';
 import { IUser } from '../../interfaces/user.interface';
-
 
 @Injectable({
   providedIn: 'root',
 })
 export class FireBaseCrudService {
-  wishlist:IFirebaseBook[];
-  booksRead:IFirebaseBook[];
-  users:IUser[];
-  errorMessage:string='';
-  constructor(
-    private _firebaseStore: AngularFirestore,
-   
-  ) {}
+  wishlist: IFirebaseBook[];
+  booksRead: IFirebaseBook[];
+  users: IUser[];
+  errorMessage: string = '';
+  constructor(private _firebaseStore: AngularFirestore) {}
 
   getCollection(collection: string) {
-    this.errorMessage='';
-        
+    this.errorMessage = '';
+
     return this._firebaseStore
       .collection(collection)
       .snapshotChanges()
@@ -37,28 +33,30 @@ export class FireBaseCrudService {
               ...data,
             };
           });
-        }), catchError(this.handleError)
+        }),
+        catchError(this.handleError)
       );
   }
 
   deleteItem(collection: string, id: string) {
-    this.errorMessage='';
-    try{
-    return this._firebaseStore.collection(collection).doc(id).delete();
-    }
-    catch{
-      error=>{this.errorMessage=error}
+    this.errorMessage = '';
+    try {
+      return this._firebaseStore.collection(collection).doc(id).delete();
+    } catch {
+      (error) => {
+        this.errorMessage = error;
+      };
     }
   }
 
-
   saveItem(collection: string, item: any) {
-    this.errorMessage='';
-    try{
-    return this._firebaseStore.collection(collection).add(item);
-    }
-    catch{
-      error=>{this.errorMessage=error;}
+    this.errorMessage = '';
+    try {
+      return this._firebaseStore.collection(collection).add(item);
+    } catch {
+      (error) => {
+        this.errorMessage = error;
+      };
     }
   }
   editItem(collection: string, id: string, data: any) {
@@ -72,13 +70,12 @@ export class FireBaseCrudService {
       };
     }
   }
-  
+
   private handleError(error: HttpErrorResponse) {
-    
     if (error.error instanceof ErrorEvent) {
-     this.errorMessage = `An error has occurred during the processing: ${error.error.message}`;
+      this.errorMessage = `An error has occurred during the processing: ${error.error.message}`;
     } else {
-     this.errorMessage = `Server returned the following error: ${error.status}. Error message: ${error.message}`;
+      this.errorMessage = `Server returned the following error: ${error.status}. Error message: ${error.message}`;
     }
     return throwError(this.errorMessage);
   }

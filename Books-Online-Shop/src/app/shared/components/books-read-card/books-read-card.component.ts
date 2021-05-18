@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
 import { IFirebaseBook } from '../../interfaces/firebase-book.interface';
 
 @Component({
@@ -15,11 +16,9 @@ export class BooksReadCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.imgUrl = this.book?.thumbnail;
-    console.log(this.book);
   }
 
-  deleteFromReadBooks(){
+  deleteFromReadBooks() {
     this.deleteBook.emit(this.book);
   }
-
 }

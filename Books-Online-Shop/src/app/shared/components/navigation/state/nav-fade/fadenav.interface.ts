@@ -1,3 +1,3 @@
-export interface IFadeNav{
-    fadeSteps:number
+export interface IFadeNav {
+  fadeSteps: number;
 }
