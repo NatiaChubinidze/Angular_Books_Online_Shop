@@ -39,7 +39,6 @@ export class WishlistComponent implements OnInit {
           .toLowerCase()
           .includes(this._searchTitle.toLowerCase());
       });
-      console.log(this.filteredBooks);
     } else {
       this.filteredBooks = this.books.slice();
     }
@@ -50,7 +49,6 @@ export class WishlistComponent implements OnInit {
       this.filteredBooks = this.books.filter((book) =>
         book.author.toLowerCase().includes(this._searchAuthor.toLowerCase())
       );
-      console.log(this.filteredBooks);
     } else {
       this.filteredBooks = this.books.slice();
     }
@@ -156,7 +154,6 @@ export class WishlistComponent implements OnInit {
           this.books = this.filteredBooks = this._firebaseCrudService.wishlist = books.filter(
             (item) => item.userUID === this._firebaseAuthService.userUID
           );
-          console.log(this.books);
         }
       });
     setTimeout(() => {

@@ -4,9 +4,10 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import { FirebaseAuthService } from '../../shared/services/firebase-auth/firebase-auth.service';
-import {showNav,hideNav} from '../../shared/components/navigation/state/nav-visibility/nav-visibility.actions';
-
-
+import {
+  showNav,
+  hideNav,
+} from '../../shared/components/navigation/state/nav-visibility/nav-visibility.actions';
 
 @Component({
   selector: 'app-forgot-password',
@@ -18,16 +19,16 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
   email: FormControl;
   forgotPasswordForm: FormGroup;
   buttonHover: boolean;
-  constructor(public firebaseAuthService: FirebaseAuthService, private store:Store<{nav:boolean}>) {
-    this.nav$=store.select('nav');
-    this.firebaseAuthService.errorMessage=null;
-    this.firebaseAuthService.infoMessage=null;
+  constructor(
+    public firebaseAuthService: FirebaseAuthService,
+    private store: Store<{ nav: boolean }>
+  ) {
+    this.nav$ = store.select('nav');
+    this.firebaseAuthService.errorMessage = null;
+    this.firebaseAuthService.infoMessage = null;
     this.email = new FormControl(
       '',
-      Validators.compose([
-        Validators.required,
-        Validators.email
-      ])
+      Validators.compose([Validators.required, Validators.email])
     );
     this.forgotPasswordForm = new FormGroup({
       email: this.email,
@@ -50,7 +51,7 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.hideNav();
   }
-  ngOnDestroy():void{
+  ngOnDestroy(): void {
     this.showNav();
   }
 }

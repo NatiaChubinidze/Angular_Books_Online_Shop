@@ -1,1 +1,1 @@
-export const WISHLIST_MAX_NUMBER=10;
+export const WISHLIST_MAX_NUMBER = 10;

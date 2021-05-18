@@ -12,10 +12,10 @@
     border-radius: 5px;
     overflow: hidden;
     background-color: rgb(219, 211, 211);
-    img{
-      width:128px;
-      min-height:190px;
-  }
+    img {
+      width: 128px;
+      min-height: 190px;
+    }
   }
   img.close-icon {
     width: 23px;
@@ -25,8 +25,8 @@
     top: 5px;
     z-index: 100;
   }
-  img.close-icon:hover{
-    cursor:pointer;
+  img.close-icon:hover {
+    cursor: pointer;
   }
   .book-info {
     z-index: 1;
@@ -54,7 +54,7 @@
       font-weight: 500;
       color: rgb(0, 0, 0);
       font-size: 20px;
-      margin:0px;
+      margin: 0px;
     }
     .btn {
       height: fit-content;
@@ -71,7 +71,6 @@
 }
 
 i {
-
   color: black;
   margin-right: 10px;
   color: gray;
@@ -88,9 +87,9 @@ i.fa-check-double:hover {
   color: #79509c;
   cursor: pointer;
 }
-.shopped{
-  color:rgb(221, 147, 9);
- }
+.shopped {
+  color: rgb(221, 147, 9);
+}
 
 .free {
   background: -webkit-linear-gradient(rgb(192, 164, 199), rgb(180, 11, 110));

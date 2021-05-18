@@ -1,6 +1,6 @@
-export interface IUserAuthInfo{
-    email:string;
-    password:string;
-    confirmPassword?:string;
-    rememberMe?:boolean;
+export interface IUserAuthInfo {
+  email: string;
+  password: string;
+  confirmPassword?: string;
+  rememberMe?: boolean;
 }

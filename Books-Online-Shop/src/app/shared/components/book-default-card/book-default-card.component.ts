@@ -6,33 +6,34 @@ import { FireBaseCrudService } from '../../services/firebase-crud/firebase-crud.
 import { WISHLIST_MAX_NUMBER } from '../../constants/wishlist-constants';
 import { IFirebaseBook } from '../../interfaces/firebase-book.interface';
 
-
 @Component({
   selector: 'app-book-default-card',
   templateUrl: './book-default-card.component.html',
-  styleUrls: ['./book-default-card.component.scss']
+  styleUrls: ['./book-default-card.component.scss'],
 })
 export class BookDefaultCardComponent implements OnInit {
-@Input() book:IBooks;
-@Input() isInWishlist:boolean;
-@Input() isInShoppingCart:boolean;
-@Output() wishlistEvent = new EventEmitter();
-@Output() shoppingEvent = new EventEmitter();
-@Output() bookDetailsEvent = new EventEmitter();
-@Output() deleteFromWishlistEvent = new EventEmitter();
-@Output() deleteFromShoppingEvent = new EventEmitter();
+  @Input() book: IBooks;
+  @Input() isInWishlist: boolean;
+  @Input() isInShoppingCart: boolean;
+  @Output() wishlistEvent = new EventEmitter();
+  @Output() shoppingEvent = new EventEmitter();
+  @Output() bookDetailsEvent = new EventEmitter();
+  @Output() deleteFromWishlistEvent = new EventEmitter();
+  @Output() deleteFromShoppingEvent = new EventEmitter();
 
-imgUrl:string;
-isWishlistLimitReached: boolean;
+  imgUrl: string;
+  isWishlistLimitReached: boolean;
 
-  constructor(private _firebaseCrudService: FireBaseCrudService,
-    private _firebaseAuthService: FirebaseAuthService) { }
+  constructor(
+    private _firebaseCrudService: FireBaseCrudService,
+    private _firebaseAuthService: FirebaseAuthService
+  ) {}
 
   ngOnInit(): void {
-    this.imgUrl=this.book?.volumeInfo.imageLinks?.thumbnail;
+    this.imgUrl = this.book?.volumeInfo.imageLinks?.thumbnail;
     this._firebaseAuthService.currentUser$.subscribe((data) => {
-      if(data){
-      this._firebaseAuthService.userUID = data.uid;
+      if (data) {
+        this._firebaseAuthService.userUID = data.uid;
       }
     });
     this._firebaseCrudService
@@ -53,28 +54,22 @@ isWishlistLimitReached: boolean;
         }
       });
   }
-  addToWishlist(){
-    if(!this.isWishlistLimitReached && !this.isInWishlist){
-      console.log("adding to wishlist");
-    this.wishlistEvent.emit(this.book);
-    }else if(this.isInWishlist){
-      console.log("delete from wishlist event");
+  addToWishlist() {
+    if (!this.isWishlistLimitReached && !this.isInWishlist) {
+      this.wishlistEvent.emit(this.book);
+    } else if (this.isInWishlist) {
       this.deleteFromWishlistEvent.emit(this.book);
     }
   }
 
-  addToCart(){
-    if(!this.isInShoppingCart){
-    this.shoppingEvent.emit(this.book);
-    }else if(this.isInShoppingCart){
-      console.log("delete from shopping event");
+  addToCart() {
+    if (!this.isInShoppingCart) {
+      this.shoppingEvent.emit(this.book);
+    } else if (this.isInShoppingCart) {
       this.deleteFromShoppingEvent.emit(this.book);
     }
   }
-  showBookDetails(){
+  showBookDetails() {
     this.bookDetailsEvent.emit(this.book);
   }
-
 }
-
-

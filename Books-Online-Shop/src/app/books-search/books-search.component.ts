@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { IFirebaseBook } from '../shared/interfaces/firebase-book.interface';
 import { BooksSearchService } from '../shared/services/books-search/books-search.service';
 import { FirebaseAuthService } from '../shared/services/firebase-auth/firebase-auth.service';
@@ -63,7 +64,6 @@ export class BooksSearchComponent implements OnInit {
     private _firebaseCrudService: FireBaseCrudService,
     private _firebaseAuthService: FirebaseAuthService
   ) {
-    console.log(Object.keys(this.Languages));
     this.activeCategory = this._bookService.activeCategory;
   }
 
@@ -156,7 +156,6 @@ export class BooksSearchComponent implements OnInit {
   getFilteredBooks() {
     this.activeCategory = this._bookService.activeCategory = '';
     let refinedParams: IBookSearchParams = { ...this.searchParams };
-    console.log(this.searchParams);
     if (refinedParams.subject === 'Choose Category') {
       refinedParams.subject = '';
     }
@@ -170,7 +169,6 @@ export class BooksSearchComponent implements OnInit {
       delete refinedParams.orderBy;
     }
     this._bookService.searchParam = { ...refinedParams };
-    console.log(refinedParams);
     this._router.navigate([], {
       queryParamsHandling: '',
       replaceUrl: true,
@@ -226,7 +224,6 @@ export class BooksSearchComponent implements OnInit {
         userUID: this._firebaseAuthService.userUID,
       };
     }
-    console.log(bookToAdd);
     this._firebaseCrudService.saveItem('shopping-cart', bookToAdd);
   }
   addToWishlist(book: IBooks) {
@@ -258,7 +255,6 @@ export class BooksSearchComponent implements OnInit {
       };
     }
 
-    console.log(bookToAdd);
     this._firebaseCrudService.saveItem('wishlist', bookToAdd);
   }
   deleteFromWishlist(book: IBooks) {

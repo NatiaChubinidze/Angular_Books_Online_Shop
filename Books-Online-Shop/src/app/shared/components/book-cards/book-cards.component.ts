@@ -31,8 +31,8 @@ export class BookCardsComponent implements OnInit {
   ngOnInit(): void {
     this.imgUrl = this.book?.volumeInfo.imageLinks?.thumbnail;
     this._firebaseAuthService.currentUser$.subscribe((data) => {
-      if(data){
-      this._firebaseAuthService.userUID = data.uid;
+      if (data) {
+        this._firebaseAuthService.userUID = data.uid;
       }
     });
     this._firebaseCrudService
@@ -54,18 +54,17 @@ export class BookCardsComponent implements OnInit {
       });
   }
   addToWishlist() {
-    if(!this.isWishlistLimitReached && !this.isInWishlist){
-      console.log("adding to wishlist");
-    this.wishlistEvent.emit(this.book);
-    } else if(this.isInWishlist){
+    if (!this.isWishlistLimitReached && !this.isInWishlist) {
+      this.wishlistEvent.emit(this.book);
+    } else if (this.isInWishlist) {
       this.deleteFromWishlistEvent.emit(this.book);
     }
   }
 
   addToCart() {
-    if(!this.isInShoppingCart){
-    this.shoppingEvent.emit(this.book);
-    } else if(this.isInShoppingCart){
+    if (!this.isInShoppingCart) {
+      this.shoppingEvent.emit(this.book);
+    } else if (this.isInShoppingCart) {
       this.deleteFromShoppingEvent.emit(this.book);
     }
   }

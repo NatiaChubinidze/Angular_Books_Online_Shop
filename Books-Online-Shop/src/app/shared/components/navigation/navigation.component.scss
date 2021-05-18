@@ -43,23 +43,28 @@ header {
   height: 80px;
   transition: background-color 1s;
 }
-header.fadeStepOne, .dropdown-menu li.fadeStepOne {
+header.fadeStepOne,
+.dropdown-menu li.fadeStepOne {
   background-color: #e7e2e6f5;
 }
-header.fadeStepTwo,.dropdown-menu li.fadeStepTwo {
+header.fadeStepTwo,
+.dropdown-menu li.fadeStepTwo {
   background-color: #e7e2e6e3;
 }
-header.fadeStepThree, .dropdown-menu li.fadeStepThree {
+header.fadeStepThree,
+.dropdown-menu li.fadeStepThree {
   background-color: #e7e2e6ce;
 }
-header.fadeStepFour, .dropdown-menu li.fadeStepFour {
+header.fadeStepFour,
+.dropdown-menu li.fadeStepFour {
   background-color: #e7e2e6a6;
 }
-header.fadeStepFive, .dropdown-menu li.fadeStepFive {
+header.fadeStepFive,
+.dropdown-menu li.fadeStepFive {
   background-color: #e7e2e654;
 }
-header.fadeStepSix{
-    background-color: transparent;
+header.fadeStepSix {
+  background-color: transparent;
 }
 .navbar .navbar-brand {
   float: left;
@@ -103,7 +108,8 @@ header.fadeStepSix{
 .navbar ul li a:hover {
   color: rgb(164, 138, 165);
 }
-.navbar ul li.nav-item.activeOption, .navbar ul li.nav-item:hover {
+.navbar ul li.nav-item.activeOption,
+.navbar ul li.nav-item:hover {
   border-bottom: 2px solid white;
 }
 .navbar ul li.nav-item {

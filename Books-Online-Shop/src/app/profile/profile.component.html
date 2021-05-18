@@ -8,22 +8,35 @@
       <img [src]="profilePictureURL" alt="" />
       <div class="file btn btn-lg btn-primary">
         Change Photo
-        <input type="file" name="file" accept="image/*" (change)="showPreviewImage($event)"/>
+        <input
+          type="file"
+          name="file"
+          accept="image/*"
+          (change)="showPreviewImage($event)"
+        />
       </div>
       <div class="info-text-div">
         <div class="errorText">
           <div
             class="alert alert-danger alert-div"
-            *ngIf="firebaseAuthService.errorMessage || oldPasswordIsInvalid() || passwordIsInvalid() || confirmPasswordIsInvalid()"
+            *ngIf="
+              firebaseAuthService.errorMessage ||
+              oldPasswordIsInvalid() ||
+              passwordIsInvalid() ||
+              confirmPasswordIsInvalid()
+            "
           >
             <p class="m-0">{{ firebaseAuthService.errorMessage }}</p>
-            <em class="required" *ngIf="oldPasswordIsInvalid()"> * Your Current Password is Required *</em> 
-            <em class="required" *ngIf="passwordIsInvalid()"> * Required Pattern: min(6), max(20) characters; Use all kind of
-                Characters *
-              </em>
-              <em class="required" *ngIf="confirmPasswordIsInvalid()"
-              > * Required. Passwords must match! *
-            </em> 
+            <em class="required" *ngIf="oldPasswordIsInvalid()">
+              * Your Current Password is Required *</em
+            >
+            <em class="required" *ngIf="passwordIsInvalid()">
+              * Required Pattern: min(6), max(20) characters; Use all kind of
+              Characters *
+            </em>
+            <em class="required" *ngIf="confirmPasswordIsInvalid()">
+              * Required. Passwords must match! *
+            </em>
           </div>
           <div
             class="alert alert-primary"
@@ -74,8 +87,8 @@
           />
         </div>
       </form>
-        <hr />
-        <form [formGroup]="resetForm">
+      <hr />
+      <form [formGroup]="resetForm">
         <h6>Change Password</h6>
         <div class="col-11 d-flex input">
           <label for="password">Password</label>
@@ -88,7 +101,9 @@
             placeholder="Password"
             autocomplete="off"
             [ngClass]="{ 'is-invalid': oldPasswordIsInvalid() }"
-            [attr.disabled]="!firebaseAuthService.isSignedInWithEmail ? true : null"
+            [attr.disabled]="
+              !firebaseAuthService.isSignedInWithEmail ? true : null
+            "
           />
         </div>
         <div class="col-11 d-flex input">
@@ -102,7 +117,9 @@
             id="new-password"
             placeholder="New Password"
             autocomplete="off"
-            [attr.disabled]="!firebaseAuthService.isSignedInWithEmail ? true : null"
+            [attr.disabled]="
+              !firebaseAuthService.isSignedInWithEmail ? true : null
+            "
           />
         </div>
         <div class="col-11 d-flex input">
@@ -116,15 +133,19 @@
             autocomplete="off"
             [ngClass]="{ 'is-invalid': confirmPasswordIsInvalid() }"
             placeholder="Confirm Password"
-            [attr.disabled]="!firebaseAuthService.isSignedInWithEmail ? true : null"
+            [attr.disabled]="
+              !firebaseAuthService.isSignedInWithEmail ? true : null
+            "
           />
         </div>
       </form>
     </div>
     <div class="buttons col-1">
       <div>
-        <button class="mb-3 clear" (click)="clearProfileInfo()">Clear All</button>
-        <button class="save" (click)="saveProfileInfo()"> Save</button>
+        <button class="mb-3 clear" (click)="clearProfileInfo()">
+          Clear All
+        </button>
+        <button class="save" (click)="saveProfileInfo()">Save</button>
       </div>
       <div
         class="col-12 mx-auto"
@@ -140,4 +161,5 @@
         </button>
       </div>
     </div>
- 
+  </div>
+</div>

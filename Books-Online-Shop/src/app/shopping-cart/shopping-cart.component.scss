@@ -1,6 +1,4 @@
 .box {
-  // background-color: rgba(207, 200, 209, 0.575);
-  // background-color: rgba(230, 224, 224, 0.486);
   padding: 10px;
   min-height: 700px;
   width: 100%;
@@ -13,7 +11,7 @@
   font-weight: 600;
   background-color: rosybrown;
 }
-.back-to-shopping:hover{
+.back-to-shopping:hover {
   background-color: rgb(197, 153, 153);
 }
 .t-row {
@@ -66,14 +64,14 @@ td {
   padding-top: 12px;
 }
 .items-added {
-  // color:gray;
   color: #26272b;
 }
-.minus:hover, .plus:hover{
-cursor:pointer;
+.minus:hover,
+.plus:hover {
+  cursor: pointer;
 }
-.empty-list-text{
-  margin-top:10%;
+.empty-list-text {
+  margin-top: 10%;
 }
 
 @media only screen and (max-width: 575px) {

@@ -102,7 +102,11 @@
         <tr>
           <th scope="row">Publisher</th>
           <td>
-            {{ bookService.activeBook.volumeInfo?.publisher ? bookService.activeBook.volumeInfo?.publisher : ''}}
+            {{
+              bookService.activeBook.volumeInfo?.publisher
+                ? bookService.activeBook.volumeInfo?.publisher
+                : ""
+            }}
           </td>
           <th scope="row">Preview Link</th>
           <td>

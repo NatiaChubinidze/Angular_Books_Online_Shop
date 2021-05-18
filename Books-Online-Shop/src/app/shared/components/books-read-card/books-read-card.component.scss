@@ -1,96 +1,93 @@
 .card-light {
-    width: 100%;
-    height: 100%;
-    background-color: rgb(255, 255, 255);
-    border: 4px solid white;
-    border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  border: 4px solid white;
+  border-radius: 10px;
+  position: relative;
+  .img {
     position: relative;
-    .img {
-      position: relative;
     width: 100%;
     height: 160px;
     border-radius: 5px;
     overflow: hidden;
     background-color: rgb(219, 211, 211);
-    img{
-      width:128px;
-      min-height:190px;
+    img {
+      width: 128px;
+      min-height: 190px;
+    }
   }
-    }
-    img.close-icon{
-      width:23px;
-      height:23px;
-      position:absolute;
-      right:5px;
-      top:5px;
-      z-index:100;
-    }
-    img.close-icon:hover{
-      cursor:pointer;
-    }
-    .book-info {
-      z-index: 1;
-      background-color: rgba(235, 221, 221, 0.432);
-      border-radius: 5px;
-      width: 100%;
-      height: 140px;
-      margin: 0 auto;
-      overflow: hidden;
-      color: white;
-      padding: 10px;
-      h6,
-      .author {
-        color: black;
-        text-align: center;
-        margin-bottom: 0px;
-        height: 30px;
-        text-overflow: ellipsis;
-        overflow: hidden !important;
-        white-space: nowrap;
-      }
-      .pricing {
-        font-weight: 500;
-        color: rgb(0, 0, 0);
-        font-size: 20px;
-        margin:0px;
-      }
-      .btn {
-        height: fit-content;
-      }
-    }
-    .info {
-      width: 100%;
-      height: 60px;
+  img.close-icon {
+    width: 23px;
+    height: 23px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    z-index: 100;
+  }
+  img.close-icon:hover {
+    cursor: pointer;
+  }
+  .book-info {
+    z-index: 1;
+    background-color: rgba(235, 221, 221, 0.432);
+    border-radius: 5px;
+    width: 100%;
+    height: 140px;
+    margin: 0 auto;
+    overflow: hidden;
+    color: white;
+    padding: 10px;
+    h6,
+    .author {
+      color: black;
+      text-align: center;
+      margin-bottom: 0px;
+      height: 30px;
       text-overflow: ellipsis;
-      overflow: hidden;
-      margin-bottom: 10px;
+      overflow: hidden !important;
       white-space: nowrap;
     }
+    .pricing {
+      font-weight: 500;
+      color: rgb(0, 0, 0);
+      font-size: 20px;
+      margin: 0px;
+    }
+    .btn {
+      height: fit-content;
+    }
   }
-
- 
-i{
- 
-  color:black;
-  margin-right:10px;
-  color:gray;
-}
-i.read{
-  color:#79509c;
-}
-.read{
-  font-size:17px;
-}
-.icons{
-align-items: center;
+  .info {
+    width: 100%;
+    height: 60px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-bottom: 10px;
+    white-space: nowrap;
+  }
 }
 
+i {
+  color: black;
+  margin-right: 10px;
+  color: gray;
+}
+i.read {
+  color: #79509c;
+}
+.read {
+  font-size: 17px;
+}
+.icons {
+  align-items: center;
+}
 
- i.fa-shopping-cart:hover{
-     color:rgb(221, 147, 9);
-     cursor:pointer;
- }
- .free {
+i.fa-shopping-cart:hover {
+  color: rgb(221, 147, 9);
+  cursor: pointer;
+}
+.free {
   background: -webkit-linear-gradient(rgb(192, 164, 199), rgb(180, 11, 110));
   -webkit-background-clip: text;
   background-clip: text;

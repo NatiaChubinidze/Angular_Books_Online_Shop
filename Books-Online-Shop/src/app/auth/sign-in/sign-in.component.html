@@ -15,7 +15,8 @@
             <label for="email" class="col-sm-2 col-form-label">Email</label>
             <div class="patternText">
               <em class="required" *ngIf="emailIsInvalid()"
-                >Required Pattern: No uppercase letters. Must contain @ and a dot</em
+                >Required Pattern: No uppercase letters. Must contain @ and a
+                dot</em
               >
             </div>
           </div>
@@ -67,7 +68,13 @@
               (mouseenter)="buttonHover = true"
               (mouseleave)="buttonHover = false"
             >
-              <button type="submit" class="btn btn-primary" [disabled]="signInForm.invalid">LOGIN</button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="signInForm.invalid"
+              >
+                LOGIN
+              </button>
             </div>
           </div>
         </form>

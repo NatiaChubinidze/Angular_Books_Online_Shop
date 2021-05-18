@@ -44,27 +44,29 @@
 }
 .error-text {
   min-height: 30px;
-  padding:10px;
-  margin-left:40px;
-  margin-bottom:0px;
+  padding: 10px;
+  margin-left: 40px;
+  margin-bottom: 0px;
 }
-.error-text p{
+.error-text p {
   text-overflow: ellipsis;
-  overflow:hidden !important;
+  overflow: hidden !important;
   white-space: nowrap;
 }
 .text-required {
   min-height: 16px;
-  width:80%;
-  color:red;
+  width: 80%;
+  color: red;
   text-align: right;
 }
 
-.text-required, .error-text{
-  font-size:12px;
+.text-required,
+.error-text {
+  font-size: 12px;
 }
-.back-icon, .sign-up{
-  cursor:pointer;
+.back-icon,
+.sign-up {
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 575px) {

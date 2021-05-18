@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireModule } from '@angular/fire';
+import { StoreModule } from '@ngrx/store';
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,21 +25,16 @@ import { ProfileRoutingModule } from '../profile/profile-routing.module';
 import { AdminPanelModule } from '../admin-panel/admin-panel.module';
 
 import { FooterComponent } from '../shared/components/footer/footer.component';
-import {firebaseConfig} from '../../../firebaseConfig';
+import { firebaseConfig } from '../../../firebaseConfig';
 import { BooksReadModule } from '../books-read/books-read.module';
 import { BooksReadRoutingModule } from '../books-read/books-read-routing.module';
 import { Page404Module } from '../shared/components/page-404/page404.module';
 import { Page404RoutingModule } from '../shared/components/page-404/page404-routing.module';
-import { StoreModule } from '@ngrx/store';
-import {navReducer} from '../shared/components/navigation/state/nav-visibility/nav-visibility.reducer';
+import { navReducer } from '../shared/components/navigation/state/nav-visibility/nav-visibility.reducer';
 import { fadeNavReducer } from '../shared/components/navigation/state/nav-fade/nav-fade.reducer';
 
-
 @NgModule({
-  declarations: [
-    AppComponent,
-    FooterComponent,
-  ],
+  declarations: [AppComponent, FooterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -73,10 +69,9 @@ import { fadeNavReducer } from '../shared/components/navigation/state/nav-fade/n
       storageBucket: 'books-app-project-307817.appspot.com',
       messagingSenderId: '828802712642',
     }),
-    StoreModule.forRoot({nav:navReducer, fadeNav:fadeNavReducer},{}),
-    
+    StoreModule.forRoot({ nav: navReducer, fadeNav: fadeNavReducer }, {}),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

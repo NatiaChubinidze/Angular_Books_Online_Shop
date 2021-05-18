@@ -7,7 +7,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 5px;
-  width:100%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -39,24 +39,24 @@
 .category-card:hover {
   color: black;
   background-color: rgb(196, 189, 189);
-  cursor:pointer;
+  cursor: pointer;
 }
 .categories-img {
   width: 317px;
-  height:317px;
+  height: 317px;
   border-radius: 10px;
 }
 
 .shop-online {
   width: 100%;
-  margin-top:7%;
+  margin-top: 7%;
   height: 300px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-h3.best-selling-books{
-  font-family:cursive;
+h3.best-selling-books {
+  font-family: cursive;
 }
 .picture {
   width: 25%;
@@ -68,13 +68,14 @@ h3.best-selling-books{
 .shop-now-btn {
   width: 60%;
   padding-top: 50px;
-  p{
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  p {
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
   }
 }
 
 .recommended-books {
-  width:100%;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -83,75 +84,74 @@ h3.best-selling-books{
   padding: 40px;
 }
 
-.book-card{
-  width:21%;
-  height:300px;
-  margin-bottom:60px;
+.book-card {
+  width: 21%;
+  height: 300px;
+  margin-bottom: 60px;
 }
 
-
-@media only screen and (max-width: 575px) { 
- .categories-list{
-   width:100%;
- }
- .categories-img{
-   display:none;
- }
- .shop-online{
-   height:120px;
-   margin-top:60px;
-   margin-bottom:40px;
- }
- .shop-now-btn{
-   padding:0px;
- }
- .picture{
-   width:35%;
-   height:150px;
- }
- .book-card{
-   width:45%;
-   margin-bottom: 40px;
- }
-}
-
-@media only screen and (min-width: 576px) and (max-width: 767px) { 
- .categories-img{
-   width:200px;
-   height:200px;
- }
- .book-card{
-   width:40%;
-   margin-bottom: 40px;
- }
- .shop-online{
-  height:120px;
-}
-.shop-now-btn{
-  padding:0px;
-}
-.picture{
-  width:180px;
-}
-}
-@media only screen and (min-width: 768px) and (max-width: 1199px) { 
-  .book-card{
-    width:30%;
+@media only screen and (max-width: 575px) {
+  .categories-list {
+    width: 100%;
+  }
+  .categories-img {
+    display: none;
+  }
+  .shop-online {
+    height: 120px;
+    margin-top: 60px;
     margin-bottom: 40px;
   }
-  .categories-img{
-    width:30%;
-    height:250px;
+  .shop-now-btn {
+    padding: 0px;
   }
-  .shop-online{
-    height:fit-content;
-    margin-top:70px;
+  .picture {
+    width: 35%;
+    height: 150px;
+  }
+  .book-card {
+    width: 45%;
+    margin-bottom: 40px;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .categories-img {
+    width: 200px;
+    height: 200px;
+  }
+  .book-card {
+    width: 40%;
+    margin-bottom: 40px;
+  }
+  .shop-online {
+    height: 120px;
+  }
+  .shop-now-btn {
+    padding: 0px;
+  }
+  .picture {
+    width: 180px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  .book-card {
+    width: 30%;
+    margin-bottom: 40px;
+  }
+  .categories-img {
+    width: 30%;
+    height: 250px;
+  }
+  .shop-online {
+    height: fit-content;
+    margin-top: 70px;
     margin-bottom: 60px;
   }
-  .shop-now-btn{
-    padding:0px;
+  .shop-now-btn {
+    padding: 0px;
   }
-  .picture{
-    width:230px;
+  .picture {
+    width: 230px;
   }
 }

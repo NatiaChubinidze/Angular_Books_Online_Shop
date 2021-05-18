@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { TOKEN_EXP_KEY, TOKEN_TTL } from '../../constants/constants';
 
 @Injectable({
@@ -7,7 +8,6 @@ import { TOKEN_EXP_KEY, TOKEN_TTL } from '../../constants/constants';
 export class AuthService {
   constructor() {}
   setTokenValidTime(): void {
-    console.log('new key');
     const date = new Date();
     date.setMinutes(new Date().getMinutes() + TOKEN_TTL);
     localStorage.setItem(TOKEN_EXP_KEY, date.toJSON());

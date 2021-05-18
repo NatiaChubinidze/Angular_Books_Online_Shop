@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { AuthGuard } from '../shared/guards/auth-guard/auth.guard';
 import { BooksSearchComponent } from './books-search.component';
 import { BooksResolverService } from './shared/services/books-resolver.service';

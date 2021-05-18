@@ -37,14 +37,25 @@
         src="../../assets/images/research-and-development (1).png"
       />
     </div>
-    
   </div>
   <div class="flex-container">
-    <div class="book-card" *ngFor="let book of filteredBooks | paginate: { itemsPerPage: 10, currentPage: p }">
-      <app-books-read-card [book]="book" (deleteBook)="deleteFromReadBooks($event)"></app-books-read-card>
+    <div
+      class="book-card"
+      *ngFor="
+        let book of filteredBooks
+          | paginate: { itemsPerPage: 10, currentPage: p }
+      "
+    >
+      <app-books-read-card
+        [book]="book"
+        (deleteBook)="deleteFromReadBooks($event)"
+      ></app-books-read-card>
     </div>
   </div>
-  <div class="mt-5 pagination-container" *ngIf="filteredBooks.length>10">
-  <pagination-controls (pageChange)="p = $event" class="pagination"></pagination-controls>
+  <div class="mt-5 pagination-container" *ngIf="filteredBooks.length > 10">
+    <pagination-controls
+      (pageChange)="p = $event"
+      class="pagination"
+    ></pagination-controls>
   </div>
 </div>

@@ -1,4 +1,6 @@
-import {createAction, props} from '@ngrx/store';
-import {IFadeNav} from './fadenav.interface';
+import { createAction, props } from '@ngrx/store';
 
-export const fadeNav = createAction('[Navigation Fade Navigation]', props<{fadeSteps:number}>());    
+export const fadeNav = createAction(
+  '[Navigation Fade Navigation]',
+  props<{ fadeSteps: number }>()
+);

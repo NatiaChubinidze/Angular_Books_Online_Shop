@@ -7,7 +7,10 @@ import { Observable } from 'rxjs';
 import { TOKEN_EXP_KEY, TOKEN_KEY } from 'src/app/shared/constants/constants';
 import { FirebaseAuthService } from '../../shared/services/firebase-auth/firebase-auth.service';
 import { IUserAuthInfo } from '../shared/interfaces/auth.interface';
-import {showNav,hideNav} from '../../shared/components/navigation/state/nav-visibility/nav-visibility.actions';
+import {
+  showNav,
+  hideNav,
+} from '../../shared/components/navigation/state/nav-visibility/nav-visibility.actions';
 
 @Component({
   selector: 'app-sign-in',
@@ -30,11 +33,11 @@ export class SignInComponent implements OnInit, OnDestroy {
   constructor(
     public fireBaseAuthService: FirebaseAuthService,
     private _router: Router,
-    private store:Store<{nav:boolean}>
+    private store: Store<{ nav: boolean }>
   ) {
-    this.nav$=store.select('nav');
-    this.fireBaseAuthService.errorMessage=null;
-    this.fireBaseAuthService.infoMessage=null;
+    this.nav$ = store.select('nav');
+    this.fireBaseAuthService.errorMessage = null;
+    this.fireBaseAuthService.infoMessage = null;
     this.email = new FormControl(
       '',
       Validators.compose([
@@ -69,24 +72,19 @@ export class SignInComponent implements OnInit, OnDestroy {
   }
   facebookSignIn() {
     this.fireBaseAuthService.facebookSignIn();
- 
   }
   githubSignIn() {
     this.fireBaseAuthService.githubSignIn();
-   
   }
   googleSignIn() {
     this.fireBaseAuthService.googleSignIn();
-    
   }
   emailSignIn() {
     this.signInInfo = this.signInForm.value as IUserAuthInfo;
-    console.log(this.signInInfo);
     this.fireBaseAuthService.emailSignIn(this.signInInfo);
     this.fireBaseAuthService.rememberMe = this.signInInfo.rememberMe;
- 
   }
-  
+
   hideNav() {
     this.store.dispatch(hideNav());
   }
@@ -99,19 +97,18 @@ export class SignInComponent implements OnInit, OnDestroy {
       localStorage.getItem(TOKEN_KEY) &&
       localStorage.getItem(TOKEN_EXP_KEY)
     ) {
-      this.fireBaseAuthService.currentUser$.subscribe(data=>{
-        if(data){
-          if(data.email==='admin@gmail.com'){
+      this.fireBaseAuthService.currentUser$.subscribe((data) => {
+        if (data) {
+          if (data.email === 'admin@gmail.com') {
             this._router.navigate(['/admin']);
           } else {
             this._router.navigate(['/home']);
           }
         }
-      })
-    
+      });
     }
   }
-  ngOnDestroy(): void{
+  ngOnDestroy(): void {
     this.showNav();
   }
 }
