@@ -35,6 +35,7 @@
         <ul>
           <li class="shopping-cart-icon" [routerLink]="['/shopping-cart']">
             <img src="../../assets/images/shopping-cart (2).png" />
+            <span *ngIf="cartItems" class="cart-items-number" id="items-number">{{cartItems}}</span>
           </li>
           <li class="profile">
             <span>
