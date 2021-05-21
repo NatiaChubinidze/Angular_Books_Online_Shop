@@ -1,7 +1,7 @@
 <div class="card-dark mb-5">
   <div class="card-light">
     <div class="img text-center" (click)="showBookDetails()">
-      <img [src]="book.volumeInfo.imageLinks?.smallThumbnail" />
+      <img [src]="book.volumeInfo.imageLinks?.smallThumbnail ? book.volumeInfo.imageLinks?.smallThumbnail : '../../../../assets/images/vintage.jpg'" />
     </div>
     <div class="book-info">
       <div class="info">

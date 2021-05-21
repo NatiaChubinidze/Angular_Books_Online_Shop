@@ -102,7 +102,7 @@
             autocomplete="off"
             [ngClass]="{ 'is-invalid': oldPasswordIsInvalid() }"
             [attr.disabled]="
-              !firebaseAuthService.isSignedInWithEmail ? true : null
+            (firebaseAuthService.currentUser$ | async)?.email ? null : true
             "
           />
         </div>
@@ -118,7 +118,7 @@
             placeholder="New Password"
             autocomplete="off"
             [attr.disabled]="
-              !firebaseAuthService.isSignedInWithEmail ? true : null
+            (firebaseAuthService.currentUser$ | async)?.email ? null : true
             "
           />
         </div>
@@ -134,7 +134,7 @@
             [ngClass]="{ 'is-invalid': confirmPasswordIsInvalid() }"
             placeholder="Confirm Password"
             [attr.disabled]="
-              !firebaseAuthService.isSignedInWithEmail ? true : null
+              (firebaseAuthService.currentUser$ | async)?.email ? null : true
             "
           />
         </div>

@@ -43,7 +43,7 @@
           </th>
           <td class="book-info col-4">
             <div class="flex-cont">
-              <img [src]="item.thumbnail" />
+              <img [src]="item.thumbnail ? item.thumbnail : '../../../../assets/images/vintage.jpg'" />
               <div class="info-txt">
                 <h5>{{ item.title }}</h5>
                 <h6>By {{ item.author }}</h6>
