@@ -17,7 +17,6 @@ import { IUser } from '../../interfaces/user.interface';
 export class FirebaseAuthService {
   currentUser$ = new Observable<firebase.User | null>();
   isAdmin: boolean = false;
-  isSignedInWithEmail: boolean = false;
   userUID: string;
   errorMessage: string | null;
   infoMessage: string | null;
@@ -81,7 +80,7 @@ export class FirebaseAuthService {
       .then((data: any) => {
         if (data.user) {
           this.saveUserToFirebase();
-          this.isSignedInWithEmail = true;
+          
           if (data.user.email === 'admin@gmail.com') {
             this.isAdmin = true;
           } else {
@@ -115,7 +114,7 @@ export class FirebaseAuthService {
             userUID: data.user.uid,
           };
           this._firebaseCrudService.saveItem('users', newUser);
-          this.isSignedInWithEmail = true;
+          
           this._router.navigate(['/home']);
         }
       })

@@ -8,7 +8,7 @@
   </div>
   <div class="flex-cont" *ngIf="bookService.activeBook">
     <div class="image">
-      <img [src]="bookService.activeBook.volumeInfo.imageLinks?.thumbnail" />
+      <img [src]="bookService.activeBook.volumeInfo.imageLinks?.thumbnail ? bookService.activeBook.volumeInfo.imageLinks?.thumbnail :  '../../../../assets/images/vintage.jpg'" />
     </div>
     <div class="description col-5">
       <h3>{{ bookService.activeBook.volumeInfo?.title }}</h3>

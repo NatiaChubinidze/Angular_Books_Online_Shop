@@ -5,7 +5,7 @@
     (click)="removeFromWishlist()"
   />
   <div class="img text-center">
-    <img [src]="imgUrl" />
+    <img [src]="imgUrl ? imgUrl :  '../../../../assets/images/vintage.jpg'" />
   </div>
   <div class="book-info">
     <div class="info">
