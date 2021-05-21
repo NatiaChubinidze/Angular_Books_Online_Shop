@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 
 import { IProfile } from '../../../profile/shared/interfaces/profile.interface';
 import { EXP_TIME, TOKEN_EXP_KEY, TOKEN_KEY } from '../../constants/constants';
+import { IFirebaseBook } from '../../interfaces/firebase-book.interface';
 import { AuthService } from '../../services/auth/auth.service';
 import { FirebaseAuthService } from '../../services/firebase-auth/firebase-auth.service';
 import { FireBaseCrudService } from '../../services/firebase-crud/firebase-crud.service';
@@ -19,6 +20,7 @@ export class NavigationComponent implements OnInit {
   fadeNav$: Observable<number>;
   profilePictureURL: string = '';
   displayName: string = '';
+  cartItems:number;
   constructor(
     private _auth: AuthService,
     private _firebaseAuth: FirebaseAuthService,
@@ -91,6 +93,9 @@ export class NavigationComponent implements OnInit {
           this.displayName = 'User';
         }
       });
+      this._firebaseCrudService.getCollection('shopping-cart').subscribe((data:IFirebaseBook[])=>{
+        this.cartItems=data.filter(item=>item.ordered!=='ordered' && item.userUID===this._firebaseAuth.userUID).length;
+      })
   }
 
   signOut() {
