@@ -39,7 +39,7 @@ export class SignInComponent implements OnInit, OnDestroy {
     this.fireBaseAuthService.errorMessage = null;
     this.fireBaseAuthService.infoMessage = null;
     this.email = new FormControl(
-      '',
+      'user@gmail.com',
       Validators.compose([
         Validators.required,
         Validators.email,
@@ -47,7 +47,7 @@ export class SignInComponent implements OnInit, OnDestroy {
       ])
     );
     this.password = new FormControl(
-      '',
+      'User!1234',
       Validators.compose([
         Validators.required,
         Validators.minLength(5),
